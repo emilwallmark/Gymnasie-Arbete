@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv8i4fvdnlcao"]
+
+[ext_resource type="Script" uid="uid://brnn1g22410sk" path="res://Scripts/level.gd" id="1_6phgx"]
+[ext_resource type="PackedScene" uid="uid://baa1aso0fnt1m" path="res://Scenes/player.tscn" id="1_tumq0"]
+[ext_resource type="Texture2D" uid="uid://bs2ey82l2fkw4" path="res://icon.svg" id="2_k5f4k"]
+[ext_resource type="PackedScene" uid="uid://dcydko4pj7kon" path="res://Inventory/inv_ui.tscn" id="4_81xng"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6phgx"]
+size = Vector2(700, 5073)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_81xng"]
+size = Vector2(4358, 221)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_6phgx")
+
+[node name="Player" parent="." instance=ExtResource("1_tumq0")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(243, 106)
+texture = ExtResource("2_k5f4k")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+autostart = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="WaveNumber" type="Label" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 200
+text = "Wave Number"
+
+[node name="EnemysLeft" type="Label" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -273.0
+offset_right = 1380.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 200
+text = "Wave Number"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1339, 867)
+shape = SubResource("RectangleShape2D_6phgx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3642, 874)
+shape = SubResource("RectangleShape2D_6phgx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1194, -1706)
+shape = SubResource("RectangleShape2D_81xng")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1188, 3453)
+shape = SubResource("RectangleShape2D_81xng")
+
+[node name="ShopHUD" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="StartNextWave" type="Button" parent="ShopHUD"]
+offset_left = 858.0
+offset_top = 513.0
+offset_right = 1193.0
+offset_bottom = 576.0
+theme_override_font_sizes/font_size = 40
+text = "Begin Next Wave
+"
+
+[node name="Inv_UI" parent="ShopHUD" instance=ExtResource("4_81xng")]
+offset_left = 319.0
+offset_top = 568.0
+offset_right = -1601.0
+offset_bottom = -512.0
+
+[connection signal="pressed" from="ShopHUD/StartNextWave" to="." method="_on_start_next_wave_pressed"]
