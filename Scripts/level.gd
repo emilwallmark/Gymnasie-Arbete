@@ -7,14 +7,16 @@ const BULLET_SCENE = preload("res://Scenes/bullet.tscn")
 
 @onready var player = $Player
 
+var test_item = preload("res://Inventory/Items/Basic Gun.tres")
+
 var wave: int = 1
-var enemys_left = 0
-var enemys_spawned = 0
-var wave_cap = 1
+var enemys_left: int 
+var enemys_spawned: int
+var wave_cap: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player.connect("shoot", spawn_bullet)
+	player.connect("attack", spawn_bullet)
 	waves()
 
 
@@ -50,10 +52,14 @@ func wave_complete()->void:
 
 
 func spawn_bullet()->void:
-	var bullet = BULLET_SCENE.instantiate()
-	bullet.global_position = player.position
-	bullet.dir = player.get_local_mouse_position()
-	add_child(bullet)
+	for item in player.inventory.items:
+		if item != null:
+			if item.type == "gun":
+				var bullet = BULLET_SCENE.instantiate()
+				bullet.damage = item.damage
+				bullet.global_position = player.position
+				bullet.dir = player.get_local_mouse_position()
+				add_child(bullet)
 
 func spawn_enemy() -> void:
 	var enemyX = randi_range(100,1000)
@@ -69,3 +75,22 @@ func _on_start_next_wave_pressed() -> void:
 	$ShopHUD.visible = false
 	wave += 1
 	waves() # Replace with function body.
+
+
+func _on_add_gun_pressed() -> void:
+	print(player.inventory.items)
+	var done = false
+	var  x= 0
+	while not done:
+		if x == 6:
+			done = true
+			
+		elif player.inventory.items[x] == null:
+			player.inventory.items.pop_at(x)
+			player.inventory.items.insert(x, test_item) 
+			$ShopHUD/Inv_UI.update_slots()
+			done = true
+		
+		else:
+			x += 1
+		

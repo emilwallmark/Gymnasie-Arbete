@@ -2,8 +2,6 @@ extends CharacterBody2D
 
 class_name Enemy
 
-
-
 const MAX_SPEED := 250
 const ACC := 1500
 

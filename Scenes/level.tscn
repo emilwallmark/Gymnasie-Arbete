@@ -45,7 +45,7 @@ offset_top = -273.0
 offset_right = 1380.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 200
-text = "Wave Number"
+text = "Enemys Left"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -83,4 +83,12 @@ offset_top = 568.0
 offset_right = -1601.0
 offset_bottom = -512.0
 
+[node name="Add gun" type="Button" parent="ShopHUD"]
+offset_left = 1224.0
+offset_top = 639.0
+offset_right = 1656.0
+offset_bottom = 793.0
+text = "Add gun test"
+
 [connection signal="pressed" from="ShopHUD/StartNextWave" to="." method="_on_start_next_wave_pressed"]
+[connection signal="pressed" from="ShopHUD/Add gun" to="." method="_on_add_gun_pressed"]
