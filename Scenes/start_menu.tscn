@@ -116,6 +116,7 @@ theme_override_constants/separation = 20
 
 [node name="StartButton" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxFlat_juhg0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_jgtwh")
@@ -124,6 +125,7 @@ text = "Press to Start"
 
 [node name="Quit" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 40
 theme_override_styles/hover = SubResource("StyleBoxFlat_a43kq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_626he")

@@ -16,7 +16,7 @@ var wave_cap: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player.connect("attack", spawn_bullet)
+	player.connect("attack", attack)
 	waves()
 
 
@@ -29,9 +29,7 @@ func _process(delta: float) -> void:
 	$HUD/EnemysLeft.text = str(enemys_left)
 	if enemys_left == 0 and enemys_spawned == wave_cap:
 		wave_complete()
-	
-
-	
+		
 func waves()->void:
 	if wave == 1:
 		wave_cap = 2
@@ -51,15 +49,18 @@ func wave_complete()->void:
 	$ShopHUD.visible = true
 
 
-func spawn_bullet()->void:
+func attack()->void:
+	var i:int = 0
 	for item in player.inventory.items:
+		i += 1
 		if item != null:
 			if item.type == "gun":
 				var bullet = BULLET_SCENE.instantiate()
 				bullet.damage = item.damage
-				bullet.global_position = player.position
+				bullet.global_position = player.get_child(i+1).global_position
 				bullet.dir = player.get_local_mouse_position()
 				add_child(bullet)
+				
 
 func spawn_enemy() -> void:
 	var enemyX = randi_range(100,1000)
@@ -78,7 +79,6 @@ func _on_start_next_wave_pressed() -> void:
 
 
 func _on_add_gun_pressed() -> void:
-	print(player.inventory.items)
 	var done = false
 	var  x= 0
 	while not done:
@@ -90,7 +90,5 @@ func _on_add_gun_pressed() -> void:
 			player.inventory.items.insert(x, test_item) 
 			$ShopHUD/Inv_UI.update_slots()
 			done = true
-		
 		else:
 			x += 1
-		
