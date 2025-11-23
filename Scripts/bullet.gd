@@ -18,6 +18,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		queue_free()
 		body.lives -= damage
+		body.on_take_dmg()
 		
 func _on_timer_timeout() -> void:
 	queue_free() 
