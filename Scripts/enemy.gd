@@ -17,7 +17,7 @@ var lives = 3
 func _ready() -> void:
 	anim.play("Enemy_Walk")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	health_bar.size[0] = 150 * lives/3
 	if velocity.x < 0:
 		enemy_texture.flip_h = true

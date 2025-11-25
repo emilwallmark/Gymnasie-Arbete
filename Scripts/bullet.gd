@@ -11,7 +11,7 @@ func movement(dir: Vector2) -> void:
 	velocity = Vector2(dir[0]*speed/length, dir[1]*speed/length)
 	move_and_slide()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	movement(dir)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

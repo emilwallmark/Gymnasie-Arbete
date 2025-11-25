@@ -9,10 +9,9 @@ var direction = "Down"
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 
-
 @export var inventory: Inv
 
-func movement(delta: float) -> void:
+func movement(_delta: float) -> void:
 	velocity = Input.get_vector("Left", "Right", "Up", "Down") * SPEED
 	move_and_slide()
 func _attack()->void:
@@ -21,11 +20,11 @@ func _attack()->void:
 func _physics_process(delta: float) -> void:
 	movement(delta)
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Action"):
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("Action") and Engine.time_scale != 0:
 		_attack()
+	
 	animation()
-
 
 func animation():
 	if velocity[0] == 0 and velocity[1] == 0 and direction == "Down":
