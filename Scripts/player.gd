@@ -23,8 +23,9 @@ func _physics_process(delta: float) -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Action") and Engine.time_scale != 0:
 		_attack()
-	
 	animation()
+	if Globals.player_lives == 0:
+		modulate = Color.RED
 
 func animation():
 	if velocity[0] == 0 and velocity[1] == 0 and direction == "Down":
@@ -47,3 +48,8 @@ func animation():
 	else:
 		anim.play("Walk_Down")
 		direction = "Down"
+
+func _on_damege_area_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		Globals.player_lives -= 1 
+		

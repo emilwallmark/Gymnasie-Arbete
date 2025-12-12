@@ -9,6 +9,7 @@ const ACC := 1500
 @onready var health_bar = $HpBar
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var enemy_texture: Sprite2D = $Sprite2D
+@onready var collision_body: CollisionShape2D = $EnemyCollisionBody
 
 #Kommer defineras av föreldern som har åtkomst till sina barn
 var player = null
@@ -31,10 +32,13 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func on_take_dmg():
-	var original_color = enemy_texture.modulate
-	enemy_texture.modulate = Color.RED
+	var original_color = self_modulate
+	modulate = Color.RED
 	await get_tree().create_timer(0.2).timeout
 	if lives > 0:
-		enemy_texture.modulate = original_color
+		modulate = original_color
 	else:
+		var random = randi() % 2
+		if random == 1:
+			Globals.money += 1
 		queue_free()

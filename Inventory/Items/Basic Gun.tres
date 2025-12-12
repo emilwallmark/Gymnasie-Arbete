@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://pfa5oca0nb7l"]
 
 [ext_resource type="Script" uid="uid://dbq0ohe323wnk" path="res://Inventory/inventory_item.gd" id="1_ce8uq"]
-[ext_resource type="Texture2D" uid="uid://c1md5wecuuxam" path="res://cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTExL3Jhd3BpeGVsX29mZmljZV8yNF9waG90b19vZl90b3lfYmxhY2tfaGFuZGd1bl9pc29sYXRlZF93aGl0ZV9iYV9hZmQ5MmZhNC1lZTM5LTQyZGItYjM4NC1lM2YzOWU0MTUxNDMucG5n.webp" id="2_4vya0"]
+[ext_resource type="Texture2D" uid="uid://dqfwucyt7wnff" path="res://kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0000.png" id="2_ce8uq"]
 
 [resource]
 script = ExtResource("1_ce8uq")
 name = "Basic Gun"
-texture = ExtResource("2_4vya0")
+texture = ExtResource("2_ce8uq")
 type = "gun"
 damage = 1
 rarity = "Common"

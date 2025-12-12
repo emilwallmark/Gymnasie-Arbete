@@ -4,7 +4,6 @@ extends Node2D
 const ENEMY_SCENE = preload("res://Scenes/enemy.tscn")
 const BULLET_SCENE = preload("res://Scenes/bullet.tscn")
 
-
 @onready var player = $Player
 
 var test_item = preload("res://Inventory/Items/Basic Gun.tres")
@@ -19,7 +18,6 @@ var paused: bool = false
 func _ready() -> void:
 	player.connect("attack", attack)
 	waves()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -53,7 +51,9 @@ func waves()->void:
 func wave_complete()->void:
 	enemys_spawned = 0
 	$ShopHUD.visible = true
-
+	$ShopHUD/ItemCard.update()
+	$ShopHUD/ItemCard2.update()
+	$ShopHUD/ItemCard3.update()
 
 func attack()->void:
 	var i:int = 0
@@ -63,11 +63,10 @@ func attack()->void:
 			if item.type == "gun":
 				var bullet = BULLET_SCENE.instantiate()
 				bullet.damage = item.damage
-				bullet.global_position = player.get_child(i+1).global_position
+				bullet.global_position = player.get_child(i).global_position
 				bullet.dir = player.get_local_mouse_position()
 				add_child(bullet)
 				
-
 func spawn_enemy() -> void:
 	var enemyX = randi_range(100,1000)
 	var enemyY = randi_range(50,500)
@@ -77,24 +76,7 @@ func spawn_enemy() -> void:
 	add_child(enemy) # Replace with function body.
 	enemys_spawned += 1
 
-
 func _on_start_next_wave_pressed() -> void:
 	$ShopHUD.visible = false
 	wave += 1
 	waves() # Replace with function body.
-
-
-func _on_add_gun_pressed() -> void:
-	var done = false
-	var  x= 0
-	while not done:
-		if x == 6:
-			done = true
-			
-		elif player.inventory.items[x] == null:
-			player.inventory.items.pop_at(x)
-			player.inventory.items.insert(x, test_item) 
-			$ShopHUD/Inv_UI.update_slots()
-			done = true
-		else:
-			x += 1

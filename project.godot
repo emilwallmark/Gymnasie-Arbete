@@ -15,12 +15,21 @@ run/main_scene="uid://chg4ot8o44dnh"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://Globals.gd"
+PreloadItems="*res://preload_items.gd"
+
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=2560
+window/size/viewport_height=1440
 mouse_cursor/custom_image="uid://b2xgn7plq6bdo"
 mouse_cursor/custom_image_hotspot=Vector2(12, 12)
+
+[global_group]
+
+Player=""
 
 [input]
 

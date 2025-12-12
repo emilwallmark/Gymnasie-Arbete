@@ -1,12 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://baa1aso0fnt1m"]
+[gd_scene load_steps=17 format=3 uid="uid://baa1aso0fnt1m"]
 
 [ext_resource type="Script" uid="uid://bsrw7ybryh2w3" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Resource" uid="uid://duhjm7beccri1" path="res://Inventory/PlayerInv.tres" id="2_vgqql"]
+[ext_resource type="PackedScene" uid="uid://dcydko4pj7kon" path="res://Inventory/inv_ui.tscn" id="4_vgqql"]
 [ext_resource type="Texture2D" uid="uid://cc4nifydiaw2q" path="res://character-pack-full_version/sprite_split/character_1/character_1_frame32x32.png" id="7_gymyn"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t5aa"]
-radius = 1.788
-height = 148.085
 
 [sub_resource type="Animation" id="Animation_3smsa"]
 resource_name = "Idle_Down"
@@ -168,16 +165,19 @@ _data = {
 &"Walk__Left": SubResource("Animation_fkybt")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t5aa"]
+radius = 1.788
+height = 148.085
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgqql"]
+radius = 31.0
+height = 86.0
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_cvnsp")
 inventory = ExtResource("2_vgqql")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -10)
-scale = Vector2(8.38926, -0.405172)
-shape = SubResource("CapsuleShape2D_6t5aa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -210,3 +210,31 @@ texture = ExtResource("7_gymyn")
 hframes = 3
 vframes = 4
 frame = 3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(8.38926, -0.405172)
+shape = SubResource("CapsuleShape2D_6t5aa")
+
+[node name="DamegeArea" type="Area2D" parent="."]
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamegeArea"]
+position = Vector2(0, -11)
+shape = SubResource("CapsuleShape2D_vgqql")
+debug_color = Color(0.980614, 0, 0.378169, 0.42)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Inv_UI" parent="CanvasLayer" instance=ExtResource("4_vgqql")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 368.0
+offset_top = 1163.0
+offset_right = 368.0
+offset_bottom = 1163.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="body_entered" from="DamegeArea" to="." method="_on_damege_area_body_entered"]

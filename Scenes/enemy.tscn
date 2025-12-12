@@ -1,10 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8d0e27t3koor"]
+[gd_scene load_steps=7 format=3 uid="uid://c8d0e27t3koor"]
 
 [ext_resource type="Script" uid="uid://bexncqt7g0uuc" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://ck6k52bjmt7iw" path="res://kenney_desert-shooter-pack_1.0/PNG/Enemies/Tilemap/tilemap_packed.png" id="2_1f0kj"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
-size = Vector2(125, 125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_287tu"]
 size = Vector2(97, 102)
@@ -60,15 +57,7 @@ hframes = 4
 vframes = 4
 frame = 8
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-modulate = Color(1.51612e-06, 0.443724, 0.14858, 1)
-shape = SubResource("RectangleShape2D_1f0kj")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="EnemyCollisionBody" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_287tu")
 
 [node name="HpBar" type="ColorRect" parent="."]
