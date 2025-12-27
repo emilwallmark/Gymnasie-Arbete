@@ -34,6 +34,8 @@ func _physics_process(delta: float) -> void:
 func on_take_dmg():
 	var original_color = self_modulate
 	modulate = Color.RED
+	if lives < 1:
+		collision_body.disabled = true
 	await get_tree().create_timer(0.2).timeout
 	if lives > 0:
 		modulate = original_color

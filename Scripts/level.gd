@@ -7,6 +7,7 @@ const BULLET_SCENE = preload("res://Scenes/bullet.tscn")
 @onready var player = $Player
 
 var test_item = preload("res://Inventory/Items/Basic Gun.tres")
+var item_card = preload("res://Scenes/item_card.tscn")
 
 var wave: int = 1
 var enemys_left: int 
@@ -18,6 +19,7 @@ var paused: bool = false
 func _ready() -> void:
 	player.connect("attack", attack)
 	waves()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -50,10 +52,22 @@ func waves()->void:
 
 func wave_complete()->void:
 	enemys_spawned = 0
+	var item_card_1 = item_card.instantiate()
+	item_card_1.card_1()
+	item_card_1.position = Vector2(333, 326)
+	$ShopHUD.add_child(item_card_1)
+	
+	var item_card_2 = item_card.instantiate()
+	item_card_2.position = Vector2(689, 326)
+	$ShopHUD.add_child(item_card_2)
+	item_card_2.card_2()
+	
+	var item_card_3 = item_card.instantiate()
+	item_card_3.position = Vector2(1064, 326)
+	item_card_3.card_3()
+	$ShopHUD.add_child(item_card_3)
 	$ShopHUD.visible = true
-	$ShopHUD/ItemCard.update()
-	$ShopHUD/ItemCard2.update()
-	$ShopHUD/ItemCard3.update()
+	
 
 func attack()->void:
 	var i:int = 0
@@ -80,3 +94,28 @@ func _on_start_next_wave_pressed() -> void:
 	$ShopHUD.visible = false
 	wave += 1
 	waves() # Replace with function body.
+
+
+func _on_button_1_pressed() -> void:
+	player.inventory.items[0] = null
+	player.get_child(11).get_child(0).update_slots()
+
+func _on_button_2_pressed() -> void:
+	player.inventory.items[1] = null
+	player.get_child(11).get_child(0).update_slots()
+
+func _on_button_3_pressed() -> void:
+	player.inventory.items[2] = null
+	player.get_child(11).get_child(0).update_slots()
+
+func _on_button_4_pressed() -> void:
+	player.inventory.items[3] = null
+	player.get_child(11).get_child(0).update_slots()
+
+func _on_button_5_pressed() -> void:
+	player.inventory.items[4] = null
+	player.get_child(11).get_child(0).update_slots()
+
+func _on_button_6_pressed() -> void:
+	player.inventory.items[5] = null
+	player.get_child(11).get_child(0).update_slots()

@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://bv8i4fvdnlcao"]
+[gd_scene load_steps=8 format=4 uid="uid://bv8i4fvdnlcao"]
 
 [ext_resource type="Script" uid="uid://brnn1g22410sk" path="res://Scripts/level.gd" id="1_6phgx"]
 [ext_resource type="PackedScene" uid="uid://baa1aso0fnt1m" path="res://Scenes/player.tscn" id="1_tumq0"]
-[ext_resource type="PackedScene" uid="uid://br66ur6fk2q3d" path="res://Scenes/item_card.tscn" id="5_0f350"]
 [ext_resource type="Texture2D" uid="uid://c6h8r8o2ttlue" path="res://kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="5_wqkje"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0f350"]
@@ -405,16 +404,8 @@ position = Vector2(1188, 3453)
 shape = SubResource("RectangleShape2D_81xng")
 
 [node name="ShopHUD" type="CanvasLayer" parent="."]
+layer = 10
 visible = false
-
-[node name="ItemCard" parent="ShopHUD" instance=ExtResource("5_0f350")]
-position = Vector2(333, 326)
-
-[node name="ItemCard2" parent="ShopHUD" instance=ExtResource("5_0f350")]
-position = Vector2(689, 328)
-
-[node name="ItemCard3" parent="ShopHUD" instance=ExtResource("5_0f350")]
-position = Vector2(1064, 323)
 
 [node name="StartNextWave" type="Button" parent="ShopHUD"]
 offset_left = 858.0
@@ -426,4 +417,52 @@ theme_override_font_sizes/font_size = 40
 text = "Begin Next Wave
 "
 
+[node name="Button1" type="Button" parent="ShopHUD"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 319.0
+offset_top = 979.0
+offset_right = 419.0
+offset_bottom = 1077.0
+
+[node name="Button2" type="Button" parent="ShopHUD"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 468.0
+offset_top = 1039.0
+offset_right = 568.0
+offset_bottom = 1137.0
+
+[node name="Button3" type="Button" parent="ShopHUD"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 469.0
+offset_top = 1186.0
+offset_right = 569.0
+offset_bottom = 1284.0
+
+[node name="Button4" type="Button" parent="ShopHUD"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 320.0
+offset_top = 1249.0
+offset_right = 420.0
+offset_bottom = 1347.0
+
+[node name="Button5" type="Button" parent="ShopHUD"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 166.0
+offset_top = 1189.0
+offset_right = 266.0
+offset_bottom = 1287.0
+
+[node name="Button6" type="Button" parent="ShopHUD"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 168.0
+offset_top = 1038.0
+offset_right = 268.0
+offset_bottom = 1136.0
+
 [connection signal="pressed" from="ShopHUD/StartNextWave" to="." method="_on_start_next_wave_pressed"]
+[connection signal="pressed" from="ShopHUD/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="ShopHUD/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="ShopHUD/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="ShopHUD/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="ShopHUD/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="ShopHUD/Button6" to="." method="_on_button_6_pressed"]

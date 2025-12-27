@@ -12,7 +12,7 @@ texture = ExtResource("1_yb78l")
 
 [node name="Pic" type="Sprite2D" parent="."]
 position = Vector2(-344, -520)
-scale = Vector2(30, 30)
+scale = Vector2(25, 25)
 
 [node name="Label" type="Label" parent="."]
 offset_left = -568.0

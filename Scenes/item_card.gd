@@ -1,21 +1,31 @@
 extends Node2D
 
-var item = PreloadItems.item
+var item
+
 @onready var player = get_tree().get_first_node_in_group("Player")
 
-func _ready() -> void:
 
+func card_1():
+	item = PreloadItems.item_1
 	$Pic.texture = item.texture
-	$Label.text = str(item.damage)
+	$Label.text = "Dmg " + str(item.damage)
+	$Label2.text = str(item.rarity)
+	$Label3.text = str(item.cost)
+func card_2():
+	item = PreloadItems.item_2
+	$Pic.texture = item.texture
+	$Label.text = "Dmg " + str(item.damage)
+	$Label2.text = str(item.rarity)
+	$Label3.text = str(item.cost)
+func card_3():
+	item = PreloadItems.item_2
+	$Pic.texture = item.texture
+	$Label.text = "Dmg " + str(item.damage)
 	$Label2.text = str(item.rarity)
 	$Label3.text = str(item.cost)
 
-func update():
-	visible = true
-	print("bleh")
 
 func _on_button_pressed() -> void:
-	visible = false
 	var done = false
 	var  x= 0
 	if Globals.money >= item.cost:
@@ -30,3 +40,4 @@ func _on_button_pressed() -> void:
 				done = true
 			else:
 				x += 1
+	queue_free()
