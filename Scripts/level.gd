@@ -3,8 +3,10 @@ extends Node2D
 
 const ENEMY_SCENE = preload("res://Scenes/enemy.tscn")
 const BULLET_SCENE = preload("res://Scenes/bullet.tscn")
+const MElEE_ATTACK_SCENE = preload("res://melee_attack.tscn")
 
 @onready var player = $Player
+@onready var pause_menu = $PauseMenuCanvas/PauseMenu
 
 var test_item = preload("res://Inventory/Items/Basic Gun.tres")
 var item_card = preload("res://Scenes/item_card.tscn")
@@ -24,18 +26,24 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	enemys_left = get_tree().get_nodes_in_group("enemys").size()
-	if Input.is_action_just_pressed("End") and not paused:
-		Engine.time_scale = 0
-		paused = true
-		#get_tree().change_scene_to_file("res://Scenes/start_menu.tscn")
-	elif Input.is_action_just_pressed("End") and paused:
-		Engine.time_scale = 1
-		paused = false
+	if Input.is_action_just_pressed("Pause"):
+		pauseMenu()
 	$HUD/WaveNumber.text = str(wave)
 	$HUD/EnemysLeft.text = str(enemys_left)
 	if enemys_left == 0 and enemys_spawned == wave_cap:
 		wave_complete()
+
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+	
+	paused = !paused
 		
+
 func waves()->void:
 	if wave == 1:
 		wave_cap = 2
@@ -80,6 +88,19 @@ func attack()->void:
 				bullet.global_position = player.get_child(i).global_position
 				bullet.dir = player.get_local_mouse_position()
 				add_child(bullet)
+			if item.type == "melee":
+				var attack = MElEE_ATTACK_SCENE.instantiate()
+				var shape = RectangleShape2D.new()
+				var angle = get_angle_to(player.get_local_mouse_position())
+				shape.size = Vector2(150, 100) 
+				attack.get_child(0).get_child(0).shape = shape
+				attack.position = player.position + Vector2.RIGHT.rotated(angle)*75
+				attack.rotation = angle
+				attack.damage = item.damage
+				attack.get_child(2).texture = item.texture
+				add_child(attack)
+			
+				
 				
 func spawn_enemy() -> void:
 	var enemyX = randi_range(100,1000)
@@ -92,8 +113,15 @@ func spawn_enemy() -> void:
 
 func _on_start_next_wave_pressed() -> void:
 	$ShopHUD.visible = false
+	if $ShopHUD.get_child(7) != null:
+		$ShopHUD.get_child(7).queue_free()
+	if $ShopHUD.get_child(8) != null:
+		$ShopHUD.get_child(8).queue_free()
+	if $ShopHUD.get_child(9) != null:
+		$ShopHUD.get_child(9).queue_free()
 	wave += 1
 	waves() # Replace with function body.
+	
 
 
 func _on_button_1_pressed() -> void:

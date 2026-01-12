@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ck6k52bjmt7iw" path="res://kenney_desert-shooter-pack_1.0/PNG/Enemies/Tilemap/tilemap_packed.png" id="2_1f0kj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_287tu"]
-size = Vector2(97, 102)
+size = Vector2(80, 75)
 
 [sub_resource type="Animation" id="Animation_afpow"]
 resource_name = "Enemy_Walk"
@@ -58,6 +58,7 @@ vframes = 4
 frame = 8
 
 [node name="EnemyCollisionBody" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_287tu")
 
 [node name="HpBar" type="ColorRect" parent="."]

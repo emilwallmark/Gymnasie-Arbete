@@ -4,21 +4,20 @@ var item
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
-
 func card_1():
-	item = PreloadItems.item_1
+	item = PreloadItems.Sword
 	$Pic.texture = item.texture
 	$Label.text = "Dmg " + str(item.damage)
 	$Label2.text = str(item.rarity)
 	$Label3.text = str(item.cost)
 func card_2():
-	item = PreloadItems.item_2
+	item = PreloadItems.Basic_Gun
 	$Pic.texture = item.texture
 	$Label.text = "Dmg " + str(item.damage)
 	$Label2.text = str(item.rarity)
 	$Label3.text = str(item.cost)
 func card_3():
-	item = PreloadItems.item_2
+	item = PreloadItems.AK
 	$Pic.texture = item.texture
 	$Label.text = "Dmg " + str(item.damage)
 	$Label2.text = str(item.rarity)

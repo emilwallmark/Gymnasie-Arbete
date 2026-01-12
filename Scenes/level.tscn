@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://bv8i4fvdnlcao"]
+[gd_scene load_steps=9 format=4 uid="uid://bv8i4fvdnlcao"]
 
 [ext_resource type="Script" uid="uid://brnn1g22410sk" path="res://Scripts/level.gd" id="1_6phgx"]
 [ext_resource type="PackedScene" uid="uid://baa1aso0fnt1m" path="res://Scenes/player.tscn" id="1_tumq0"]
+[ext_resource type="PackedScene" uid="uid://s1t3enhy3a22" path="res://pause_menu.tscn" id="4_81xng"]
 [ext_resource type="Texture2D" uid="uid://c6h8r8o2ttlue" path="res://kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="5_wqkje"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0f350"]
@@ -458,6 +459,11 @@ offset_left = 168.0
 offset_top = 1038.0
 offset_right = 268.0
 offset_bottom = 1136.0
+
+[node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="PauseMenuCanvas" instance=ExtResource("4_81xng")]
+visible = false
 
 [connection signal="pressed" from="ShopHUD/StartNextWave" to="." method="_on_start_next_wave_pressed"]
 [connection signal="pressed" from="ShopHUD/Button1" to="." method="_on_button_1_pressed"]

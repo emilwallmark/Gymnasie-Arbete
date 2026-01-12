@@ -1,4 +1,5 @@
 extends Node
 
-var item_1 = preload("res://Inventory/Items/Basic Gun.tres")
-var item_2 = preload("res://Inventory/Items/AK.tres")
+var Basic_Gun = preload("res://Inventory/Items/Basic Gun.tres")
+var AK = preload("res://Inventory/Items/AK.tres")
+var Sword = preload("res://Inventory/Items/Sword.tres")
