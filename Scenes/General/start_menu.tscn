@@ -1,0 +1,137 @@
+[gd_scene load_steps=8 format=3 uid="uid://chg4ot8o44dnh"]
+
+[ext_resource type="Script" uid="uid://dfwr1ogecry3i" path="res://Scripts/General/start_menu.gd" id="1_juhg0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juhg0"]
+bg_color = Color(0.08, 0.08, 0.08, 0.501961)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgtwh"]
+bg_color = Color(0.08, 0.08, 0.08, 0.501961)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6uer"]
+bg_color = Color(0.08, 0.08, 0.08, 0.501961)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a43kq"]
+bg_color = Color(0, 0, 0, 0.352941)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_626he"]
+bg_color = Color(0, 0, 0, 0.352941)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8u0lp"]
+bg_color = Color(0, 0, 0, 0.352941)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_juhg0")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MainMenuText" type="Label" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.5
+offset_top = -289.85
+offset_right = 272.5
+offset_bottom = -152.85
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Main Menu"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.5
+offset_top = -65.0
+offset_right = 133.5
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="StartButton" type="Button" parent="UI/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_juhg0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jgtwh")
+theme_override_styles/normal = SubResource("StyleBoxFlat_m6uer")
+text = "Press to Start"
+
+[node name="Quit" type="Button" parent="UI/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_a43kq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_626he")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8u0lp")
+text = "Press to Quit
+"
+
+[connection signal="pressed" from="UI/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -8,8 +8,10 @@ const SPEED = 250.0
 var direction = "Down"
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var hp_bar: ColorRect = $HPBar
 
 @export var inventory: Inv
+
 
 func movement(_delta: float) -> void:
 	velocity = Input.get_vector("Left", "Right", "Up", "Down") * SPEED
@@ -20,12 +22,12 @@ func _attack()->void:
 func _physics_process(delta: float) -> void:
 	movement(delta)
 
+
 func _process(_delta: float) -> void:
+	hp_bar.size[0] = 150 * Globals.player_lives/5
 	if Input.is_action_just_pressed("Action") and Engine.time_scale != 0:
 		_attack()
 	animation()
-	if Globals.player_lives == 0:
-		modulate = Color.RED
 
 func animation():
 	if velocity[0] == 0 and velocity[1] == 0 and direction == "Down":
@@ -48,8 +50,26 @@ func animation():
 	else:
 		anim.play("Walk_Down")
 		direction = "Down"
+		
+func take_damage(damage: int):
+	Globals.player_lives -= damage
+	var original_color = self_modulate
+	$Sprite2D.modulate = Color.RED
+	hp_bar.color = "ff0000"
+	await get_tree().create_timer(0.2).timeout
+	if Globals.player_lives > 0:
+		$Sprite2D.modulate = original_color
+		hp_bar.color = "00ff00"
+
+func _on_timer_timeout() -> void:
+	check_damage()
+
+func check_damage():
+	for body in $DamegeArea.get_overlapping_bodies():
+		if body.is_in_group("enemies"):
+			take_damage(body.damage)
 
 func _on_damege_area_body_entered(body: Node2D) -> void:
-	if body is Enemy:
-		Globals.player_lives -= 1 
-		
+	check_damage()
+	$Timer.stop()
+	$Timer.start()

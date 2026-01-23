@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6ec25ku74hsc"]
+
+[ext_resource type="Script" uid="uid://cqpehifge4te1" path="res://Scripts/Inventory/inv_ui_slot.gd" id="1_s06lr"]
+
+[node name="Inv_UI_slot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_s06lr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+color = Color(0.730913, 0.730913, 0.730913, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
+scale = Vector2(5, 5)

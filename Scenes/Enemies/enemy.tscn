@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8d0e27t3koor"]
+
+[ext_resource type="Script" uid="uid://bexncqt7g0uuc" path="res://Scripts/Enemies/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://ck6k52bjmt7iw" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Enemies/Tilemap/tilemap_packed.png" id="2_1f0kj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_287tu"]
+size = Vector2(80, 75)
+
+[sub_resource type="Animation" id="Animation_afpow"]
+resource_name = "Enemy_Walk"
+length = 0.66667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_287tu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0830c"]
+_data = {
+&"Enemy_Walk": SubResource("Animation_afpow"),
+&"RESET": SubResource("Animation_287tu")
+}
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_1f0kj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -22)
+scale = Vector2(5, 5)
+texture = ExtResource("2_1f0kj")
+hframes = 4
+vframes = 4
+frame = 8
+
+[node name="EnemyCollisionBody" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_287tu")
+
+[node name="HpBar" type="ColorRect" parent="."]
+offset_left = -75.0
+offset_top = 65.0
+offset_right = 75.0
+offset_bottom = 88.0
+color = Color(1, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0830c")
+}

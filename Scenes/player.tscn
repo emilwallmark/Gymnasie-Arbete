@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://baa1aso0fnt1m"]
 
 [ext_resource type="Script" uid="uid://bsrw7ybryh2w3" path="res://Scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="Resource" uid="uid://duhjm7beccri1" path="res://Inventory/PlayerInv.tres" id="2_vgqql"]
-[ext_resource type="PackedScene" uid="uid://dcydko4pj7kon" path="res://Inventory/inv_ui.tscn" id="4_vgqql"]
-[ext_resource type="Texture2D" uid="uid://cc4nifydiaw2q" path="res://character-pack-full_version/sprite_split/character_1/character_1_frame32x32.png" id="7_gymyn"]
+[ext_resource type="Resource" uid="uid://duhjm7beccri1" path="res://Scripts/PlayerInv.tres" id="2_vgqql"]
+[ext_resource type="PackedScene" uid="uid://dcydko4pj7kon" path="res://Scenes/Inventory/inv_ui.tscn" id="4_vgqql"]
+[ext_resource type="Texture2D" uid="uid://cc4nifydiaw2q" path="res://Assets/character-pack-full_version/sprite_split/character_1/character_1_frame32x32.png" id="7_gymyn"]
 
 [sub_resource type="Animation" id="Animation_3smsa"]
 resource_name = "Idle_Down"
@@ -239,4 +239,15 @@ offset_bottom = 1163.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="HPBar" type="ColorRect" parent="."]
+offset_left = -69.0
+offset_top = -88.0
+offset_right = 54.0
+offset_bottom = -69.0
+color = Color(0, 1, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="DamegeArea" to="." method="_on_damege_area_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

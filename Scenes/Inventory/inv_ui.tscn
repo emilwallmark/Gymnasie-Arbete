@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcydko4pj7kon"]
+
+[ext_resource type="Script" uid="uid://cbxqw0d3dgdka" path="res://Scripts/Inventory/inv_ui.gd" id="1_605em"]
+[ext_resource type="PackedScene" uid="uid://c6ec25ku74hsc" path="res://Scenes/Inventory/inv_ui_slot.tscn" id="2_actet"]
+[ext_resource type="Texture2D" uid="uid://552bg8h7ushq" path="res://Assets/New Piskel.png" id="2_ltxgc"]
+
+[node name="Inv_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2560.0
+offset_bottom = -1440.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_605em")
+
+[node name="InvBG" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.258824)
+position = Vector2(0, 3.57628e-06)
+scale = Vector2(2.11328, 1.83594)
+texture = ExtResource("2_ltxgc")
+
+[node name="InvSlotHolder" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="Inv_UI_slot" parent="InvSlotHolder" instance=ExtResource("2_actet")]
+layout_mode = 0
+offset_left = -50.0
+offset_top = -185.0
+offset_right = -50.0
+offset_bottom = -185.0
+
+[node name="Inv_UI_slot2" parent="InvSlotHolder" instance=ExtResource("2_actet")]
+layout_mode = 0
+offset_left = 100.0
+offset_top = -125.0
+offset_right = 100.0
+offset_bottom = -125.0
+
+[node name="Inv_UI_slot3" parent="InvSlotHolder" instance=ExtResource("2_actet")]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 25.0
+offset_right = 100.0
+offset_bottom = 25.0
+
+[node name="Inv_UI_slot4" parent="InvSlotHolder" instance=ExtResource("2_actet")]
+layout_mode = 0
+offset_left = -50.0
+offset_top = 85.0
+offset_right = -50.0
+offset_bottom = 85.0
+
+[node name="Inv_UI_slot5" parent="InvSlotHolder" instance=ExtResource("2_actet")]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 25.0
+offset_right = -200.0
+offset_bottom = 25.0
+
+[node name="Inv_UI_slot6" parent="InvSlotHolder" instance=ExtResource("2_actet")]
+layout_mode = 0
+offset_left = -200.0
+offset_top = -125.0
+offset_right = -200.0
+offset_bottom = -125.0
