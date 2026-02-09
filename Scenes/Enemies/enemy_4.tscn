@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxehm80isnynu"]
+
+[ext_resource type="Texture2D" uid="uid://b8jq4pqvahsbc" path="res://Assets/Flying enemies/mini bat.png" id="1_24u7v"]
+[ext_resource type="Script" uid="uid://c0sr26lfwyxuj" path="res://Scripts/Enemies/enemy_4.gd" id="1_ly1e3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ly1e3"]
+size = Vector2(131, 94)
+
+[sub_resource type="Animation" id="Animation_bbk3h"]
+resource_name = "Enemy_Walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_joufe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i5b4k"]
+_data = {
+&"Enemy_Walk": SubResource("Animation_bbk3h"),
+&"RESET": SubResource("Animation_joufe")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4uju"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvgjo"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_ly1e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("1_24u7v")
+hframes = 7
+vframes = 4
+
+[node name="EnemyCollisionBody" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 16)
+shape = SubResource("RectangleShape2D_ly1e3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i5b4k")
+}
+
+[node name="HpBar" type="ProgressBar" parent="."]
+offset_left = -75.0
+offset_top = 65.0
+offset_right = 76.0
+offset_bottom = 92.0
+theme_override_styles/background = SubResource("StyleBoxFlat_h4uju")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kvgjo")
+value = 50.0
+fill_mode = 1
+show_percentage = false

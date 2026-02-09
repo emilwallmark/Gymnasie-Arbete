@@ -1,0 +1,166 @@
+[gd_scene load_steps=17 format=3 uid="uid://bcfiopcgcnidq"]
+
+[ext_resource type="Script" uid="uid://dxp3nd2ti12gf" path="res://Scripts/Enemies/kamikaze_enemy.gd" id="1_rhlwf"]
+[ext_resource type="Texture2D" uid="uid://b0t36x2h6oopr" path="res://Assets/Bomb_Idle (3).png" id="2_yts3l"]
+[ext_resource type="Texture2D" uid="uid://cbmng6dt68wep" path="res://Assets/Bomb_Walk.png" id="3_ot2lf"]
+[ext_resource type="Texture2D" uid="uid://ciokr8ray8gtb" path="res://Assets/Explotions/bigboom/bigboom1.png" id="4_klsij"]
+[ext_resource type="Texture2D" uid="uid://ckvas3desi0x5" path="res://Assets/Explotions/bigboom/bigboom2.png" id="5_6vag4"]
+[ext_resource type="Texture2D" uid="uid://cpm6ej8x56v1v" path="res://Assets/Explotions/bigboom/bigboom3.png" id="6_vh7d2"]
+[ext_resource type="Texture2D" uid="uid://ptlnrqwo21p8" path="res://Assets/Explotions/bigboom/bigboom4.png" id="7_66f7t"]
+
+[sub_resource type="Animation" id="Animation_yhg33"]
+resource_name = "Enemy_Walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Walking:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_14tk0"]
+resource_name = "BOOM"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_tjeug"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Walking:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ap4od"]
+_data = {
+&"Enemy_Walk": SubResource("Animation_yhg33"),
+&"Fuse": SubResource("Animation_14tk0"),
+&"RESET": SubResource("Animation_tjeug")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qggdx"]
+size = Vector2(93, 115)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqwwk"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tlpw"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ckit4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_klsij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6vag4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vh7d2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_66f7t")
+}],
+"loop": false,
+"name": &"BOOM",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rhlwf"]
+radius = 164.11
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_rhlwf")
+
+[node name="Idle" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_yts3l")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ap4od")
+}
+speed_scale = 2.0
+
+[node name="Walking" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("3_ot2lf")
+hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 26.5)
+shape = SubResource("RectangleShape2D_qggdx")
+
+[node name="HpBar" type="ProgressBar" parent="."]
+offset_left = -75.0
+offset_top = 92.0
+offset_right = 76.0
+offset_bottom = 119.0
+theme_override_styles/background = SubResource("StyleBoxFlat_mqwwk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0tlpw")
+value = 50.0
+fill_mode = 1
+show_percentage = false
+
+[node name="BOOM" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(12, 12)
+sprite_frames = SubResource("SpriteFrames_ckit4")
+animation = &"BOOM"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="ExplotionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 15
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplotionArea"]
+shape = SubResource("CircleShape2D_rhlwf")
+
+[connection signal="animation_finished" from="BOOM" to="." method="_on_boom_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="ExplotionArea" to="." method="_on_explotion_area_body_entered"]

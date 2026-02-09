@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
+signal died
 
-const MAX_SPEED := 250
+const MAX_SPEED := 275
 const ACC := 1500
 
 
@@ -11,14 +12,21 @@ const ACC := 1500
 
 #Kommer defineras av föreldern som har åtkomst till sina barn
 var player = null
-var lives: int = 5
+var lives: int
+var max_lives: float = 4
 var damage: int = 2
+var dead = false
 
 func _ready() -> void:
+	lives = max_lives
 	anim.play("Enemy_Walk")
 
 func _process(_delta: float) -> void:
-	health_bar.size[0] = 150 * lives/5
+	health_bar.value = lives/max_lives * 100
+	if lives <= 0 and !dead:
+		dead = true
+		await get_tree().create_timer(0.2).timeout
+		die()
 	if velocity.x < 0:
 		enemy_texture.flip_h = true
 	elif velocity.x > 0:
@@ -36,8 +44,7 @@ func on_take_dmg():
 	await get_tree().create_timer(0.2).timeout
 	if lives > 0:
 		modulate = original_color
-	else:
-		var random = randi() % 2
-		if random == 1:
-			Globals.money += 1
-		queue_free()
+
+func die():
+	died.emit()
+	queue_free()

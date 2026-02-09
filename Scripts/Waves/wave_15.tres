@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=2 format=3 uid="uid://cn0yn0apa4uxb"]
+
+[ext_resource type="Script" uid="uid://q3jlek8kcuh" path="res://Scripts/Waves/WaveData.gd" id="1_44xaj"]
+
+[resource]
+script = ExtResource("1_44xaj")
+enemies = {
+"enemy_1": 15,
+"enemy_2": 15,
+"enemy_3": 15,
+"enemy_4": 15,
+"enemy_5": 15,
+"enemy_6": 0,
+"kamikaze_enemy_1": 0,
+"shoot_enemy_1": 0,
+"shoot_enemy_2": 0,
+"shoot_enemy_3": 0,
+"sniper_enemy_1": 0
+}
+spawn_delay = 0.5
+metadata/_custom_type_script = "uid://q3jlek8kcuh"

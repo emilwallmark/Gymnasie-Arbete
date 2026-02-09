@@ -1,9 +1,31 @@
-[gd_scene load_steps=9 format=4 uid="uid://bv8i4fvdnlcao"]
+[gd_scene load_steps=31 format=4 uid="uid://bv8i4fvdnlcao"]
 
 [ext_resource type="Script" uid="uid://brnn1g22410sk" path="res://Scripts/General/level.gd" id="1_grhc7"]
 [ext_resource type="Texture2D" uid="uid://c6h8r8o2ttlue" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="2_o8ph4"]
 [ext_resource type="PackedScene" uid="uid://baa1aso0fnt1m" path="res://Scenes/player.tscn" id="3_qf0xs"]
 [ext_resource type="PackedScene" uid="uid://s1t3enhy3a22" path="res://Scenes/General/pause_menu.tscn" id="4_76u7y"]
+[ext_resource type="Script" uid="uid://c63dtdkp1pbb3" path="res://Scripts/Waves/wave_manager.gd" id="5_o8ph4"]
+[ext_resource type="Script" uid="uid://q3jlek8kcuh" path="res://Scripts/Waves/WaveData.gd" id="6_76u7y"]
+[ext_resource type="Resource" uid="uid://ckpw032a7sgjn" path="res://Scripts/Waves/wave_01.tres" id="7_6nh6g"]
+[ext_resource type="Resource" uid="uid://bl5hcqukqci6q" path="res://Scripts/Waves/wave_02.tres" id="8_6nh6g"]
+[ext_resource type="Resource" uid="uid://d1tyd8cgyejxy" path="res://Scripts/Waves/wave_03.tres" id="9_if8db"]
+[ext_resource type="Resource" uid="uid://siia1o1u582e" path="res://Scripts/Waves/wave_04.tres" id="10_vvdlt"]
+[ext_resource type="Resource" uid="uid://rehtj4qkv8v1" path="res://Scripts/Waves/wave_05.tres" id="11_in2hm"]
+[ext_resource type="Resource" uid="uid://cb1s6b6hrdbbj" path="res://Scripts/Waves/wave_06.tres" id="12_6tevt"]
+[ext_resource type="Resource" uid="uid://dhuoebm0bkw63" path="res://Scripts/Waves/wave_07.tres" id="13_par4y"]
+[ext_resource type="Resource" uid="uid://c8htljvhj2qhh" path="res://Scripts/Waves/wave_08.tres" id="14_g1jes"]
+[ext_resource type="Resource" uid="uid://cka0r4v6xpywp" path="res://Scripts/Waves/wave_09.tres" id="15_3ps3h"]
+[ext_resource type="Resource" uid="uid://pyrtu2telu81" path="res://Scripts/Waves/wave_10.tres" id="16_cyj5c"]
+[ext_resource type="Resource" uid="uid://w5pcvf8ku4sn" path="res://Scripts/Waves/wave_11.tres" id="17_i3omi"]
+[ext_resource type="Resource" uid="uid://b5n6oyc84j4of" path="res://Scripts/Waves/wave_12.tres" id="18_vede8"]
+[ext_resource type="Resource" uid="uid://03p1r8hhs4k1" path="res://Scripts/Waves/wave_13.tres" id="19_rhtgv"]
+[ext_resource type="Resource" uid="uid://deotfnm4ujite" path="res://Scripts/Waves/wave_14.tres" id="20_wdwlp"]
+[ext_resource type="Resource" uid="uid://cn0yn0apa4uxb" path="res://Scripts/Waves/wave_15.tres" id="21_sfme4"]
+[ext_resource type="Resource" uid="uid://71qc4mn0hf4h" path="res://Scripts/Waves/wave_16.tres" id="22_ki5bt"]
+[ext_resource type="Resource" uid="uid://dlm7tduev4ufl" path="res://Scripts/Waves/wave_17.tres" id="23_28v83"]
+[ext_resource type="Resource" uid="uid://v3sawbubdcat" path="res://Scripts/Waves/wave_18.tres" id="24_f4f4i"]
+[ext_resource type="Resource" uid="uid://d8g2v7kmn4qj" path="res://Scripts/Waves/wave_19.tres" id="25_eeb0e"]
+[ext_resource type="Resource" uid="uid://dbqox4swwjfnv" path="res://Scripts/Waves/wave_20.tres" id="26_ejmnn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0f350"]
 texture = ExtResource("2_o8ph4")
@@ -393,7 +415,7 @@ position = Vector2(-1308, 875)
 shape = SubResource("RectangleShape2D_6phgx")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(3642, 874)
+position = Vector2(3648, 874)
 shape = SubResource("RectangleShape2D_6phgx")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
@@ -401,7 +423,7 @@ position = Vector2(1194, -1697)
 shape = SubResource("RectangleShape2D_81xng")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1188, 3453)
+position = Vector2(1188, 3451)
 shape = SubResource("RectangleShape2D_81xng")
 
 [node name="ShopHUD" type="CanvasLayer" parent="."]
@@ -465,6 +487,10 @@ layer = 100
 
 [node name="PauseMenu" parent="PauseMenuCanvas" instance=ExtResource("4_76u7y")]
 visible = false
+
+[node name="WaveManager" type="Node2D" parent="."]
+script = ExtResource("5_o8ph4")
+waves = Array[ExtResource("6_76u7y")]([ExtResource("7_6nh6g"), ExtResource("8_6nh6g"), ExtResource("9_if8db"), ExtResource("10_vvdlt"), ExtResource("11_in2hm"), ExtResource("12_6tevt"), ExtResource("13_par4y"), ExtResource("14_g1jes"), ExtResource("15_3ps3h"), ExtResource("16_cyj5c"), ExtResource("17_i3omi"), ExtResource("18_vede8"), ExtResource("19_rhtgv"), ExtResource("20_wdwlp"), ExtResource("21_sfme4"), ExtResource("22_ki5bt"), ExtResource("23_28v83"), ExtResource("24_f4f4i"), ExtResource("25_eeb0e"), ExtResource("26_ejmnn")])
 
 [connection signal="pressed" from="ShopHUD/StartNextWave" to="." method="_on_start_next_wave_pressed"]
 [connection signal="pressed" from="ShopHUD/Button1" to="." method="_on_button_1_pressed"]

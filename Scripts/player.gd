@@ -8,7 +8,7 @@ const SPEED = 250.0
 var direction = "Down"
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
-@onready var hp_bar: ColorRect = $HPBar
+@onready var hp_bar: ProgressBar = $HpBar
 
 @export var inventory: Inv
 
@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(_delta: float) -> void:
-	hp_bar.size[0] = 150 * Globals.player_lives/5
+	hp_bar.value = Globals.player_lives/5.0 * 100
 	if Input.is_action_just_pressed("Action") and Engine.time_scale != 0:
 		_attack()
 	animation()
@@ -55,12 +55,18 @@ func take_damage(damage: int):
 	Globals.player_lives -= damage
 	var original_color = self_modulate
 	$Sprite2D.modulate = Color.RED
-	hp_bar.color = "ff0000"
+	var fill_style := hp_bar.get_theme_stylebox("fill")
+	if fill_style is StyleBoxFlat:
+		fill_style.bg_color = Color.RED
+	hp_bar.add_theme_stylebox_override("fill", fill_style)
 	await get_tree().create_timer(0.2).timeout
 	if Globals.player_lives > 0:
 		$Sprite2D.modulate = original_color
-		hp_bar.color = "00ff00"
+		if fill_style is StyleBoxFlat:
+			fill_style.bg_color = Color.GREEN
+		hp_bar.add_theme_stylebox_override("fill", fill_style)
 
+		
 func _on_timer_timeout() -> void:
 	check_damage()
 

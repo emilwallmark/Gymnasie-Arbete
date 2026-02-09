@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ci2jpuih0pjo4"]
+[gd_scene load_steps=10 format=3 uid="uid://ci2jpuih0pjo4"]
 
 [ext_resource type="Script" uid="uid://djur5cdwjiem5" path="res://Scripts/Enemies/shoot_enemy.gd" id="1_2j8kj"]
 [ext_resource type="Texture2D" uid="uid://ck6k52bjmt7iw" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Enemies/Tilemap/tilemap_packed.png" id="2_32fph"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gy7qa"]
-size = Vector2(105, 111)
+size = Vector2(199, 153)
 
 [sub_resource type="Animation" id="Animation_7i2q7"]
 resource_name = "Enemy_Walk"
@@ -17,10 +17,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.333, 0.3333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [12, 13]
+"values": [12, 1, 13]
 }
 
 [sub_resource type="Animation" id="Animation_2j8kj"]
@@ -60,6 +60,12 @@ _data = {
 &"RESET": SubResource("Animation_rbk4k")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgb3f"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2270l"]
+bg_color = Color(1, 0, 0, 1)
+
 [node name="Shoot_Enemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 15
@@ -76,13 +82,6 @@ frame = 12
 position = Vector2(-0.5, 7.5)
 shape = SubResource("RectangleShape2D_gy7qa")
 
-[node name="HpBar" type="ColorRect" parent="."]
-offset_left = -75.0
-offset_top = 65.0
-offset_right = 75.0
-offset_bottom = 88.0
-color = Color(1, 0, 0, 1)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_wbk1t")
@@ -90,5 +89,16 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="HpBar" type="ProgressBar" parent="."]
+offset_left = -75.0
+offset_top = 65.0
+offset_right = 76.0
+offset_bottom = 92.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lgb3f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2270l")
+value = 50.0
+fill_mode = 1
+show_percentage = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

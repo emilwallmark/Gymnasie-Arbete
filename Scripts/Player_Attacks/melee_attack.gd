@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var angle = rotation
-	position = player.position + Vector2.RIGHT.rotated(angle)*75
+	position = player.position + Vector2.RIGHT.rotated(angle)*50
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):

@@ -1,2 +1,8 @@
 
 Vad ska göras?
+
+lägg till mer vapen
+
+gör att man förlorar då spelaren dör
+
+starta om spelet om man klickar på start i start menyn

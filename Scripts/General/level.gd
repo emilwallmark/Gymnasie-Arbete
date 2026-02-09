@@ -1,15 +1,13 @@
 extends Node2D
 
-const ENEMY_SCENE = preload("res://Scenes/Enemies/enemy.tscn")
-const ENEMY_SCENE_2 = preload("res://Scenes/Enemies/enemy2.tscn")
-const SHOOT_ENEMY = preload("res://Scenes/Enemies/shoot_enemy.tscn")
+const ENEMY_BULLET = preload("res://Scenes/Enemies/enemy_bullet.tscn")
+
 const BULLET_SCENE = preload("res://Scenes/Player_Attacks/bullet.tscn")
 const MElEE_ATTACK_SCENE = preload("res://Scenes/Player_Attacks/melee_attack.tscn")
-const ENEMY_BULLET = preload("res://Scenes/Enemies/enemy_bullet.tscn")
 
 @onready var player = $Player
 @onready var pause_menu = $PauseMenuCanvas/PauseMenu
-
+@onready var wave_manager = $WaveManager
 
 var item_card = preload("res://Scenes/Inventory/item_card.tscn")
 
@@ -21,7 +19,9 @@ var paused: bool = false
 
 func _ready() -> void:
 	player.connect("attack", attack)
-	waves()
+	wave_manager.connect("wave_complete", wave_complete)
+	wave_manager.start_game()
+
 
 func _process(_delta: float) -> void:
 	enemys_left = get_tree().get_nodes_in_group("enemies").size()
@@ -29,8 +29,7 @@ func _process(_delta: float) -> void:
 		pauseMenu()
 	$HUD/WaveNumber.text = str(wave)
 	$HUD/EnemysLeft.text = str(enemys_left)
-	if enemys_left == 0 and enemys_spawned == wave_cap:
-		wave_complete()
+
 
 func pauseMenu():
 	if paused:
@@ -41,21 +40,6 @@ func pauseMenu():
 		Engine.time_scale = 0
 	
 	paused = !paused
-		
-
-func waves()->void:
-	if wave == 1:
-		wave_cap = 10
-		for n in range(wave_cap):
-			await get_tree().create_timer(0.7).timeout
-			spawn_shoot_enemy()
-		if enemys_left == 0 and enemys_spawned == 20:
-			wave += 1
-	elif wave == 2:
-		wave_cap = 30
-		for n in range(wave_cap):
-			await get_tree().create_timer(0.3).timeout
-			spawn_enemy_2()
 
 func wave_complete()->void:
 	enemys_spawned = 0
@@ -91,43 +75,14 @@ func attack()->void:
 				var attack = MElEE_ATTACK_SCENE.instantiate()
 				var shape: RectangleShape2D = RectangleShape2D.new()
 				var angle = get_angle_to(player.get_local_mouse_position())
-				shape.size = Vector2(150, 100) 
+				shape.size = Vector2(100, 67) 
 				attack.get_child(0).get_child(0).shape = shape
-				attack.position = player.position + Vector2.RIGHT.rotated(angle)*75
+				attack.position = player.position + Vector2.RIGHT.rotated(angle)*50
 				attack.rotation = angle
 				attack.damage = item.damage
 				attack.get_child(2).texture = item.texture
 				add_child(attack)
 			
-				
-				
-func spawn_enemy() -> void:
-	var enemyX = randi_range(100,1000)
-	var enemyY = randi_range(50,500)
-	var enemy = ENEMY_SCENE.instantiate()
-	enemy.global_position = Vector2(enemyX, enemyY)
-	enemy.player = player
-	add_child(enemy) 
-	enemys_spawned += 1
-
-func spawn_enemy_2() -> void:
-	var enemyX = randi_range(100,1000)
-	var enemyY = randi_range(50,500)
-	var enemy = ENEMY_SCENE_2.instantiate()
-	enemy.global_position = Vector2(enemyX, enemyY)
-	enemy.player = player
-	add_child(enemy) 
-	enemys_spawned += 1
-
-func spawn_shoot_enemy() -> void:
-	var enemyX = randi_range(100,1000)
-	var enemyY = randi_range(50,500)
-	var enemy = SHOOT_ENEMY.instantiate()
-	enemy.global_position = Vector2(enemyX, enemyY)
-	enemy.player = player
-	add_child(enemy) 
-	enemys_spawned += 1
-
 func _on_start_next_wave_pressed() -> void:
 	$ShopHUD.visible = false
 	if $ShopHUD.get_child(7) != null:
@@ -139,7 +94,7 @@ func _on_start_next_wave_pressed() -> void:
 	else:
 		pass
 	wave += 1
-	waves()
+	wave_manager.start_wave()
 
 
 @onready var inv = player.get_child(11).get_child(0)
@@ -167,8 +122,9 @@ func _on_button_6_pressed() -> void:
 	player.inventory.items[5] = null
 	player.get_child(11).get_child(0).update_slots()
 	
-func shoot_enemy_attack(dir, position:Vector2, damage):
+func shoot_enemy_attack(dir, position:Vector2, damage, speed):
 	var enemy_bullet = ENEMY_BULLET.instantiate()
+	enemy_bullet.speed = speed
 	enemy_bullet.dir = dir
 	enemy_bullet.position = Vector2(position)
 	enemy_bullet.damage = damage
