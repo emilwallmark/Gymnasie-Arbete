@@ -10,9 +10,13 @@ script = ExtResource("1_8m360")
 [node name="Skärmavbild2025-12-02Kl_15_22_51" type="Sprite2D" parent="."]
 texture = ExtResource("1_yb78l")
 
-[node name="Pic" type="Sprite2D" parent="."]
-position = Vector2(-344, -520)
-scale = Vector2(25, 25)
+[node name="Pic" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(400, 400)
+offset_left = -528.0
+offset_top = -736.0
+offset_right = -128.0
+offset_bottom = -336.0
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="."]
 offset_left = -568.0

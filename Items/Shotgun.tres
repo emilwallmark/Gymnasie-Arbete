@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://bb3tyftpc8hr3"]
+
+[ext_resource type="Script" uid="uid://dbq0ohe323wnk" path="res://Scripts/Inventory/inventory_item.gd" id="1_6mcax"]
+[ext_resource type="Texture2D" uid="uid://bh26gdhn6iclh" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0007.png" id="2_jjxnh"]
+
+[resource]
+script = ExtResource("1_6mcax")
+name = "Shotgun"
+texture = ExtResource("2_jjxnh")
+type = "gun"
+damage = 5
+rarity = "Rare"
+cost = 25
+metadata/_custom_type_script = "uid://dbq0ohe323wnk"

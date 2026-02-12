@@ -46,4 +46,5 @@ func on_take_dmg():
 
 func die():
 	died.emit()
+	Globals.money += 3
 	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bv8i4fvdnlcao"]
+[gd_scene load_steps=33 format=4 uid="uid://bv8i4fvdnlcao"]
 
 [ext_resource type="Script" uid="uid://brnn1g22410sk" path="res://Scripts/General/level.gd" id="1_grhc7"]
 [ext_resource type="Texture2D" uid="uid://c6h8r8o2ttlue" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="2_o8ph4"]
@@ -26,6 +26,8 @@
 [ext_resource type="Resource" uid="uid://v3sawbubdcat" path="res://Scripts/Waves/wave_18.tres" id="24_f4f4i"]
 [ext_resource type="Resource" uid="uid://d8g2v7kmn4qj" path="res://Scripts/Waves/wave_19.tres" id="25_eeb0e"]
 [ext_resource type="Resource" uid="uid://dbqox4swwjfnv" path="res://Scripts/Waves/wave_20.tres" id="26_ejmnn"]
+[ext_resource type="PackedScene" uid="uid://cg6sfcgihyjkj" path="res://Scenes/General/death_menu.tscn" id="27_vvdlt"]
+[ext_resource type="PackedScene" uid="uid://dtmuo4v1g2bqu" path="res://Scenes/General/temp_victory_menu.tscn" id="28_in2hm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0f350"]
 texture = ExtResource("2_o8ph4")
@@ -407,6 +409,20 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 200
 text = "Enemys Left"
 
+[node name="Money" type="Label" parent="HUD"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1380.0
+offset_top = -273.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 200
+text = "$$$$$$$"
+horizontal_alignment = 2
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-1127, -797)
 
@@ -431,14 +447,23 @@ layer = 10
 visible = false
 
 [node name="StartNextWave" type="Button" parent="ShopHUD"]
-offset_left = 858.0
-offset_top = 513.0
-offset_right = 1193.0
-offset_bottom = 576.0
+offset_left = 1113.0
+offset_top = 689.0
+offset_right = 1448.0
+offset_bottom = 752.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 40
 text = "Begin Next Wave
 "
+
+[node name="Heal" type="Button" parent="ShopHUD"]
+offset_left = 1113.0
+offset_top = 568.0
+offset_right = 1448.0
+offset_bottom = 631.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "Heal Player"
 
 [node name="Button1" type="Button" parent="ShopHUD"]
 modulate = Color(1, 1, 1, 0)
@@ -490,9 +515,19 @@ visible = false
 
 [node name="WaveManager" type="Node2D" parent="."]
 script = ExtResource("5_o8ph4")
-waves = Array[ExtResource("6_76u7y")]([ExtResource("7_6nh6g"), ExtResource("8_6nh6g"), ExtResource("9_if8db"), ExtResource("10_vvdlt"), ExtResource("11_in2hm"), ExtResource("12_6tevt"), ExtResource("13_par4y"), ExtResource("14_g1jes"), ExtResource("15_3ps3h"), ExtResource("16_cyj5c"), ExtResource("17_i3omi"), ExtResource("18_vede8"), ExtResource("19_rhtgv"), ExtResource("20_wdwlp"), ExtResource("21_sfme4"), ExtResource("22_ki5bt"), ExtResource("23_28v83"), ExtResource("24_f4f4i"), ExtResource("25_eeb0e"), ExtResource("26_ejmnn")])
+waves = Array[ExtResource("6_76u7y")]([ExtResource("7_6nh6g"), ExtResource("8_6nh6g"), ExtResource("9_if8db"), ExtResource("10_vvdlt"), ExtResource("11_in2hm"), ExtResource("12_6tevt"), ExtResource("13_par4y"), ExtResource("14_g1jes"), ExtResource("15_3ps3h"), ExtResource("16_cyj5c"), ExtResource("17_i3omi"), ExtResource("18_vede8"), ExtResource("19_rhtgv"), ExtResource("20_wdwlp"), ExtResource("21_sfme4"), ExtResource("22_ki5bt"), ExtResource("23_28v83"), ExtResource("24_f4f4i"), ExtResource("25_eeb0e"), ExtResource("26_ejmnn"), ExtResource("7_6nh6g")])
+
+[node name="DeathMenuCanvas" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="DeathMenu" parent="DeathMenuCanvas" instance=ExtResource("27_vvdlt")]
+visible = false
+
+[node name="TempVictoryMenu" parent="DeathMenuCanvas" instance=ExtResource("28_in2hm")]
+visible = false
 
 [connection signal="pressed" from="ShopHUD/StartNextWave" to="." method="_on_start_next_wave_pressed"]
+[connection signal="pressed" from="ShopHUD/Heal" to="." method="_on_heal_pressed"]
 [connection signal="pressed" from="ShopHUD/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="ShopHUD/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="ShopHUD/Button3" to="." method="_on_button_3_pressed"]

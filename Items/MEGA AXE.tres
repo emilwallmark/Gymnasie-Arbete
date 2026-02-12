@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://uvmawxcde6pa"]
+
+[ext_resource type="Script" uid="uid://dbq0ohe323wnk" path="res://Scripts/Inventory/inventory_item.gd" id="1_q8rjn"]
+[ext_resource type="Texture2D" uid="uid://beqxqpoye443s" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0019.png" id="2_4vrke"]
+
+[resource]
+script = ExtResource("1_q8rjn")
+name = "MEGA AXE"
+texture = ExtResource("2_4vrke")
+type = "melee"
+damage = 25
+rarity = "Legendary"
+cost = 100
+metadata/_custom_type_script = "uid://dbq0ohe323wnk"

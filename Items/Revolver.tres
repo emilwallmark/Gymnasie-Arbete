@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://ch6pt5714tc1s"]
+
+[ext_resource type="Script" uid="uid://dbq0ohe323wnk" path="res://Scripts/Inventory/inventory_item.gd" id="1_ombdn"]
+[ext_resource type="Texture2D" uid="uid://cgp00b2yjhj84" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0011.png" id="2_qchby"]
+
+[resource]
+script = ExtResource("1_ombdn")
+name = "Revolver"
+texture = ExtResource("2_qchby")
+type = "gun"
+damage = 2
+rarity = "Common"
+cost = 15
+metadata/_custom_type_script = "uid://dbq0ohe323wnk"

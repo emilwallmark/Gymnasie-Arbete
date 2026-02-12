@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://cj67ssnxydqmp"]
+
+[ext_resource type="Script" uid="uid://dbq0ohe323wnk" path="res://Scripts/Inventory/inventory_item.gd" id="1_f1vy5"]
+[ext_resource type="Texture2D" uid="uid://ck0htashoignx" path="res://Assets/weapons pack/grenade launcher beige.png" id="2_wlbsf"]
+
+[resource]
+script = ExtResource("1_f1vy5")
+name = "Grenade Launcher"
+texture = ExtResource("2_wlbsf")
+type = "grenade launcher"
+damage = 8
+rarity = "Epic"
+cost = 25
+metadata/_custom_type_script = "uid://dbq0ohe323wnk"

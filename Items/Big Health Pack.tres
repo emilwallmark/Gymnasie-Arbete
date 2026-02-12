@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://bkb3go5tm5i8t"]
+
+[ext_resource type="Script" uid="uid://dbq0ohe323wnk" path="res://Scripts/Inventory/inventory_item.gd" id="1_oij8s"]
+[ext_resource type="Texture2D" uid="uid://nyksv8qh807" path="res://Assets/HealthUI.png" id="2_xonod"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31xnl"]
+atlas = ExtResource("2_xonod")
+region = Rect2(1, 44, 9, 10)
+
+[resource]
+script = ExtResource("1_oij8s")
+name = "Big Healing Pack"
+texture = SubResource("AtlasTexture_31xnl")
+type = "health"
+damage = 3
+rarity = "Legendary"
+cost = 50
+metadata/_custom_type_script = "uid://dbq0ohe323wnk"

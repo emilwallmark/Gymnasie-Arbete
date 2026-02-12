@@ -57,6 +57,7 @@ func on_take_dmg():
 
 func die():
 	died.emit()
+	Globals.money += 2
 	queue_free()
 
 func _on_timer_timeout() -> void:

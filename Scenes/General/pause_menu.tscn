@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dy6y2bp1e6pu4" path="res://Scripts/General/pause_menu.gd" id="1_hdmo1"]
 [ext_resource type="Shader" uid="uid://bwjkb3fgjxjvi" path="res://Scripts/General/pause_menu.gdshader" id="2_nwcfo"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_05uyy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ohws5"]
 shader = ExtResource("2_nwcfo")
 shader_parameter/amount = 3.0
 
@@ -19,7 +19,7 @@ script = ExtResource("1_hdmo1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 100
-material = SubResource("ShaderMaterial_05uyy")
+material = SubResource("ShaderMaterial_ohws5")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

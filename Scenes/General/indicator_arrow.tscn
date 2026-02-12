@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cymwxremyw3b"]
+
+[ext_resource type="Texture2D" uid="uid://ci1qh42rtq3ok" path="res://Assets/Pixelart arrow icon pack 1.0.png" id="1_indxd"]
+[ext_resource type="Script" uid="uid://dnmnwybqsadul" path="res://Scripts/General/indicator_arrow.gd" id="1_y58gd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y58gd"]
+atlas = ExtResource("1_indxd")
+region = Rect2(3, 17, 9, 13)
+
+[node name="Node2D" type="Node2D" groups=["arrows"]]
+script = ExtResource("1_y58gd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_y58gd")

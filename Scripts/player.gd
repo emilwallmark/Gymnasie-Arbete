@@ -13,6 +13,9 @@ var direction = "Down"
 @export var inventory: Inv
 
 
+func _ready() -> void:
+	var fill_style := hp_bar.get_theme_stylebox("fill")
+	fill_style.bg_color = Color.GREEN
 func movement(_delta: float) -> void:
 	velocity = Input.get_vector("Left", "Right", "Up", "Down") * SPEED
 	move_and_slide()
@@ -24,7 +27,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(_delta: float) -> void:
-	hp_bar.value = Globals.player_lives/5.0 * 100
+	hp_bar.value = Globals.player_lives/float(Globals.player_max_lives) * 100
 	if Input.is_action_just_pressed("Action") and Engine.time_scale != 0:
 		_attack()
 	animation()
@@ -75,7 +78,7 @@ func check_damage():
 		if body.is_in_group("enemies"):
 			take_damage(body.damage)
 
-func _on_damege_area_body_entered(body: Node2D) -> void:
+func _on_damege_area_body_entered(Node2D) -> void:
 	check_damage()
 	$Timer.stop()
 	$Timer.start()

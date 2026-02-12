@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://fpgkqvmfcqfd"]
+
+[ext_resource type="Script" uid="uid://dbq0ohe323wnk" path="res://Scripts/Inventory/inventory_item.gd" id="1_qujib"]
+[ext_resource type="Texture2D" uid="uid://o1re2anx7dub" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0013.png" id="2_doc0w"]
+
+[resource]
+script = ExtResource("1_qujib")
+name = "Heavy Sniper"
+texture = ExtResource("2_doc0w")
+type = "gun"
+damage = 15
+rarity = "Epic"
+cost = 50
+metadata/_custom_type_script = "uid://dbq0ohe323wnk"

@@ -7,7 +7,7 @@ extends Node2D
 func _ready() -> void:
 	$AnimationPlayer.play("Attack_Anim")
 
-func _process(delta: float) -> void:
+func _process(float) -> void:
 	var angle = rotation
 	position = player.position + Vector2.RIGHT.rotated(angle)*50
 

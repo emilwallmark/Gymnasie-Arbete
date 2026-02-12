@@ -23,5 +23,11 @@ offset_bottom = 100.0
 [node name="Panel" type="Panel" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
-scale = Vector2(5, 5)
+[node name="item_display" type="TextureRect" parent="CenterContainer/Panel"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+stretch_mode = 5

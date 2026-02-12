@@ -49,8 +49,9 @@ func on_take_dmg():
 
 func die():
 	died.emit()
+	Globals.money += 10
 	queue_free()
 
 func _on_timer_timeout() -> void:
-	get_parent().shoot_enemy_attack(global_position.direction_to(player.global_position), position, damage, attack_speed)
+	get_parent().get_parent().shoot_enemy_attack(global_position.direction_to(player.global_position), position, damage, attack_speed)
 	

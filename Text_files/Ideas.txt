@@ -1,8 +1,14 @@
 
 Vad ska göras?
 
-lägg till mer vapen
-
 gör att man förlorar då spelaren dör
 
-starta om spelet om man klickar på start i start menyn
+lägg till mer vapen
+
+lägg till mer waves/fiender
+
+lägg till en boss
+
+gör spelet endless
+
+gör menyerna snygga

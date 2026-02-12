@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://ds432rrj1v11k"]
+
+[ext_resource type="Script" uid="uid://dbq0ohe323wnk" path="res://Scripts/Inventory/inventory_item.gd" id="1_h2kfj"]
+[ext_resource type="Texture2D" uid="uid://da5wuy8deu4co" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0016.png" id="2_2tsdq"]
+
+[resource]
+script = ExtResource("1_h2kfj")
+name = "Blaster"
+texture = ExtResource("2_2tsdq")
+type = "gun"
+damage = 9
+rarity = "Rare"
+cost = 15
+metadata/_custom_type_script = "uid://dbq0ohe323wnk"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://6baneq12hull"]
+
+[ext_resource type="Script" uid="uid://dbq0ohe323wnk" path="res://Scripts/Inventory/inventory_item.gd" id="1_3dxdr"]
+[ext_resource type="Texture2D" uid="uid://4xpc1vnemrf" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Weapons/Tiles/tile_0002.png" id="2_7fmwb"]
+
+[resource]
+script = ExtResource("1_3dxdr")
+name = "SMG"
+texture = ExtResource("2_7fmwb")
+type = "gun"
+damage = 2
+rarity = "Common"
+cost = 5
+metadata/_custom_type_script = "uid://dbq0ohe323wnk"
