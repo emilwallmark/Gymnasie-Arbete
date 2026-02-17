@@ -169,5 +169,11 @@ func shoot_enemy_attack(dir, pos:Vector2, damage, speed):
 
 func _on_heal_pressed() -> void:
 	var healing = Globals.player_max_lives - Globals.player_lives
-	Globals.money -= 5*healing
-	Globals.player_lives += healing
+	if Globals.money > 5*healing:
+		Globals.money -= 5*healing
+		Globals.player_lives += healing
+	else:
+		var max_healing = Globals.money % 5
+		Globals.money -= max_healing*5
+		Globals.player_lives += max_healing
+		

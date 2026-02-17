@@ -12,3 +12,6 @@ lägg till en boss
 gör spelet endless
 
 gör menyerna snygga
+
+fixa economin
+göra att spelaren inte buggar iväg då den dör (händer bara ibland)

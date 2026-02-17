@@ -54,4 +54,4 @@ func _on_button_pressed() -> void:
 		else:
 			Globals.player_max_lives += item.damage
 			Globals.player_lives = Globals.player_max_lives
-	queue_free()
+		queue_free()
