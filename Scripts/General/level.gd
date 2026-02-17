@@ -81,7 +81,9 @@ func wave_complete()->void:
 	item_card_3.card_3()
 	$ShopHUD.add_child(item_card_3)
 	$ShopHUD.visible = true
-
+	
+	$ShopHUD/Heal.visible = true
+	
 func attack()->void:
 	var i:int = 0
 	for item in player.inventory.items:
@@ -168,12 +170,19 @@ func shoot_enemy_attack(dir, pos:Vector2, damage, speed):
 
 
 func _on_heal_pressed() -> void:
+	$ShopHUD/Heal.visible = false
 	var healing = Globals.player_max_lives - Globals.player_lives
 	if Globals.money > 5*healing:
 		Globals.money -= 5*healing
 		Globals.player_lives += healing
 	else:
 		var max_healing = Globals.money % 5
-		Globals.money -= max_healing*5
-		Globals.player_lives += max_healing
+		if Globals.money < max_healing*5:
+			Globals.money -= max_healing*5 - 5
+			Globals.player_lives += max_healing -1
+		else:
+			Globals.money -= max_healing*5
+			Globals.player_lives += max_healing
+
+			
 		
