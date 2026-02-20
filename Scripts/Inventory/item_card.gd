@@ -38,20 +38,22 @@ func card_3():
 func _on_button_pressed() -> void:
 	var done = false
 	var  x= 0
+	
 	if Globals.money >= item.cost:
-		Globals.money -= item.cost
 		if item.type != "health":
 			while not done:
 				if x == 6:
 					done = true
 				elif player.inventory.items[x] == null:
+					Globals.money -= item.cost
 					player.inventory.items.pop_at(x)
 					player.inventory.items.insert(x, item) 
 					player.get_child(11).get_child(0).update_slots()
+					queue_free()
 					done = true
 				else:
 					x += 1
 		else:
 			Globals.player_max_lives += item.damage
 			Globals.player_lives = Globals.player_max_lives
-		queue_free()
+			queue_free()

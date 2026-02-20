@@ -1,7 +1,7 @@
 
 Vad ska göras?
 
-gör att man förlorar då spelaren dör
+rotare big knife texturen
 
 lägg till mer vapen
 

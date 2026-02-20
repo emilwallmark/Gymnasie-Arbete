@@ -24,8 +24,8 @@ var paused: bool = false
 func _ready() -> void:
 	player.inventory.items[0] = PreloadItems.Sword
 	inv.update_slots()
-	for i in range(1, 5):
-		player.inventory.items[1] = null
+	for i in range(1, 6):
+		player.inventory.items[i] = null
 		inv.update_slots()
 	player.connect("attack", attack)
 	wave_manager.connect("wave_complete", wave_complete)
@@ -125,12 +125,12 @@ func attack()->void:
 			
 func _on_start_next_wave_pressed() -> void:
 	$ShopHUD.visible = false
-	if $ShopHUD.get_child(7) != null: 
-		$ShopHUD.get_child(7).queue_free()
-	if $ShopHUD.get_child(8) != null:
+	if $ShopHUD.get_child(8) != null: 
 		$ShopHUD.get_child(8).queue_free()
 	if $ShopHUD.get_child(9) != null:
 		$ShopHUD.get_child(9).queue_free()
+	if $ShopHUD.get_child(10) != null:
+		$ShopHUD.get_child(10).queue_free()
 	else:
 		pass
 	wave += 1
