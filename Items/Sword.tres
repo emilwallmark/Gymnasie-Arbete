@@ -11,4 +11,6 @@ type = "melee"
 damage = 1
 rarity = "Common"
 cost = 5
+range = 2
+speed = 0
 metadata/_custom_type_script = "uid://dbq0ohe323wnk"

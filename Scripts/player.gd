@@ -9,7 +9,7 @@ var direction = "Down"
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var hp_bar: ProgressBar = $HpBar
-
+@onready var lives_lable:Label = $HpBar/Label
 @export var inventory: Inv
 
 
@@ -28,7 +28,9 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	hp_bar.value = Globals.player_lives/float(Globals.player_max_lives) * 100
+	lives_lable.text = str(Globals.player_lives) + "/" + str(Globals.player_max_lives)
 	if Input.is_action_just_pressed("Action") and Engine.time_scale != 0:
+
 		_attack()
 	animation()
 

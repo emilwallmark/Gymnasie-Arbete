@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Pause"):
 		pauseMenu()
 	$HUD/WaveNumber.text = str(wave)
-	$HUD/EnemysLeft.text = str(enemies_left)
+	$HUD/EnemiesLeft.text = str(enemies_left)
 	$HUD/Money.text = "$" + str(Globals.money)
 	if enemies_left <= 5 and !wave_manager.spawning:
 		for enemy in get_tree().get_nodes_in_group("enemies"):
@@ -64,25 +64,27 @@ func deathMenu():
 	death_menu.show()
 	Engine.time_scale = 0
 
-
 func wave_complete()->void:
 	var item_card_1 = item_card.instantiate()
 	item_card_1.card_1()
-	item_card_1.position = Vector2(333, 326)
+	item_card_1.position = Vector2(910, 430)
 	$ShopHUD.add_child(item_card_1)
 	
 	var item_card_2 = item_card.instantiate()
-	item_card_2.position = Vector2(689, 326)
+	item_card_2.position = Vector2(1280, 430)
 	$ShopHUD.add_child(item_card_2)
 	item_card_2.card_2()
 	
 	var item_card_3 = item_card.instantiate()
-	item_card_3.position = Vector2(1064, 326)
+	item_card_3.position = Vector2(1650, 430)
 	item_card_3.card_3()
 	$ShopHUD.add_child(item_card_3)
 	$ShopHUD.visible = true
 	
-	$ShopHUD/Heal.visible = true
+	if Globals.player_max_lives != Globals.player_lives:
+		$ShopHUD/VBoxContainer/Heal.visible = true
+	else:
+		$ShopHUD/VBoxContainer/Heal.visible = false
 	
 func attack()->void:
 	var i:int = 0
@@ -92,6 +94,8 @@ func attack()->void:
 			if item.type == "gun":
 				var bullet = BULLET_SCENE.instantiate()
 				bullet.damage = item.damage
+				bullet.speed = item.speed
+				bullet.range = item.range
 				bullet.global_position = player.get_child(i).global_position
 				bullet.dir = player.get_local_mouse_position()
 				add_child(bullet)
@@ -99,8 +103,9 @@ func attack()->void:
 				var sword = MElEE_ATTACK_SCENE.instantiate()
 				var shape: RectangleShape2D = RectangleShape2D.new()
 				var angle = get_angle_to(player.get_local_mouse_position())
-				shape.size = Vector2(100, 67) 
+				shape.size = Vector2(50*item.range, 25*item.range) 
 				sword.get_child(0).get_child(0).shape = shape
+				sword.range = item.range
 				sword.position = player.position + Vector2.RIGHT.rotated(angle)*50
 				sword.rotation = angle
 				sword.damage = item.damage
@@ -110,6 +115,7 @@ func attack()->void:
 				var rocket = ROCKET_SCENE.instantiate()
 				var angle = get_angle_to(player.get_local_mouse_position())
 				rocket.rotation = angle+PI/2
+				rocket.range = item.range
 				rocket.damage = item.damage
 				rocket.global_position = player.get_child(i).global_position
 				rocket.dir = player.get_local_mouse_position()
@@ -118,6 +124,7 @@ func attack()->void:
 				var grenade = GRENADE_SCENE.instantiate()
 				var angle = get_angle_to(player.get_local_mouse_position())
 				grenade.rotation = angle+PI/2
+				grenade.range = item.range
 				grenade.damage = item.damage
 				grenade.global_position = player.get_child(i).global_position
 				grenade.dir = player.get_local_mouse_position()
@@ -125,14 +132,11 @@ func attack()->void:
 			
 func _on_start_next_wave_pressed() -> void:
 	$ShopHUD.visible = false
-	if $ShopHUD.get_child(8) != null: 
-		$ShopHUD.get_child(8).queue_free()
-	if $ShopHUD.get_child(9) != null:
-		$ShopHUD.get_child(9).queue_free()
-	if $ShopHUD.get_child(10) != null:
-		$ShopHUD.get_child(10).queue_free()
-	else:
-		pass
+	for i in range(20):
+		if $ShopHUD.get_child(i) is Node2D:
+			$ShopHUD.get_child(i).queue_free()
+		else:
+			pass
 	wave += 1
 	wave_manager.start_wave()
 
@@ -168,21 +172,12 @@ func shoot_enemy_attack(dir, pos:Vector2, damage, speed):
 	enemy_bullet.damage = damage
 	add_child(enemy_bullet)
 
-
 func _on_heal_pressed() -> void:
-	$ShopHUD/Heal.visible = false
-	var healing = Globals.player_max_lives - Globals.player_lives
-	if Globals.money > 5*healing:
-		Globals.money -= 5*healing
-		Globals.player_lives += healing
-	else:
-		var max_healing = Globals.money % 5
-		if Globals.money < max_healing*5:
-			Globals.money -= max_healing*5 - 5
-			Globals.player_lives += max_healing -1
-		else:
-			Globals.money -= max_healing*5
-			Globals.player_lives += max_healing
-
-			
-		
+	$ShopHUD/VBoxContainer/Heal.visible = false
+	var missing_lives = Globals.player_max_lives - Globals.player_lives
+	
+	var max_heal = Globals.money / 5
+	var healing = min(missing_lives, max_heal)
+	
+	Globals.player_lives += healing
+	Globals.money -= healing * 5

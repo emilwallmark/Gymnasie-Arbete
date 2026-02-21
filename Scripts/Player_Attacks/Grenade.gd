@@ -5,8 +5,11 @@ var speed = 500
 var dir: Vector2
 
 @onready var damage: int
-
-
+@onready var range: int
+func _ready() -> void:
+	$Timer.wait_time = range*0.3
+	$Timer.start()
+	
 func movement() -> void:
 	var length = (dir[0]**2 + dir[1]**2)**0.5
 	velocity = Vector2(dir[0]*speed/length, dir[1]*speed/length)

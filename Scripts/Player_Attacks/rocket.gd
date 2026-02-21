@@ -5,9 +5,12 @@ var speed = 500
 var dir: Vector2
 
 @onready var damage: int
+@onready var range: int
 
 func _ready() -> void:
 	$AnimationPlayer.play("Fly_Anim")
+	$Timer.wait_time = range*0.3
+	$Timer.start()
 
 func movement() -> void:
 	var length = (dir[0]**2 + dir[1]**2)**0.5

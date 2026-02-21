@@ -24,6 +24,7 @@ PreloadItems="*res://Scripts/General/preload_items.gd"
 
 window/size/viewport_width=2560
 window/size/viewport_height=1440
+window/stretch/mode="viewport"
 mouse_cursor/custom_image="uid://b2xgn7plq6bdo"
 mouse_cursor/custom_image_hotspot=Vector2(12, 12)
 

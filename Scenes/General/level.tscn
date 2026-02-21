@@ -1,11 +1,16 @@
-[gd_scene load_steps=33 format=4 uid="uid://bv8i4fvdnlcao"]
+[gd_scene load_steps=38 format=4 uid="uid://bv8i4fvdnlcao"]
 
 [ext_resource type="Script" uid="uid://brnn1g22410sk" path="res://Scripts/General/level.gd" id="1_grhc7"]
 [ext_resource type="Texture2D" uid="uid://c6h8r8o2ttlue" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="2_o8ph4"]
 [ext_resource type="PackedScene" uid="uid://baa1aso0fnt1m" path="res://Scenes/player.tscn" id="3_qf0xs"]
+[ext_resource type="FontFile" uid="uid://c1txxgo4sn8qk" path="res://Fonts/Darinia.ttf" id="4_3ps3h"]
 [ext_resource type="PackedScene" uid="uid://s1t3enhy3a22" path="res://Scenes/General/pause_menu.tscn" id="4_76u7y"]
+[ext_resource type="StyleBox" uid="uid://dh5lduv44ddte" path="res://Scripts/Misc/Hover_button_Stylebox.tres" id="4_g1jes"]
+[ext_resource type="StyleBox" uid="uid://bsdjldjidv6e0" path="res://Scripts/Misc/Pressed_button_Stylebox.tres" id="5_3ps3h"]
+[ext_resource type="FontFile" uid="uid://rm44u7rgm4ri" path="res://Fonts/OldeTome.ttf" id="5_cyj5c"]
 [ext_resource type="Script" uid="uid://c63dtdkp1pbb3" path="res://Scripts/Waves/wave_manager.gd" id="5_o8ph4"]
 [ext_resource type="Script" uid="uid://q3jlek8kcuh" path="res://Scripts/Waves/WaveData.gd" id="6_76u7y"]
+[ext_resource type="StyleBox" uid="uid://byr8wv45y5rl2" path="res://Scripts/Misc/Normal_button_Stylebox.tres" id="6_cyj5c"]
 [ext_resource type="Resource" uid="uid://ckpw032a7sgjn" path="res://Scripts/Waves/wave_01.tres" id="7_6nh6g"]
 [ext_resource type="Resource" uid="uid://bl5hcqukqci6q" path="res://Scripts/Waves/wave_02.tres" id="8_6nh6g"]
 [ext_resource type="Resource" uid="uid://d1tyd8cgyejxy" path="res://Scripts/Waves/wave_03.tres" id="9_if8db"]
@@ -29,7 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://cg6sfcgihyjkj" path="res://Scenes/General/death_menu.tscn" id="27_vvdlt"]
 [ext_resource type="PackedScene" uid="uid://dtmuo4v1g2bqu" path="res://Scenes/General/temp_victory_menu.tscn" id="28_in2hm"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0f350"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cyj5c"]
 texture = ExtResource("2_o8ph4")
 0:0/0 = 0
 1:0/0 = 0
@@ -363,7 +368,7 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.727598, 0, 0.114793, 1)
 terrain_set_0/terrain_1/name = "Terrain 1"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
-sources/0 = SubResource("TileSetAtlasSource_0f350")
+sources/0 = SubResource("TileSetAtlasSource_cyj5c")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6phgx"]
 size = Vector2(700, 5073)
@@ -396,18 +401,24 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_3ps3h")
 theme_override_font_sizes/font_size = 200
 text = "Wave Number"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="EnemysLeft" type="Label" parent="HUD"]
+[node name="EnemiesLeft" type="Label" parent="HUD"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -273.0
-offset_right = 1380.0
+offset_left = 20.0
+offset_top = -200.0
+offset_right = 1420.0
+offset_bottom = 73.0
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_3ps3h")
 theme_override_font_sizes/font_size = 200
-text = "Enemys Left"
+text = "Enemies Left"
 
 [node name="Money" type="Label" parent="HUD"]
 anchors_preset = 3
@@ -419,6 +430,8 @@ offset_left = -1380.0
 offset_top = -273.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_colors/font_color = Color(0.420824, 0.52697, 0.151516, 1)
+theme_override_fonts/font = ExtResource("4_3ps3h")
 theme_override_font_sizes/font_size = 200
 text = "$$$$$$$"
 horizontal_alignment = 2
@@ -446,23 +459,49 @@ shape = SubResource("RectangleShape2D_81xng")
 layer = 10
 visible = false
 
-[node name="StartNextWave" type="Button" parent="ShopHUD"]
-offset_left = 1113.0
-offset_top = 689.0
-offset_right = 1448.0
-offset_bottom = 752.0
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopHUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -70.0
+offset_right = 225.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="StartNextWave" type="Button" parent="ShopHUD/VBoxContainer"]
+custom_minimum_size = Vector2(450, 89)
+layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_hover_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_colors/font_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_fonts/font = ExtResource("5_cyj5c")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/hover = ExtResource("4_g1jes")
+theme_override_styles/pressed = ExtResource("5_3ps3h")
+theme_override_styles/normal = ExtResource("6_cyj5c")
 text = "Begin Next Wave
 "
 
-[node name="Heal" type="Button" parent="ShopHUD"]
-offset_left = 1113.0
-offset_top = 568.0
-offset_right = 1448.0
-offset_bottom = 631.0
+[node name="Heal" type="Button" parent="ShopHUD/VBoxContainer"]
+custom_minimum_size = Vector2(450, 80)
+layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_hover_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_colors/font_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_fonts/font = ExtResource("5_cyj5c")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/hover = ExtResource("4_g1jes")
+theme_override_styles/pressed = ExtResource("5_3ps3h")
+theme_override_styles/normal = ExtResource("6_cyj5c")
 text = "Heal Player"
 
 [node name="Button1" type="Button" parent="ShopHUD"]
@@ -526,8 +565,8 @@ visible = false
 [node name="TempVictoryMenu" parent="DeathMenuCanvas" instance=ExtResource("28_in2hm")]
 visible = false
 
-[connection signal="pressed" from="ShopHUD/StartNextWave" to="." method="_on_start_next_wave_pressed"]
-[connection signal="pressed" from="ShopHUD/Heal" to="." method="_on_heal_pressed"]
+[connection signal="pressed" from="ShopHUD/VBoxContainer/StartNextWave" to="." method="_on_start_next_wave_pressed"]
+[connection signal="pressed" from="ShopHUD/VBoxContainer/Heal" to="." method="_on_heal_pressed"]
 [connection signal="pressed" from="ShopHUD/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="ShopHUD/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="ShopHUD/Button3" to="." method="_on_button_3_pressed"]

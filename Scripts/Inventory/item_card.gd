@@ -5,33 +5,46 @@ var item
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func card_1():
-	var i = randi() % 17
+	var i = randi() % len(PreloadItems.items)
 	item = PreloadItems.items[i]
 	$Pic.texture = item.texture
 	if item.type == "health":
-		$Label.text = "Healing " + str(item.damage)
+		$Label.text = str(item.damage)
+		$Damage.text = "Healing"
+		$Label4.text = ""
+		$Range.text = ""
 	else:
-		$Label.text = "Dmg " + str(item.damage)
+		$Label.text = str(item.damage)
+		$Label4.text = str(item.range)
 	$Label2.text = str(item.rarity)
 	$Label3.text = str(item.cost)
+	
 func card_2():
-	var i = randi() % 17
+	var i = randi() % len(PreloadItems.items)
 	item = PreloadItems.items[i]
 	$Pic.texture = item.texture
 	if item.type == "health":
-		$Label.text = "Healing " + str(item.damage)
+		$Label.text = str(item.damage)
+		$Damage.text = "Healing"
+		$Label4.text = ""
+		$Range.text = ""
 	else:
-		$Label.text = "Dmg " + str(item.damage)
+		$Label.text = str(item.damage)
+		$Label4.text = str(item.range)
 	$Label2.text = str(item.rarity)
 	$Label3.text = str(item.cost)
 func card_3():
-	var i = randi() % 17
+	var i = randi() % len(PreloadItems.items)
 	item = PreloadItems.items[i]
 	$Pic.texture = item.texture
 	if item.type == "health":
-		$Label.text = "Healing " + str(item.damage)
+		$Label.text = str(item.damage)
+		$Damage.text = "Healing"
+		$Label4.text = ""
+		$Range.text = ""
 	else:
-		$Label.text = "Dmg " + str(item.damage)
+		$Label.text = str(item.damage)
+		$Label4.text = str(item.range)
 	$Label2.text = str(item.rarity)
 	$Label3.text = str(item.cost)
 

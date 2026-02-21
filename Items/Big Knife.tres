@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://b1ux6g60avwce"]
 
 [ext_resource type="Script" uid="uid://dbq0ohe323wnk" path="res://Scripts/Inventory/inventory_item.gd" id="1_m6ted"]
-[ext_resource type="Texture2D" uid="uid://bng5dcibf1sdc" path="res://Assets/1.png" id="2_3tn7w"]
+[ext_resource type="Texture2D" uid="uid://phe2qmot65s2" path="res://Assets/2.png" id="2_m6ted"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qxpqt"]
-atlas = ExtResource("2_3tn7w")
-region = Rect2(32, 22, 23, 6)
+atlas = ExtResource("2_m6ted")
+region = Rect2(22, 153, 6, 23)
 
 [resource]
 script = ExtResource("1_m6ted")
@@ -15,4 +15,6 @@ type = "melee"
 damage = 8
 rarity = "Epic"
 cost = 30
+range = 4
+speed = 0
 metadata/_custom_type_script = "uid://dbq0ohe323wnk"

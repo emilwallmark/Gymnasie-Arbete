@@ -11,4 +11,5 @@ type = "rocket launcher"
 damage = 6
 rarity = "Rare"
 cost = 25
+range = 5
 metadata/_custom_type_script = "uid://dbq0ohe323wnk"

@@ -11,4 +11,5 @@ type = "grenade launcher"
 damage = 8
 rarity = "Epic"
 cost = 25
+range = 3
 metadata/_custom_type_script = "uid://dbq0ohe323wnk"

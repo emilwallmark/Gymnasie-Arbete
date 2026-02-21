@@ -1,8 +1,6 @@
 
 Vad ska göras?
 
-rotare big knife texturen
-
 lägg till mer vapen
 
 lägg till mer waves/fiender
@@ -14,4 +12,3 @@ gör spelet endless
 gör menyerna snygga
 
 fixa economin
-göra att spelaren inte buggar iväg då den dör (händer bara ibland)

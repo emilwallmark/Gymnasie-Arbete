@@ -2,10 +2,15 @@ extends Node2D
 
 @onready var damage: int
 @onready var player = get_tree().get_first_node_in_group("Player")
-
+@onready var range
 
 func _ready() -> void:
 	$AnimationPlayer.play("Attack_Anim")
+	$Area2D/CollisionShape2D.position.x += 20*range
+	if range*2 > 7:
+		$Sprite2D.scale = Vector2(range*2, range*2)
+	else:
+		$Sprite2D.scale = Vector2(7, 7)
 
 func _process(float) -> void:
 	var angle = rotation

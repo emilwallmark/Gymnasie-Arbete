@@ -15,4 +15,6 @@ type = "health"
 damage = 3
 rarity = "Legendary"
 cost = 50
+range = 0
+speed = 0
 metadata/_custom_type_script = "uid://dbq0ohe323wnk"

@@ -9,3 +9,5 @@ class_name InvItem
 @export var damage: int
 @export var rarity: String = ""
 @export var cost: int
+@export var range: int
+@export var speed: int

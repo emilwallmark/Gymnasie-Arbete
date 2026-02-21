@@ -1,46 +1,121 @@
-[gd_scene load_steps=3 format=3 uid="uid://br66ur6fk2q3d"]
+[gd_scene load_steps=6 format=3 uid="uid://br66ur6fk2q3d"]
 
 [ext_resource type="Script" uid="uid://63yej7d025y6" path="res://Scripts/Inventory/item_card.gd" id="1_8m360"]
 [ext_resource type="Texture2D" uid="uid://dcxxt70dlrmvj" path="res://Assets/Skärmavbild 2025-12-02 kl. 15.22.51.png" id="1_yb78l"]
+[ext_resource type="Texture2D" uid="uid://5xigk3dqlsi" path="res://Assets/fantasy_pixelart_ui/map/map.png" id="3_f534u"]
+[ext_resource type="FontFile" uid="uid://rm44u7rgm4ri" path="res://Fonts/OldeTome.ttf" id="4_c20nx"]
+[ext_resource type="FontFile" uid="uid://c1txxgo4sn8qk" path="res://Fonts/Darinia.ttf" id="5_yur76"]
 
 [node name="ItemCard" type="Node2D"]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_8m360")
 
 [node name="Skärmavbild2025-12-02Kl_15_22_51" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_yb78l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8.00005, 8.00002)
+scale = Vector2(51.6667, 70)
+texture = ExtResource("3_f534u")
 
 [node name="Pic" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(400, 400)
-offset_left = -528.0
-offset_top = -736.0
-offset_right = -128.0
-offset_bottom = -336.0
+offset_left = -472.0
+offset_top = -648.0
+offset_right = -72.0
+offset_bottom = -248.0
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="."]
-offset_left = -568.0
-offset_top = 60.0
-offset_right = -317.0
-offset_bottom = 197.0
+[node name="Damage" type="Label" parent="."]
+offset_left = -492.0
+offset_top = -36.0
+offset_right = -183.0
+offset_bottom = 101.0
+theme_override_fonts/font = ExtResource("4_c20nx")
 theme_override_font_sizes/font_size = 100
-text = "Dmg "
+text = "Damage "
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="."]
-offset_left = -564.0
-offset_top = -192.0
-offset_right = -278.0
-offset_bottom = 85.0
+[node name="Label" type="Label" parent="."]
+offset_left = -204.0
+offset_top = -40.0
+offset_right = 47.0
+offset_bottom = 97.0
+theme_override_fonts/font = ExtResource("5_yur76")
+theme_override_font_sizes/font_size = 100
+text = "123 "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Range" type="Label" parent="."]
+offset_left = -504.0
+offset_top = 96.0
+offset_right = -179.0
+offset_bottom = 233.0
+theme_override_fonts/font = ExtResource("4_c20nx")
+theme_override_font_sizes/font_size = 100
+text = "Range "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+offset_left = -264.0
+offset_top = 68.0
+offset_right = 61.0
+offset_bottom = 345.0
+theme_override_fonts/font = ExtResource("5_yur76")
+theme_override_font_sizes/font_size = 100
+text = "123
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rarity" type="Label" parent="."]
+offset_left = -496.0
+offset_top = -268.0
+offset_right = -210.0
+offset_bottom = 9.0
+theme_override_fonts/font = ExtResource("4_c20nx")
 theme_override_font_sizes/font_size = 100
 text = "Rarity"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="."]
-offset_left = -112.0
-offset_top = 604.0
-offset_right = 100.0
-offset_bottom = 881.0
+[node name="Label2" type="Label" parent="."]
+offset_left = -196.0
+offset_top = -264.0
+offset_right = 136.0
+offset_bottom = 13.0
+theme_override_fonts/font = ExtResource("4_c20nx")
+theme_override_font_sizes/font_size = 100
+text = "Common"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost" type="Label" parent="."]
+offset_left = -204.0
+offset_top = 564.0
+offset_right = 8.0
+offset_bottom = 701.0
+theme_override_fonts/font = ExtResource("4_c20nx")
 theme_override_font_sizes/font_size = 100
 text = "Cost"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -8.0
+offset_top = 556.0
+offset_right = 204.0
+offset_bottom = 693.0
+theme_override_fonts/font = ExtResource("5_yur76")
+theme_override_font_sizes/font_size = 100
+text = "12345
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(1200, 1500)

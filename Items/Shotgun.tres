@@ -11,4 +11,6 @@ type = "gun"
 damage = 5
 rarity = "Rare"
 cost = 25
+range = 2
+speed = 400
 metadata/_custom_type_script = "uid://dbq0ohe323wnk"

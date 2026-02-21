@@ -15,4 +15,6 @@ type = "rocket launcher"
 damage = 12
 rarity = "Legendary"
 cost = 40
+range = 7
+speed = 0
 metadata/_custom_type_script = "uid://dbq0ohe323wnk"
