@@ -11,3 +11,4 @@ class_name InvItem
 @export var cost: int
 @export var range: int
 @export var speed: int
+@export var delay: float

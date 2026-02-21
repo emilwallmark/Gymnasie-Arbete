@@ -21,6 +21,8 @@ var wave: int = 1
 var enemies_left: int 
 var paused: bool = false
 
+var slot_ready = [true, true, true, true, true, true]
+
 func _ready() -> void:
 	player.inventory.items[0] = PreloadItems.Sword
 	inv.update_slots()
@@ -85,12 +87,20 @@ func wave_complete()->void:
 		$ShopHUD/VBoxContainer/Heal.visible = true
 	else:
 		$ShopHUD/VBoxContainer/Heal.visible = false
-	
+
+func start_timer(i:int, timer:float):
+	get_tree().create_timer(timer).timeout.connect(_on_timer_done.bind(i))
+
+func _on_timer_done(i):
+	slot_ready[i-1] = true
+
 func attack()->void:
 	var i:int = 0
 	for item in player.inventory.items:
 		i += 1
-		if item != null:
+		if item != null and slot_ready[i-1]:
+			slot_ready[i-1] = false
+			start_timer(i, item.delay)
 			if item.type == "gun":
 				var bullet = BULLET_SCENE.instantiate()
 				bullet.damage = item.damage
@@ -132,7 +142,7 @@ func attack()->void:
 			
 func _on_start_next_wave_pressed() -> void:
 	$ShopHUD.visible = false
-	for i in range(20):
+	for i in range($ShopHUD.get_child_count()):
 		if $ShopHUD.get_child(i) is Node2D:
 			$ShopHUD.get_child(i).queue_free()
 		else:

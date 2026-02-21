@@ -9,6 +9,4 @@ lägg till en boss
 
 gör spelet endless
 
-gör menyerna snygga
-
 fixa economin

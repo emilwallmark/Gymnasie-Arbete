@@ -13,4 +13,5 @@ rarity = "Epic"
 cost = 30
 range = 12
 speed = 2000
+delay = 1.7
 metadata/_custom_type_script = "uid://dbq0ohe323wnk"
