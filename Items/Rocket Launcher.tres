@@ -9,7 +9,7 @@ region = Rect2(48, 65, 34, 15)
 
 [resource]
 script = ExtResource("1_v7u2e")
-name = ""
+name = "Rocket Launcher"
 texture = SubResource("AtlasTexture_hfg2y")
 type = "rocket launcher"
 damage = 12
