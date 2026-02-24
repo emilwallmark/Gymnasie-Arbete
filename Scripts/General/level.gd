@@ -46,6 +46,7 @@ func _process(_delta: float) -> void:
 		for enemy in get_tree().get_nodes_in_group("enemies"):
 			if get_tree().get_nodes_in_group("arrows").size() < get_tree().get_nodes_in_group("enemies").size():
 				enemy_arrow(enemy)
+	calc_heal_number()
 			
 func enemy_arrow(enemy):
 	var arrow = ENEMY_INDICATOR_ARROW_SCENE.instantiate()
@@ -82,8 +83,8 @@ func wave_complete()->void:
 	item_card_3.card_3()
 	$ShopHUD.add_child(item_card_3)
 	$ShopHUD.visible = true
-	
-	if Globals.player_max_lives != Globals.player_lives:
+	await get_tree().create_timer(0.01).timeout
+	if Globals.player_max_lives != Globals.player_lives and Globals.money >= 5:
 		$ShopHUD/VBoxContainer/Heal.visible = true
 	else:
 		$ShopHUD/VBoxContainer/Heal.visible = false
@@ -191,3 +192,7 @@ func _on_heal_pressed() -> void:
 	
 	Globals.player_lives += healing
 	Globals.money -= healing * 5
+
+
+func calc_heal_number():
+	$ShopHUD/VBoxContainer/Heal/HBoxContainer/Label2.text = "$" + str(min(Globals.player_max_lives-Globals.player_lives, Globals.money/5) * 5)

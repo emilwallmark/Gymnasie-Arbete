@@ -18,13 +18,13 @@ var Blaster = preload("res://Items/Blaster.tres")
 var Health_Pack = preload("res://Items/Health Pack.tres")
 var Big_Health_Pack = preload("res://Items/Big Health Pack.tres")
 
-
-var items : Array = [Basic_Gun, AK, Sword, Rocket_Launcher, SMG, Sniper, Shotgun,
-Revolver, Heavy_Axe, Mega_Axe, Big_Knife, RPG_Launcher, Grenade_Launcher, Heavy_Sniper, Blaster,
-Health_Pack, Big_Health_Pack]
+#var items : Array = [Basic_Gun, AK, Sword, Rocket_Launcher, SMG, Sniper, Shotgun,
+#Revolver, Heavy_Axe, Mega_Axe, Big_Knife, RPG_Launcher, Grenade_Launcher, Heavy_Sniper, Blaster,
+#Health_Pack, Big_Health_Pack]
 
 var common : Array = [Basic_Gun, Revolver, SMG, Sword]
-var rare : Array = [AK, Blaster, Health_Pack, Heavy_Axe, RPG_Launcher, Shotgun, Sniper]
+var rare : Array = [AK, Blaster, Heavy_Axe, RPG_Launcher, Shotgun, Sniper]
 var epic : Array = [Big_Knife, Grenade_Launcher, Heavy_Sniper]
-var legendary : Array = [Big_Health_Pack, Mega_Axe, Rocket_Launcher]
+var legendary : Array = [Mega_Axe, Rocket_Launcher]
+var health : Array = [Health_Pack, Big_Health_Pack]
 #var mythic : Array = []

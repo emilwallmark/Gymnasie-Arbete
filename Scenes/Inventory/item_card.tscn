@@ -1,25 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://br66ur6fk2q3d"]
+[gd_scene format=3 uid="uid://br66ur6fk2q3d"]
 
 [ext_resource type="Script" uid="uid://63yej7d025y6" path="res://Scripts/Inventory/item_card.gd" id="1_8m360"]
-[ext_resource type="Texture2D" uid="uid://dcxxt70dlrmvj" path="res://Assets/Skärmavbild 2025-12-02 kl. 15.22.51.png" id="1_yb78l"]
 [ext_resource type="Texture2D" uid="uid://5xigk3dqlsi" path="res://Assets/fantasy_pixelart_ui/map/map.png" id="3_f534u"]
 [ext_resource type="FontFile" uid="uid://rm44u7rgm4ri" path="res://Fonts/OldeTome.ttf" id="4_c20nx"]
 [ext_resource type="FontFile" uid="uid://c1txxgo4sn8qk" path="res://Fonts/Darinia.ttf" id="5_yur76"]
 
-[node name="ItemCard" type="Node2D"]
+[node name="ItemCard" type="Node2D" unique_id=1291643388]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_8m360")
 
-[node name="Skärmavbild2025-12-02Kl_15_22_51" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("1_yb78l")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="MapBackground" type="Sprite2D" parent="." unique_id=2136449948]
 position = Vector2(8.00005, 8.00002)
 scale = Vector2(51.6667, 70)
 texture = ExtResource("3_f534u")
 
-[node name="Pic" type="TextureRect" parent="."]
+[node name="Pic" type="TextureRect" parent="." unique_id=1282029986]
 custom_minimum_size = Vector2(400, 400)
 offset_left = -472.0
 offset_top = -648.0
@@ -27,29 +22,29 @@ offset_right = -72.0
 offset_bottom = -248.0
 stretch_mode = 5
 
-[node name="Damage" type="Label" parent="."]
+[node name="Damage" type="Label" parent="." unique_id=239585574]
 offset_left = -492.0
-offset_top = -36.0
+offset_top = -48.0
 offset_right = -183.0
-offset_bottom = 101.0
+offset_bottom = 89.0
 theme_override_fonts/font = ExtResource("4_c20nx")
 theme_override_font_sizes/font_size = 100
 text = "Damage "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1663336696]
 offset_left = -204.0
-offset_top = -40.0
+offset_top = -56.0
 offset_right = 47.0
-offset_bottom = 97.0
+offset_bottom = 81.0
 theme_override_fonts/font = ExtResource("5_yur76")
 theme_override_font_sizes/font_size = 100
 text = "123 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Range" type="Label" parent="."]
+[node name="Range" type="Label" parent="." unique_id=1813176502]
 offset_left = -504.0
 offset_top = 96.0
 offset_right = -179.0
@@ -60,7 +55,7 @@ text = "Range "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="."]
+[node name="Label4" type="Label" parent="." unique_id=1297001295]
 offset_left = -264.0
 offset_top = 32.0
 offset_right = 61.0
@@ -72,7 +67,7 @@ text = "123
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Rarity" type="Label" parent="."]
+[node name="Rarity" type="Label" parent="." unique_id=2067839920]
 offset_left = -496.0
 offset_top = -268.0
 offset_right = -210.0
@@ -83,7 +78,7 @@ text = "Rarity"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="." unique_id=709362721]
 offset_left = -196.0
 offset_top = -264.0
 offset_right = 136.0
@@ -94,7 +89,7 @@ text = "Common"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Cost" type="Label" parent="."]
+[node name="Cost" type="Label" parent="." unique_id=350242035]
 offset_left = -204.0
 offset_top = 564.0
 offset_right = 8.0
@@ -105,7 +100,7 @@ text = "Cost"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="."]
+[node name="Label3" type="Label" parent="." unique_id=1168470488]
 offset_left = -8.0
 offset_top = 556.0
 offset_right = 204.0
@@ -117,7 +112,7 @@ text = "12345
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=2111098982]
 custom_minimum_size = Vector2(1200, 1500)
 offset_left = -604.0
 offset_top = -856.0

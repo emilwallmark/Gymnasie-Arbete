@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://c54woyulowpn3"]
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://c54woyulowpn3"]
 
 [ext_resource type="Script" uid="uid://dbq0ohe323wnk" path="res://Scripts/Inventory/inventory_item.gd" id="1_v7u2e"]
 [ext_resource type="Texture2D" uid="uid://bng5dcibf1sdc" path="res://Assets/1.png" id="2_id3y6"]
@@ -16,6 +16,5 @@ damage = 12
 rarity = "Legendary"
 cost = 40
 range = 7
-speed = 0
 delay = 1.0
 metadata/_custom_type_script = "uid://dbq0ohe323wnk"

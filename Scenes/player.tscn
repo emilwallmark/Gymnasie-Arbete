@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://baa1aso0fnt1m"]
+[gd_scene format=3 uid="uid://baa1aso0fnt1m"]
 
 [ext_resource type="Script" uid="uid://bsrw7ybryh2w3" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Resource" uid="uid://duhjm7beccri1" path="res://Scripts/PlayerInv.tres" id="2_vgqql"]
@@ -180,62 +180,60 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkybt"]
 bg_color = Color(0.0901961, 1, 0, 1)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1317156015 groups=["Player"]]
 z_index = 5
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_cvnsp")
 inventory = ExtResource("2_vgqql")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=270940827]
 
-[node name="WeaponSlot1" type="Marker2D" parent="."]
+[node name="WeaponSlot1" type="Marker2D" parent="." unique_id=756167717]
 position = Vector2(0, -20)
 
-[node name="WeaponSlot2" type="Marker2D" parent="."]
+[node name="WeaponSlot2" type="Marker2D" parent="." unique_id=1036103673]
 position = Vector2(20, -10)
 
-[node name="WeaponSlot3" type="Marker2D" parent="."]
+[node name="WeaponSlot3" type="Marker2D" parent="." unique_id=217945898]
 position = Vector2(20, 10)
 
-[node name="WeaponSlot4" type="Marker2D" parent="."]
+[node name="WeaponSlot4" type="Marker2D" parent="." unique_id=1486346293]
 position = Vector2(0, 20)
 
-[node name="WeaponSlot5" type="Marker2D" parent="."]
+[node name="WeaponSlot5" type="Marker2D" parent="." unique_id=610289855]
 position = Vector2(-20, 10)
 
-[node name="WeaponSlot6" type="Marker2D" parent="."]
+[node name="WeaponSlot6" type="Marker2D" parent="." unique_id=1130455488]
 position = Vector2(-20, -10)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_vgqql")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1934403852]
+libraries/ = SubResource("AnimationLibrary_vgqql")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1334804001]
 scale = Vector2(4, 4)
 texture = ExtResource("7_gymyn")
 hframes = 3
 vframes = 4
 frame = 3
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=2098623299]
 position = Vector2(0, -10)
 scale = Vector2(8.38926, -0.405172)
 shape = SubResource("CapsuleShape2D_6t5aa")
 
-[node name="DamegeArea" type="Area2D" parent="."]
+[node name="DamegeArea" type="Area2D" parent="." unique_id=815754873]
 collision_mask = 15
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamegeArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamegeArea" unique_id=793012666]
 position = Vector2(0, -11)
 shape = SubResource("CapsuleShape2D_vgqql")
 debug_color = Color(0.980614, 0, 0.378169, 0.42)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=917529173]
 layer = 0
 
-[node name="Inv_UI" parent="CanvasLayer" instance=ExtResource("4_vgqql")]
+[node name="Inv_UI" parent="CanvasLayer" unique_id=2042061995 instance=ExtResource("4_vgqql")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -246,7 +244,7 @@ offset_bottom = 1163.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="HpBar" type="ProgressBar" parent="."]
+[node name="HpBar" type="ProgressBar" parent="." unique_id=1981077221]
 offset_left = -75.0
 offset_top = -88.0
 offset_right = 76.0
@@ -257,11 +255,11 @@ value = 50.0
 fill_mode = 1
 show_percentage = false
 
-[node name="Label" type="Label" parent="HpBar"]
+[node name="Label" type="Label" parent="HpBar" unique_id=92269061]
 layout_mode = 0
 offset_left = 7.0
 offset_top = -8.0
-offset_right = 155.0
+offset_right = 154.0
 offset_bottom = 32.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_fkybt")
@@ -269,7 +267,7 @@ theme_override_font_sizes/font_size = 40
 text = "5/5"
 horizontal_alignment = 2
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=373546928]
 autostart = true
 
 [connection signal="body_entered" from="DamegeArea" to="." method="_on_damege_area_body_entered"]

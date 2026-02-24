@@ -10,7 +10,10 @@ func card_1():
 	cost_multi = 1.0
 	
 	var i = randi() % 10
-	if i >= 0 and i <= 5:
+	if i >= 0 and i <= 2:
+		var n = randi() % len(PreloadItems.health)
+		item = PreloadItems.health[n]
+	elif i >= 3 and i <= 5:
 		var n = randi() % len(PreloadItems.common)
 		item = PreloadItems.common[n]
 	elif i >= 6 and i <= 7:
@@ -39,7 +42,11 @@ func card_2():
 	cost_multi = 1.25
 	
 	var i = randi() % 10
-	if i >= 0 and i <= 3:
+	
+	if i >= 0 and i <= 1:
+		var n = randi() % len(PreloadItems.health)
+		item = PreloadItems.health[n]
+	elif i >= 2 and i <= 3:
 		var n = randi() % len(PreloadItems.common)
 		item = PreloadItems.common[n]
 	elif i >= 3 and i <= 6:
@@ -69,8 +76,8 @@ func card_3():
 	
 	var i = randi() % 10
 	if i >= 0 and i <= 1:
-		var n = randi() % len(PreloadItems.common)
-		item = PreloadItems.common[n]
+		var n = randi() % len(PreloadItems.health)
+		item = PreloadItems.health[n]
 	elif i >= 2 and i <= 5:
 		var n = randi() % len(PreloadItems.rare)
 		item = PreloadItems.rare[n]

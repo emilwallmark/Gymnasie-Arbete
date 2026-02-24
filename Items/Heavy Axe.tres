@@ -13,4 +13,5 @@ rarity = "Rare"
 cost = 25
 range = 6
 speed = 0
+delay = 0.0
 metadata/_custom_type_script = "uid://dbq0ohe323wnk"
