@@ -37,7 +37,6 @@ Type:
 Rarity: 
 Damage: 
 Range: 
-
 "
 fit_content = true
 
@@ -66,3 +65,11 @@ text = "50000
 
 "
 fit_content = true
+
+[node name="Label" type="Label" parent="." unique_id=647707380]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_ohgqh")
+theme_override_font_sizes/font_size = 25
+text = "Press to sell"
+horizontal_alignment = 1
