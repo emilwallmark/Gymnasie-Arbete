@@ -1,4 +1,4 @@
-[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://byr8wv45y5rl2"]
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://byr8wv45y5rl2"]
 
 [ext_resource type="Texture2D" uid="uid://d0pnjbkuuk7rg" path="res://Assets/fantasy_pixelart_ui/panels/wood_panel.png" id="1_p8u0l"]
 

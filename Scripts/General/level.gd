@@ -40,8 +40,8 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Pause"):
 		pauseMenu()
 	$HUD/WaveNumber.text = str(wave)
-	$HUD/EnemiesLeft.text = str(enemies_left)
-	$HUD/Money.text = "$" + str(Globals.money)
+	$HUD/VBoxContainer/EnemiesLeft.text = str(enemies_left)
+	$HUD/VBoxContainer/Money.text = "$" + str(Globals.money)
 	if enemies_left <= 5 and !wave_manager.spawning:
 		for enemy in get_tree().get_nodes_in_group("enemies"):
 			if get_tree().get_nodes_in_group("arrows").size() < get_tree().get_nodes_in_group("enemies").size():
@@ -151,30 +151,6 @@ func _on_start_next_wave_pressed() -> void:
 	wave += 1
 	wave_manager.start_wave()
 
-func _on_button_1_pressed() -> void:
-	player.inventory.items[0] = null
-	inv.update_slots()
-
-func _on_button_2_pressed() -> void:
-	player.inventory.items[1] = null
-	player.get_child(11).get_child(0).update_slots()
-
-func _on_button_3_pressed() -> void:
-	player.inventory.items[2] = null
-	player.get_child(11).get_child(0).update_slots()
-
-func _on_button_4_pressed() -> void:
-	player.inventory.items[3] = null
-	player.get_child(11).get_child(0).update_slots()
-
-func _on_button_5_pressed() -> void:
-	player.inventory.items[4] = null
-	player.get_child(11).get_child(0).update_slots()
-
-func _on_button_6_pressed() -> void:
-	player.inventory.items[5] = null
-	player.get_child(11).get_child(0).update_slots()
-	
 func shoot_enemy_attack(dir, pos:Vector2, damage, speed):
 	var enemy_bullet = ENEMY_BULLET.instantiate()
 	enemy_bullet.speed = speed

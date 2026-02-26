@@ -121,5 +121,5 @@ func _on_button_pressed() -> void:
 		else:
 			Globals.player_max_lives += item.damage
 			Globals.player_lives = Globals.player_max_lives
-			Globals.money -= roundi(item.cost *cost_multi)
+			Globals.money -= roundi(item.cost * cost_multi)
 			queue_free()

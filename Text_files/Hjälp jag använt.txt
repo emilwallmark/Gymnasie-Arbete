@@ -5,3 +5,6 @@ https://www.youtube.com/watch?v=X3J0fSodKgs
 
 Video som visar hur man gör en paus meny:
 https://www.youtube.com/watch?v=JEQR4ALlwVU&t=3s
+
+Video som visar hur man gör bra tooltips:
+https://www.youtube.com/watch?v=6OyPgL2Elpw

@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://con22tiqm0ejg"]
+
+[ext_resource type="Texture2D" uid="uid://d0pnjbkuuk7rg" path="res://Assets/fantasy_pixelart_ui/panels/wood_panel.png" id="1_oxk8h"]
+[ext_resource type="Script" uid="uid://drelswrorso6k" path="res://tool_tip.gd" id="2_abxgm"]
+[ext_resource type="FontFile" uid="uid://rm44u7rgm4ri" path="res://Fonts/OldeTome.ttf" id="3_ohgqh"]
+[ext_resource type="FontFile" uid="uid://c1txxgo4sn8qk" path="res://Fonts/Darinia.ttf" id="4_ehhem"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nidj"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+texture = ExtResource("1_oxk8h")
+
+[node name="Tooltip" type="PanelContainer" unique_id=658008637]
+visible = false
+top_level = true
+custom_minimum_size = Vector2(300, 200)
+offset_right = 200.0
+offset_bottom = 200.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3nidj")
+script = ExtResource("2_abxgm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=149193789]
+layout_mode = 2
+
+[node name="TextContent" type="RichTextLabel" parent="HBoxContainer" unique_id=1904635759]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_ohgqh")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Name
+Type: 
+Rarity: 
+Damage: 
+Range: 
+
+"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1050651417]
+layout_mode = 2
+
+[node name="TextContainer2" type="RichTextLabel" parent="HBoxContainer/VBoxContainer" unique_id=418266838]
+custom_minimum_size = Vector2(200, 75)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ohgqh")
+theme_override_font_sizes/normal_font_size = 25
+text = "Mega Sniper
+Granade Launcher
+Legendary"
+
+[node name="StatsContent" type="RichTextLabel" parent="HBoxContainer/VBoxContainer" unique_id=205633182]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_ehhem")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "50000
+3214
+
+
+"
+fit_content = true

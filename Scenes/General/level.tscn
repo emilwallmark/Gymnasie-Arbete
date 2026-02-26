@@ -407,34 +407,30 @@ text = "Wave Number"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EnemiesLeft" type="Label" parent="HUD" unique_id=1515153916]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -200.0
-offset_right = 1420.0
-offset_bottom = 73.0
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("4_3ps3h")
-theme_override_font_sizes/font_size = 200
-text = "Enemies Left"
-
-[node name="Money" type="Label" parent="HUD" unique_id=1031434052]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD" unique_id=258135387]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1380.0
-offset_top = -200.0
-offset_bottom = 73.0
+offset_left = -1400.0
+offset_top = -404.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="Money" type="Label" parent="HUD/VBoxContainer" unique_id=1031434052]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.420824, 0.52697, 0.151516, 1)
 theme_override_fonts/font = ExtResource("4_3ps3h")
 theme_override_font_sizes/font_size = 200
 text = "$$$$$$$"
+horizontal_alignment = 2
+
+[node name="EnemiesLeft" type="Label" parent="HUD/VBoxContainer" unique_id=1515153916]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_3ps3h")
+theme_override_font_sizes/font_size = 200
+text = "Enemies Left"
 horizontal_alignment = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=713208686]
@@ -532,48 +528,6 @@ text = "$$$"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button1" type="Button" parent="ShopHUD" unique_id=1429253257]
-modulate = Color(1, 1, 1, 0)
-offset_left = 319.0
-offset_top = 979.0
-offset_right = 419.0
-offset_bottom = 1077.0
-
-[node name="Button2" type="Button" parent="ShopHUD" unique_id=344175519]
-modulate = Color(1, 1, 1, 0)
-offset_left = 468.0
-offset_top = 1039.0
-offset_right = 568.0
-offset_bottom = 1137.0
-
-[node name="Button3" type="Button" parent="ShopHUD" unique_id=2013294071]
-modulate = Color(1, 1, 1, 0)
-offset_left = 469.0
-offset_top = 1186.0
-offset_right = 569.0
-offset_bottom = 1284.0
-
-[node name="Button4" type="Button" parent="ShopHUD" unique_id=1237649325]
-modulate = Color(1, 1, 1, 0)
-offset_left = 320.0
-offset_top = 1249.0
-offset_right = 420.0
-offset_bottom = 1347.0
-
-[node name="Button5" type="Button" parent="ShopHUD" unique_id=1998078350]
-modulate = Color(1, 1, 1, 0)
-offset_left = 166.0
-offset_top = 1189.0
-offset_right = 266.0
-offset_bottom = 1287.0
-
-[node name="Button6" type="Button" parent="ShopHUD" unique_id=2069148543]
-modulate = Color(1, 1, 1, 0)
-offset_left = 168.0
-offset_top = 1038.0
-offset_right = 268.0
-offset_bottom = 1136.0
-
 [node name="PauseMenuCanvas" type="CanvasLayer" parent="." unique_id=1311136670]
 layer = 100
 
@@ -595,9 +549,3 @@ visible = false
 
 [connection signal="pressed" from="ShopHUD/VBoxContainer/StartNextWave" to="." method="_on_start_next_wave_pressed"]
 [connection signal="pressed" from="ShopHUD/VBoxContainer/Heal" to="." method="_on_heal_pressed"]
-[connection signal="pressed" from="ShopHUD/Button1" to="." method="_on_button_1_pressed"]
-[connection signal="pressed" from="ShopHUD/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="ShopHUD/Button3" to="." method="_on_button_3_pressed"]
-[connection signal="pressed" from="ShopHUD/Button4" to="." method="_on_button_4_pressed"]
-[connection signal="pressed" from="ShopHUD/Button5" to="." method="_on_button_5_pressed"]
-[connection signal="pressed" from="ShopHUD/Button6" to="." method="_on_button_6_pressed"]
