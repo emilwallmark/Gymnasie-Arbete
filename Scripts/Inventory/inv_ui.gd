@@ -1,6 +1,6 @@
 extends Control
 
-@onready var inv: Inv = preload("res://Scripts/PlayerInv.tres")
+@onready var inv: Inv = preload("res://Scripts/Inventory/PlayerInv.tres")
 @onready var slots: Array = $InvSlotHolder.get_children()
 
 @onready var player = get_tree().get_first_node_in_group("Player")

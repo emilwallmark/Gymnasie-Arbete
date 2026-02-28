@@ -1,5 +1,5 @@
 
-Vad ska göras?
+VAD SKA GÖRAS?
 
 lägg till mer vapen
 
@@ -9,4 +9,16 @@ lägg till en boss
 
 gör spelet endless
 
-fixa economin
+lägg till ljud
+
+komentera all kod
+
+fixa economin/balansera
+
+COOLA IDEÉR
+
+Online leaderboard
+
+Uppgradera movementspeed
+
+Kunna byta skin på spelaren

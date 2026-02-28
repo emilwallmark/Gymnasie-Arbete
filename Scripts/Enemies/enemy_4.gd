@@ -36,6 +36,8 @@ func _physics_process(delta: float) -> void:
 	if player:
 		var direction_to_player = global_position.direction_to(player.global_position)
 		velocity = velocity.move_toward(direction_to_player*MAX_SPEED, ACC*delta)
+		if velocity > direction_to_player*MAX_SPEED:
+			velocity = direction_to_player*MAX_SPEED
 		move_and_slide()
 
 func on_take_dmg():

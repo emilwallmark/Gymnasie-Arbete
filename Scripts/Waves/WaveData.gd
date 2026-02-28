@@ -11,8 +11,10 @@ class_name WaveData
 	"shoot_enemy_1" : 0,
 	"shoot_enemy_2" : 0,
 	"shoot_enemy_3" : 0,
+	"shoot_enemy_4" : 0,
 	"sniper_enemy_1" : 0,
 	"kamikaze_enemy_1" : 0
+	
 	
 }
 

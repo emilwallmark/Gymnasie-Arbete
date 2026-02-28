@@ -6,7 +6,7 @@ signal wave_complete
 @onready var temp_vic_screen = $"../DeathMenuCanvas/TempVictoryMenu"
 
 @export var waves: Array[WaveData]
-@export var endless_start_wave := 20
+@export var endless_start_wave := 200
 
 @export var enemy_scenes := {
  "enemy_1" : preload("res://Scenes/Enemies/enemy.tscn"),
@@ -18,6 +18,7 @@ signal wave_complete
  "shoot_enemy_1" : preload("res://Scenes/Enemies/shoot_enemy.tscn"),
  "shoot_enemy_2" : preload("res://Scenes/Enemies/shoot_enemy_2.tscn"),
  "shoot_enemy_3" : preload("res://Scenes/Enemies/shoot_enemy_3.tscn"),
+ "shoot_enemy_4" : preload("res://Scenes/Enemies/shoot_enemy_4.tscn"), 
  "sniper_enemy_1" : preload("res://Scenes/Enemies/sniper_enemy.tscn"),
  "kamikaze_enemy_1" : preload("res://Scenes/Enemies/kamikaze_enemy.tscn")
 }
@@ -30,7 +31,7 @@ var spawning := false
 
 
 func start_game():
-	current_wave = 0
+	current_wave = 21
 	start_wave()
 	
 func start_wave():
@@ -101,6 +102,7 @@ func get_farthest_world_corner(from_pos: Vector2) -> Vector2:
 func spawn_enemy(enemy_type: String) -> void:
 	var enemy_scene = enemy_scenes.get(enemy_type)
 	if enemy_scene == null:
+		print("uhh")
 		push_error("Unknown enemy type: " + enemy_type) #Chat GPT aah kod
 		return
 

@@ -17,7 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Gymnasie Arbete"
 run/main_scene="uid://chg4ot8o44dnh"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://dh4suiwv8wedi"
 
 [autoload]
 

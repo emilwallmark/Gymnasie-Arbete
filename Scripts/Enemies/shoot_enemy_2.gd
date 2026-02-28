@@ -46,6 +46,8 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2(0,0)
 			if $Timer.is_stopped():
 				$Timer.start()
+		if velocity > direction_to_player*MAX_SPEED:
+			velocity = direction_to_player*MAX_SPEED
 		move_and_slide()
 
 func on_take_dmg():

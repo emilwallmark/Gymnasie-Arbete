@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brnn1g22410sk" path="res://Scripts/General/level.gd" id="1_grhc7"]
 [ext_resource type="Texture2D" uid="uid://c6h8r8o2ttlue" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="2_o8ph4"]
-[ext_resource type="PackedScene" uid="uid://baa1aso0fnt1m" path="res://Scenes/player.tscn" id="3_qf0xs"]
+[ext_resource type="PackedScene" uid="uid://baa1aso0fnt1m" path="res://Scenes/Player/player.tscn" id="3_qf0xs"]
 [ext_resource type="FontFile" uid="uid://c1txxgo4sn8qk" path="res://Fonts/Darinia.ttf" id="4_3ps3h"]
 [ext_resource type="PackedScene" uid="uid://s1t3enhy3a22" path="res://Scenes/General/pause_menu.tscn" id="4_76u7y"]
 [ext_resource type="StyleBox" uid="uid://dh5lduv44ddte" path="res://Scripts/Misc/Hover_button_Stylebox.tres" id="4_g1jes"]
@@ -33,6 +33,7 @@
 [ext_resource type="Resource" uid="uid://dbqox4swwjfnv" path="res://Scripts/Waves/wave_20.tres" id="26_ejmnn"]
 [ext_resource type="PackedScene" uid="uid://cg6sfcgihyjkj" path="res://Scenes/General/death_menu.tscn" id="27_vvdlt"]
 [ext_resource type="PackedScene" uid="uid://dtmuo4v1g2bqu" path="res://Scenes/General/temp_victory_menu.tscn" id="28_in2hm"]
+[ext_resource type="Resource" uid="uid://2mvue466201c" path="res://Scripts/Waves/test_wave.tres" id="32_i3omi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cyj5c"]
 texture = ExtResource("2_o8ph4")
@@ -536,7 +537,7 @@ visible = false
 
 [node name="WaveManager" type="Node2D" parent="." unique_id=1627731909]
 script = ExtResource("5_o8ph4")
-waves = Array[ExtResource("6_76u7y")]([ExtResource("7_6nh6g"), ExtResource("8_6nh6g"), ExtResource("9_if8db"), ExtResource("10_vvdlt"), ExtResource("11_in2hm"), ExtResource("12_6tevt"), ExtResource("13_par4y"), ExtResource("14_g1jes"), ExtResource("15_3ps3h"), ExtResource("16_cyj5c"), ExtResource("17_i3omi"), ExtResource("18_vede8"), ExtResource("19_rhtgv"), ExtResource("20_wdwlp"), ExtResource("21_sfme4"), ExtResource("22_ki5bt"), ExtResource("23_28v83"), ExtResource("24_f4f4i"), ExtResource("25_eeb0e"), ExtResource("26_ejmnn"), ExtResource("7_6nh6g")])
+waves = Array[ExtResource("6_76u7y")]([ExtResource("7_6nh6g"), ExtResource("8_6nh6g"), ExtResource("9_if8db"), ExtResource("10_vvdlt"), ExtResource("11_in2hm"), ExtResource("12_6tevt"), ExtResource("13_par4y"), ExtResource("14_g1jes"), ExtResource("15_3ps3h"), ExtResource("16_cyj5c"), ExtResource("17_i3omi"), ExtResource("18_vede8"), ExtResource("19_rhtgv"), ExtResource("20_wdwlp"), ExtResource("21_sfme4"), ExtResource("22_ki5bt"), ExtResource("23_28v83"), ExtResource("24_f4f4i"), ExtResource("25_eeb0e"), ExtResource("26_ejmnn"), ExtResource("7_6nh6g"), ExtResource("32_i3omi")])
 
 [node name="DeathMenuCanvas" type="CanvasLayer" parent="." unique_id=1707917207]
 layer = 100

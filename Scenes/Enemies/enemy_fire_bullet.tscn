@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://bfys7iv3e2qsi"]
+
+[ext_resource type="Script" uid="uid://bbcauq01e1giu" path="res://Scripts/Enemies/enemy_fire_bullet.gd" id="1_mo8v6"]
+[ext_resource type="Texture2D" uid="uid://dsocbrflbor5d" path="res://Assets/Fire Worm/Sprites/Fire Ball/Move.png" id="2_y7664"]
+[ext_resource type="Texture2D" uid="uid://brsgx2507m5m4" path="res://Assets/Fire Worm/Sprites/Fire Ball/Explosion.png" id="3_3kl5v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjght"]
+radius = 38.0
+
+[sub_resource type="Animation" id="Animation_4hlj6"]
+resource_name = "Exploding"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explotion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_ejxft"]
+resource_name = "Moving"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_mbhpc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explotion:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0rbt2"]
+_data = {
+&"Exploding": SubResource("Animation_4hlj6"),
+&"Moving": SubResource("Animation_ejxft"),
+&"RESET": SubResource("Animation_mbhpc")
+}
+
+[node name="Enemy_Bullet" type="CharacterBody2D" unique_id=1529602704]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_mo8v6")
+
+[node name="Moving" type="Sprite2D" parent="." unique_id=1123468694]
+scale = Vector2(5, 5)
+texture = ExtResource("2_y7664")
+hframes = 6
+
+[node name="Area2D" type="Area2D" parent="." unique_id=365835258]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2051948791]
+shape = SubResource("CircleShape2D_xjght")
+
+[node name="Timer" type="Timer" parent="." unique_id=469947415]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Explotion" type="Sprite2D" parent="." unique_id=812167018]
+scale = Vector2(5, 5)
+texture = ExtResource("3_3kl5v")
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1706632435]
+libraries/ = SubResource("AnimationLibrary_0rbt2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

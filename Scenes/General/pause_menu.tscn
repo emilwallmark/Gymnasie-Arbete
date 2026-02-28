@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://s1t3enhy3a22"]
+[gd_scene format=3 uid="uid://s1t3enhy3a22"]
 
 [ext_resource type="Script" uid="uid://dy6y2bp1e6pu4" path="res://Scripts/General/pause_menu.gd" id="1_hdmo1"]
 [ext_resource type="Shader" uid="uid://bwjkb3fgjxjvi" path="res://Scripts/Misc/pause_menu.gdshader" id="2_nwcfo"]
@@ -9,29 +9,29 @@
 shader = ExtResource("2_nwcfo")
 shader_parameter/amount = 3.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v5qip"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nbywd"]
 texture = ExtResource("4_6h7mo")
-modulate_color = Color(0.858824, 0.858824, 0.858824, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e030r"]
 texture = ExtResource("4_6h7mo")
 modulate_color = Color(0.54, 0.54, 0.54, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nbywd"]
-texture = ExtResource("4_6h7mo")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8x3um"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v5qip"]
 texture = ExtResource("4_6h7mo")
 modulate_color = Color(0.858824, 0.858824, 0.858824, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lyjva"]
+texture = ExtResource("4_6h7mo")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eje8b"]
 texture = ExtResource("4_6h7mo")
 modulate_color = Color(0.54, 0.54, 0.54, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lyjva"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8x3um"]
 texture = ExtResource("4_6h7mo")
+modulate_color = Color(0.858824, 0.858824, 0.858824, 1)
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" unique_id=899593036]
 z_index = 1000
 layout_mode = 3
 anchors_preset = 15
@@ -41,7 +41,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hdmo1")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1432006342]
 z_index = 100
 material = SubResource("ShaderMaterial_ohws5")
 layout_mode = 1
@@ -51,7 +51,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect" unique_id=1636265074]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,35 +60,36 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer" unique_id=42306683]
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="Resume" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+[node name="Resume" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=646357812]
 custom_minimum_size = Vector2(500, 250)
 layout_mode = 2
 focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.341176, 0.168627, 0, 1)
 theme_override_colors/font_color = Color(0.341176, 0.168627, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_colors/font_hover_color = Color(0.341176, 0.168627, 0, 1)
 theme_override_fonts/font = ExtResource("3_e030r")
 theme_override_font_sizes/font_size = 125
-theme_override_styles/hover = SubResource("StyleBoxTexture_v5qip")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_e030r")
 theme_override_styles/normal = SubResource("StyleBoxTexture_nbywd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_e030r")
+theme_override_styles/hover = SubResource("StyleBoxTexture_v5qip")
 text = "Resume"
 
-[node name="Menu" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+[node name="Menu" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1463145315]
 custom_minimum_size = Vector2(500, 250)
 layout_mode = 2
 focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.341176, 0.168627, 0, 1)
 theme_override_colors/font_color = Color(0.341176, 0.168627, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_colors/font_hover_color = Color(0.341176, 0.168627, 0, 1)
 theme_override_fonts/font = ExtResource("3_e030r")
 theme_override_font_sizes/font_size = 125
-theme_override_styles/hover = SubResource("StyleBoxTexture_8x3um")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_eje8b")
 theme_override_styles/normal = SubResource("StyleBoxTexture_lyjva")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_eje8b")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8x3um")
 text = "Quit"
 
 [connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]

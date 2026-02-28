@@ -104,7 +104,7 @@ func _on_button_pressed() -> void:
 	var done = false
 	var  x= 0
 	
-	if Globals.money >= item.cost:
+	if Globals.money >= roundi(item.cost * cost_multi):
 		if item.type != "health":
 			while not done:
 				if x == 6:

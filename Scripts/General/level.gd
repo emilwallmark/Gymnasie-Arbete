@@ -1,6 +1,7 @@
 extends Node2D
 
 const ENEMY_BULLET = preload("res://Scenes/Enemies/enemy_bullet.tscn")
+const ENEMY_FIRE_BULLET = preload("res://Scenes/Enemies/enemy_fire_bullet.tscn")
 
 const BULLET_SCENE = preload("res://Scenes/Player_Attacks/bullet.tscn")
 const MElEE_ATTACK_SCENE = preload("res://Scenes/Player_Attacks/melee_attack.tscn")
@@ -159,6 +160,16 @@ func shoot_enemy_attack(dir, pos:Vector2, damage, speed):
 	enemy_bullet.damage = damage
 	add_child(enemy_bullet)
 
+func shoot_enemy_fire_attack(dir, pos:Vector2, damage, speed):
+	var enemy_bullet = ENEMY_FIRE_BULLET.instantiate()
+	enemy_bullet.speed = speed
+	enemy_bullet.dir = dir
+	enemy_bullet.position = Vector2(pos)
+	var angle = get_angle_to(dir)
+	enemy_bullet.rotation = angle
+	enemy_bullet.damage = damage
+	add_child(enemy_bullet)
+
 func _on_heal_pressed() -> void:
 	$ShopHUD/VBoxContainer/Heal.visible = false
 	var missing_lives = Globals.player_max_lives - Globals.player_lives
@@ -168,7 +179,6 @@ func _on_heal_pressed() -> void:
 	
 	Globals.player_lives += healing
 	Globals.money -= healing * 5
-
 
 func calc_heal_number():
 	$ShopHUD/VBoxContainer/Heal/HBoxContainer/Label2.text = "$" + str(min(Globals.player_max_lives-Globals.player_lives, Globals.money/5) * 5)
