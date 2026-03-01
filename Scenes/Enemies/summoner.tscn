@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://c24gl3qk0u8ds"]
+
+[ext_resource type="Script" uid="uid://c34xcrv7bc8xi" path="res://Scripts/Enemies/summoner.gd" id="1_w14c8"]
+[ext_resource type="Texture2D" uid="uid://ba4wsov8gakmk" path="res://Assets/Enemies/Soul/move/Soul_move.png" id="2_op8go"]
+[ext_resource type="Texture2D" uid="uid://72i8wxp85xkg" path="res://Assets/Enemies/Soul/attack/Soul_attack.png" id="3_hg1wm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_287tu"]
+size = Vector2(253, 294)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcvw6"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1rqp"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_w14c8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Walk:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Summoning:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_op8go"]
+resource_name = "Summon"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Summoning:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_hg1wm"]
+resource_name = "Walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Walk:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1mmwf"]
+_data = {
+&"RESET": SubResource("Animation_w14c8"),
+&"Summon": SubResource("Animation_op8go"),
+&"Walk": SubResource("Animation_hg1wm")
+}
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1286065804 groups=["enemies"]]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_w14c8")
+
+[node name="Walk" type="Sprite2D" parent="." unique_id=1954494138]
+position = Vector2(0, -60)
+scale = Vector2(5, 5)
+texture = ExtResource("2_op8go")
+vframes = 8
+
+[node name="Summoning" type="Sprite2D" parent="." unique_id=1303122468]
+position = Vector2(0, -60)
+scale = Vector2(5, 5)
+texture = ExtResource("3_hg1wm")
+vframes = 10
+
+[node name="EnemyCollisionBody" type="CollisionShape2D" parent="." unique_id=1023446759]
+position = Vector2(2, -66)
+shape = SubResource("RectangleShape2D_287tu")
+
+[node name="HpBar" type="ProgressBar" parent="." unique_id=19565423]
+offset_left = -75.0
+offset_top = 65.0
+offset_right = 76.0
+offset_bottom = 92.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jcvw6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_x1rqp")
+value = 50.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="." unique_id=800853717]
+wait_time = 2.0
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=861902502]
+libraries/ = SubResource("AnimationLibrary_1mmwf")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

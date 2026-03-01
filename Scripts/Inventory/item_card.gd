@@ -113,7 +113,7 @@ func _on_button_pressed() -> void:
 					Globals.money -= roundi(item.cost * cost_multi)
 					player.inventory.items.pop_at(x)
 					player.inventory.items.insert(x, item) 
-					player.get_child(11).get_child(0).update_slots()
+					player.get_node("InvCanvasLayer").get_child(0).update_slots()
 					queue_free()
 					done = true
 				else:

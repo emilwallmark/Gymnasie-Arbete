@@ -13,7 +13,7 @@ const ENEMY_INDICATOR_ARROW_SCENE = preload("res://Scenes/General/indicator_arro
 @onready var player = $Player
 @onready var pause_menu = $PauseMenuCanvas/PauseMenu
 @onready var wave_manager = $WaveManager
-@onready var inv = player.get_child(11).get_child(0)
+@onready var inv = player.get_node("InvCanvasLayer").get_child(0)
 @onready var death_menu = $DeathMenuCanvas/DeathMenu
 
 var item_card = preload("res://Scenes/Inventory/item_card.tscn")

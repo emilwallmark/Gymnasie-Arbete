@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bv8i4fvdnlcao"]
 
 [ext_resource type="Script" uid="uid://brnn1g22410sk" path="res://Scripts/General/level.gd" id="1_grhc7"]
-[ext_resource type="Texture2D" uid="uid://c6h8r8o2ttlue" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="2_o8ph4"]
+[ext_resource type="Texture2D" uid="uid://c6h8r8o2ttlue" path="res://Assets/Unused/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="2_o8ph4"]
 [ext_resource type="PackedScene" uid="uid://baa1aso0fnt1m" path="res://Scenes/Player/player.tscn" id="3_qf0xs"]
 [ext_resource type="FontFile" uid="uid://c1txxgo4sn8qk" path="res://Fonts/Darinia.ttf" id="4_3ps3h"]
 [ext_resource type="PackedScene" uid="uid://s1t3enhy3a22" path="res://Scenes/General/pause_menu.tscn" id="4_76u7y"]

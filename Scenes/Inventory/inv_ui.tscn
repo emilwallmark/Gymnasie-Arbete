@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cbxqw0d3dgdka" path="res://Scripts/Inventory/inv_ui.gd" id="1_605em"]
 [ext_resource type="PackedScene" uid="uid://c6ec25ku74hsc" path="res://Scenes/Inventory/inv_ui_slot.tscn" id="2_actet"]
-[ext_resource type="Texture2D" uid="uid://cdc8agr2jneqy" path="res://Assets/wood_panel.png" id="3_ckuei"]
+[ext_resource type="Texture2D" uid="uid://cvewamxn8v3i4" path="res://Assets/HUD:UI/wood_panel.png" id="2_bht28"]
 [ext_resource type="Script" uid="uid://dd4tegq5mxmbk" path="res://Scripts/Inventory/Tooltip_interact.gd" id="4_bht28"]
 [ext_resource type="PackedScene" uid="uid://con22tiqm0ejg" path="res://Scenes/Inventory/tooltip.tscn" id="5_e1ndk"]
 
@@ -20,7 +20,7 @@ script = ExtResource("1_605em")
 [node name="InvBG" type="Sprite2D" parent="." unique_id=1211621255]
 position = Vector2(0.49998283, -1.4999981)
 scale = Vector2(11.020831, 9.979166)
-texture = ExtResource("3_ckuei")
+texture = ExtResource("2_bht28")
 
 [node name="InvSlotHolder" type="Control" parent="." unique_id=1202137764]
 anchors_preset = 0
@@ -83,6 +83,7 @@ script = ExtResource("4_bht28")
 
 [node name="Tooltip" parent="InvButtonHolder/Button1" unique_id=658008637 instance=ExtResource("5_e1ndk")]
 layout_mode = 0
+offset_right = 300.0
 
 [node name="Button2" type="Button" parent="InvButtonHolder" unique_id=1977666538]
 modulate = Color(1, 1, 1, 0)
@@ -95,6 +96,7 @@ script = ExtResource("4_bht28")
 
 [node name="Tooltip" parent="InvButtonHolder/Button2" unique_id=1755676734 instance=ExtResource("5_e1ndk")]
 layout_mode = 0
+offset_right = 300.0
 
 [node name="Button3" type="Button" parent="InvButtonHolder" unique_id=521281197]
 modulate = Color(1, 1, 1, 0)
@@ -107,6 +109,7 @@ script = ExtResource("4_bht28")
 
 [node name="Tooltip" parent="InvButtonHolder/Button3" unique_id=453251746 instance=ExtResource("5_e1ndk")]
 layout_mode = 0
+offset_right = 300.0
 
 [node name="Button4" type="Button" parent="InvButtonHolder" unique_id=1907959182]
 modulate = Color(1, 1, 1, 0)

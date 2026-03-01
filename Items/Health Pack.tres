@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://c05m56oqrfns6"]
 
 [ext_resource type="Script" uid="uid://dbq0ohe323wnk" path="res://Scripts/Inventory/inventory_item.gd" id="1_fdjfx"]
-[ext_resource type="Texture2D" uid="uid://nyksv8qh807" path="res://Assets/HealthUI.png" id="2_bil4w"]
+[ext_resource type="Texture2D" uid="uid://stck6e6qdhbi" path="res://Assets/HUD:UI/HealthUI.png" id="2_fdjfx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_31xnl"]
-atlas = ExtResource("2_bil4w")
+atlas = ExtResource("2_fdjfx")
 region = Rect2(1, 55, 9, 10)
 
 [resource]

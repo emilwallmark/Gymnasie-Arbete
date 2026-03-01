@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tu31s47ildmb"
-path="res://.godot/imported/SL_attack_1.png-4040f898f557f3b7f6a6d4fcf130f355.ctex"
+path="res://.godot/imported/SL_attack_1.png-9b6f246781f7b5d37e05f4a52ffe98a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Skeleton_Lighter/SL_attack_1.png"
-dest_files=["res://.godot/imported/SL_attack_1.png-4040f898f557f3b7f6a6d4fcf130f355.ctex"]
+source_file="res://Assets/Unused/Skeleton_Lighter/SL_attack_1.png"
+dest_files=["res://.godot/imported/SL_attack_1.png-9b6f246781f7b5d37e05f4a52ffe98a1.ctex"]
 
 [params]
 

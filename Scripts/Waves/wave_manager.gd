@@ -20,7 +20,9 @@ signal wave_complete
  "shoot_enemy_3" : preload("res://Scenes/Enemies/shoot_enemy_3.tscn"),
  "shoot_enemy_4" : preload("res://Scenes/Enemies/shoot_enemy_4.tscn"), 
  "sniper_enemy_1" : preload("res://Scenes/Enemies/sniper_enemy.tscn"),
- "kamikaze_enemy_1" : preload("res://Scenes/Enemies/kamikaze_enemy.tscn")
+ "kamikaze_enemy_1" : preload("res://Scenes/Enemies/kamikaze_enemy.tscn"),
+ "summoner" : preload("res://Scenes/Enemies/summoner.tscn"),
+"fire_spirit" : preload("res://Scenes/Enemies/fire_spirit.tscn")
 }
 
 
@@ -31,7 +33,7 @@ var spawning := false
 
 
 func start_game():
-	current_wave = 21
+	current_wave = 0
 	start_wave()
 	
 func start_wave():
@@ -99,20 +101,38 @@ func get_farthest_world_corner(from_pos: Vector2) -> Vector2:
 			best = c
 	return best
 
+func random_outside_center() -> int:
+	if randi() % 2 == 0:
+		return randi_range(-100, -70)
+	else:
+		return randi_range(70, 100)
+
 func spawn_enemy(enemy_type: String) -> void:
-	var enemy_scene = enemy_scenes.get(enemy_type)
-	if enemy_scene == null:
-		print("uhh")
-		push_error("Unknown enemy type: " + enemy_type) #Chat GPT aah kod
-		return
+	if enemy_type != "fire_spirit":
+		var enemy_scene = enemy_scenes.get(enemy_type)
+		if enemy_scene == null:
+			push_error("Unknown enemy type: " + enemy_type) #Chat GPT aah kod
+			return
 
-	var enemy = enemy_scene.instantiate()
-	enemy.global_position = get_spawn_position()
-	enemy.player = player
+		var enemy = enemy_scene.instantiate()
+		enemy.global_position = get_spawn_position()
+		enemy.player = player
 
-	add_child(enemy)
-	alive_enemies += 1
-	enemy.died.connect(_on_enemy_died)
+		add_child(enemy)
+		alive_enemies += 1
+		enemy.died.connect(_on_enemy_died)
+	else:
+		var enemy_scene = enemy_scenes.get(enemy_type)
+
+		var enemy = enemy_scene.instantiate()
+		var x = random_outside_center()
+		var y = random_outside_center()
+		enemy.global_position = player.global_position + Vector2(x, y)
+		enemy.player = player
+
+		add_child(enemy)
+		alive_enemies += 1
+		enemy.died.connect(_on_enemy_died)
 	
 func _on_enemy_died():
 	alive_enemies -= 1

@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dfwr1ogecry3i" path="res://Scripts/General/start_menu.gd" id="1_juhg0"]
 [ext_resource type="StyleBox" uid="uid://dh5lduv44ddte" path="res://Scripts/Misc/Hover_button_Stylebox.tres" id="2_7ell0"]
-[ext_resource type="Texture2D" uid="uid://d0pnjbkuuk7rg" path="res://Assets/fantasy_pixelart_ui/panels/wood_panel.png" id="2_g6t3l"]
+[ext_resource type="Texture2D" uid="uid://d0pnjbkuuk7rg" path="res://Assets/HUD:UI/fantasy_pixelart_ui/panels/wood_panel.png" id="2_g6t3l"]
 [ext_resource type="FontFile" uid="uid://rm44u7rgm4ri" path="res://Fonts/OldeTome.ttf" id="2_jctra"]
 [ext_resource type="StyleBox" uid="uid://bsdjldjidv6e0" path="res://Scripts/Misc/Pressed_button_Stylebox.tres" id="3_jctra"]
 [ext_resource type="StyleBox" uid="uid://byr8wv45y5rl2" path="res://Scripts/Misc/Normal_button_Stylebox.tres" id="4_bnq3h"]
-[ext_resource type="Texture2D" uid="uid://c6h8r8o2ttlue" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="7_bnq3h"]
+[ext_resource type="Texture2D" uid="uid://c6h8r8o2ttlue" path="res://Assets/Unused/kenney_desert-shooter-pack_1.0/PNG/Tiles/Tilemap/tilemap_packed.png" id="7_bnq3h"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bnq3h"]
 texture = ExtResource("2_g6t3l")
