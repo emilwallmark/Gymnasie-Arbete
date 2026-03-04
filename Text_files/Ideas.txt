@@ -19,6 +19,10 @@ COOLA IDEÉR
 
 Online leaderboard
 
-Uppgradera movementspeed
+Uppgradera movementspeed/andra abilities
 
 Kunna byta skin på spelaren
+
+En tutorial/how to play i start menyn (antingen något man
+kan scrolla igeon och läsa eller något som man spelar och
+spelet säger åt en vad man borde göra)

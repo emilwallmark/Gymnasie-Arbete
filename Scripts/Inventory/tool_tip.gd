@@ -3,7 +3,20 @@ extends PanelContainer
 @onready var n: int
 @onready var stats = $HBoxContainer/VBoxContainer/StatsContent
 @onready var text = $HBoxContainer/VBoxContainer/TextContainer2
+@onready var anim = $AnimationPlayer
 
+
+var base_pos = Vector2.ZERO
+var shift = 20.0
+
+func start_sway():
+	var tween = create_tween()
+	tween.tween_property(self, "position:x", base_pos.x + shift, 0.1)
+	tween.tween_property(self, "position:x", base_pos.x - shift, 0.1)
+	tween.tween_property(self, "position:x", base_pos.x + shift, 0.1)
+	tween.tween_property(self, "position:x", base_pos.x - shift, 0.1)
+func _process(delta):
+	base_pos = get_global_mouse_position()
 
 func _input(event: InputEvent) -> void:
 	if visible and event is InputEventMouseMotion:

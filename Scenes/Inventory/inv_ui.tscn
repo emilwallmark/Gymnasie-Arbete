@@ -79,6 +79,7 @@ offset_left = -50.0
 offset_top = -183.0
 offset_right = 50.0
 offset_bottom = -85.0
+focus_mode = 0
 script = ExtResource("4_bht28")
 
 [node name="Tooltip" parent="InvButtonHolder/Button1" unique_id=658008637 instance=ExtResource("5_e1ndk")]
@@ -92,6 +93,7 @@ offset_left = 100.0
 offset_top = -124.0
 offset_right = 200.0
 offset_bottom = -26.0
+focus_mode = 0
 script = ExtResource("4_bht28")
 
 [node name="Tooltip" parent="InvButtonHolder/Button2" unique_id=1755676734 instance=ExtResource("5_e1ndk")]
@@ -105,6 +107,7 @@ offset_left = 100.0
 offset_top = 26.0
 offset_right = 200.0
 offset_bottom = 124.0
+focus_mode = 0
 script = ExtResource("4_bht28")
 
 [node name="Tooltip" parent="InvButtonHolder/Button3" unique_id=453251746 instance=ExtResource("5_e1ndk")]
@@ -118,6 +121,7 @@ offset_left = -49.0
 offset_top = 86.0
 offset_right = 51.0
 offset_bottom = 184.0
+focus_mode = 0
 script = ExtResource("4_bht28")
 
 [node name="Tooltip" parent="InvButtonHolder/Button4" unique_id=1266289372 instance=ExtResource("5_e1ndk")]
@@ -131,6 +135,7 @@ offset_left = -200.0
 offset_top = 26.0
 offset_right = -100.0
 offset_bottom = 124.0
+focus_mode = 0
 script = ExtResource("4_bht28")
 
 [node name="Tooltip" parent="InvButtonHolder/Button5" unique_id=884871886 instance=ExtResource("5_e1ndk")]
@@ -144,6 +149,7 @@ offset_left = -200.0
 offset_top = -123.0
 offset_right = -100.0
 offset_bottom = -25.0
+focus_mode = 0
 script = ExtResource("4_bht28")
 
 [node name="Tooltip" parent="InvButtonHolder/Button6" unique_id=1012140360 instance=ExtResource("5_e1ndk")]

@@ -13,6 +13,7 @@ var Mega_Axe = preload("res://Items/MEGA AXE.tres")
 var Big_Knife = preload("res://Items/Big Knife.tres")
 var RPG_Launcher = preload("res://Items/RPG Launcher.tres")
 var Grenade_Launcher = preload("res://Items/Grenade Launcher.tres")
+var Light_Grenade_Launcher = preload("res://Items/Light Grenade Luancher.tres")
 var Heavy_Sniper = preload("res://Items/Heavy Sniper.tres")
 var Blaster = preload("res://Items/Blaster.tres")
 var Health_Pack = preload("res://Items/Health Pack.tres")
@@ -23,7 +24,7 @@ var Big_Health_Pack = preload("res://Items/Big Health Pack.tres")
 #Health_Pack, Big_Health_Pack]
 
 var common : Array = [Basic_Gun, Revolver, SMG, Sword]
-var rare : Array = [AK, Blaster, Heavy_Axe, RPG_Launcher, Shotgun, Sniper]
+var rare : Array = [AK, Blaster, Heavy_Axe, RPG_Launcher, Shotgun, Sniper, Light_Grenade_Launcher]
 var epic : Array = [Big_Knife, Grenade_Launcher, Heavy_Sniper]
 var legendary : Array = [Mega_Axe, Rocket_Launcher]
 var health : Array = [Health_Pack, Big_Health_Pack]

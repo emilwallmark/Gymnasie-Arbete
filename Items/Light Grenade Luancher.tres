@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://clvxc3t5f1uvw"]
+
+[ext_resource type="Script" uid="uid://dbq0ohe323wnk" path="res://Scripts/Inventory/inventory_item.gd" id="1_hrloi"]
+[ext_resource type="Texture2D" uid="uid://dievjixbfe24d" path="res://Assets/Weapons/weapons pack/grenade launcher grey.png" id="2_ag5g0"]
+
+[resource]
+script = ExtResource("1_hrloi")
+name = "Light Grenande Launcher"
+texture = ExtResource("2_ag5g0")
+type = "grenade launcher"
+damage = 4
+rarity = "Rare"
+cost = 12
+range = 2
+delay = 0.8
+metadata/_custom_type_script = "uid://dbq0ohe323wnk"

@@ -12,12 +12,49 @@ content_margin_right = 15.0
 content_margin_bottom = 15.0
 texture = ExtResource("1_oxk8h")
 
+[sub_resource type="Animation" id="Animation_vs42x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_pxsgy"]
+resource_name = "error"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1e-05, 1e-05),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yp4a7"]
+_data = {
+&"RESET": SubResource("Animation_vs42x"),
+&"error": SubResource("Animation_pxsgy")
+}
+
 [node name="Tooltip" type="PanelContainer" unique_id=658008637]
 visible = false
 top_level = true
 custom_minimum_size = Vector2(300, 200)
-offset_right = 200.0
-offset_bottom = 200.0
+offset_right = 369.0
+offset_bottom = 209.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3nidj")
 script = ExtResource("2_abxgm")
@@ -44,12 +81,12 @@ fit_content = true
 layout_mode = 2
 
 [node name="TextContainer2" type="RichTextLabel" parent="HBoxContainer/VBoxContainer" unique_id=418266838]
-custom_minimum_size = Vector2(200, 75)
+custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_ohgqh")
 theme_override_font_sizes/normal_font_size = 25
-text = "Mega Sniper
-Granade Launcher
+text = "Light Grenade Luancher
+Gun
 Legendary"
 
 [node name="StatsContent" type="RichTextLabel" parent="HBoxContainer/VBoxContainer" unique_id=205633182]
@@ -73,3 +110,7 @@ theme_override_fonts/font = ExtResource("3_ohgqh")
 theme_override_font_sizes/font_size = 25
 text = "Press to sell"
 horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1584420554]
+libraries/ = SubResource("AnimationLibrary_yp4a7")
+speed_scale = 3.0
