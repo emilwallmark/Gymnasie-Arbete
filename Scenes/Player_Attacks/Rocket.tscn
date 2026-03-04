@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4tr46l7e1vgt"]
+[gd_scene format=3 uid="uid://b4tr46l7e1vgt"]
 
 [ext_resource type="Script" uid="uid://c134qad0b72px" path="res://Scripts/Player_Attacks/rocket.gd" id="1_yirbs"]
-[ext_resource type="Texture2D" uid="uid://drmy85iharx03" path="res://Assets/Rocket.png" id="2_yirbs"]
-[ext_resource type="Texture2D" uid="uid://d04imqgr2bfhc" path="res://Assets/Explotions/biggerboom/biggerboom1.png" id="3_ye7jb"]
-[ext_resource type="Texture2D" uid="uid://dcwo6n6h1grse" path="res://Assets/Explotions/biggerboom/biggerboom2.png" id="4_o8pyh"]
-[ext_resource type="Texture2D" uid="uid://b3wlib2bcy06g" path="res://Assets/Explotions/biggerboom/biggerboom3.png" id="5_gr0ig"]
-[ext_resource type="Texture2D" uid="uid://bejfj167iiduo" path="res://Assets/Explotions/biggerboom/biggerboom4.png" id="6_cuplq"]
+[ext_resource type="Texture2D" uid="uid://brdqs3j5puwdl" path="res://Assets/Weapons/Rocket.png" id="2_yirbs"]
+[ext_resource type="Texture2D" uid="uid://d04imqgr2bfhc" path="res://Assets/Effects/Explotions/biggerboom/biggerboom1.png" id="3_ye7jb"]
+[ext_resource type="Texture2D" uid="uid://dcwo6n6h1grse" path="res://Assets/Effects/Explotions/biggerboom/biggerboom2.png" id="4_o8pyh"]
+[ext_resource type="Texture2D" uid="uid://b3wlib2bcy06g" path="res://Assets/Effects/Explotions/biggerboom/biggerboom3.png" id="5_gr0ig"]
+[ext_resource type="Texture2D" uid="uid://bejfj167iiduo" path="res://Assets/Effects/Explotions/biggerboom/biggerboom4.png" id="6_cuplq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g04ui"]
 size = Vector2(11.6, 19.1)

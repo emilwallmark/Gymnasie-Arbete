@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvww27m3utrcc"
-path="res://.godot/imported/Sprout-damage.png-2413dad7ed2fdb063238c9febd28fb48.ctex"
+uid="uid://brfqm3n2dke73"
+path="res://.godot/imported/Sprout_idle.png-b41ce876d90ae28d0ba07640222d0ed8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Unused/Sprout/Damage/Sprout-damage.png"
-dest_files=["res://.godot/imported/Sprout-damage.png-2413dad7ed2fdb063238c9febd28fb48.ctex"]
+source_file="res://Assets/Enemies/Sprout/Idle/Sprout_idle.png"
+dest_files=["res://.godot/imported/Sprout_idle.png-b41ce876d90ae28d0ba07640222d0ed8.ctex"]
 
 [params]
 

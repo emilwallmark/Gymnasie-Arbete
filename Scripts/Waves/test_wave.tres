@@ -17,6 +17,7 @@ enemies = {
 "shoot_enemy_3": 0,
 "shoot_enemy_4": 0,
 "sniper_enemy_1": 0,
-"summoner": 1
+"splitter": 1,
+"summoner": 0
 }
 metadata/_custom_type_script = "uid://q3jlek8kcuh"

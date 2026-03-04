@@ -22,7 +22,9 @@ signal wave_complete
  "sniper_enemy_1" : preload("res://Scenes/Enemies/sniper_enemy.tscn"),
  "kamikaze_enemy_1" : preload("res://Scenes/Enemies/kamikaze_enemy.tscn"),
  "summoner" : preload("res://Scenes/Enemies/summoner.tscn"),
-"fire_spirit" : preload("res://Scenes/Enemies/fire_spirit.tscn")
+"fire_spirit" : preload("res://Scenes/Enemies/fire_spirit.tscn"),
+"splitter" : preload("res://Scenes/Enemies/splitter.tscn"),
+"splitter_baby" : preload("res://Scenes/Enemies/splitter_baby.tscn")
 }
 
 
@@ -30,10 +32,11 @@ var current_wave := 0
 var alive_enemies := 0
 var spawning := false
 
+var splitter_pos : Vector2 #för att ha positionen där splitter_baby ska spawna
 
 
 func start_game():
-	current_wave = 0
+	current_wave = 21
 	start_wave()
 	
 func start_wave():
@@ -108,7 +111,7 @@ func random_outside_center() -> int:
 		return randi_range(70, 100)
 
 func spawn_enemy(enemy_type: String) -> void:
-	if enemy_type != "fire_spirit":
+	if enemy_type != "fire_spirit" and enemy_type != "splitter_baby":
 		var enemy_scene = enemy_scenes.get(enemy_type)
 		if enemy_scene == null:
 			push_error("Unknown enemy type: " + enemy_type) #Chat GPT aah kod
@@ -121,7 +124,7 @@ func spawn_enemy(enemy_type: String) -> void:
 		add_child(enemy)
 		alive_enemies += 1
 		enemy.died.connect(_on_enemy_died)
-	else:
+	elif enemy_type == "fire_spirit":
 		var enemy_scene = enemy_scenes.get(enemy_type)
 
 		var enemy = enemy_scene.instantiate()
@@ -133,6 +136,20 @@ func spawn_enemy(enemy_type: String) -> void:
 		add_child(enemy)
 		alive_enemies += 1
 		enemy.died.connect(_on_enemy_died)
+	
+	elif enemy_type == "splitter_baby":
+		for i in range(3):
+			var enemy_scene = enemy_scenes.get(enemy_type)
+
+			var enemy = enemy_scene.instantiate()
+			var x = random_outside_center()
+			var y = random_outside_center()
+			enemy.global_position = splitter_pos + Vector2(x, y)
+			enemy.player = player
+
+			add_child(enemy)
+			alive_enemies += 1
+			enemy.died.connect(_on_enemy_died)
 	
 func _on_enemy_died():
 	alive_enemies -= 1

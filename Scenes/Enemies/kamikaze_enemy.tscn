@@ -1,12 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://bcfiopcgcnidq"]
+[gd_scene format=3 uid="uid://bcfiopcgcnidq"]
 
 [ext_resource type="Script" uid="uid://dxp3nd2ti12gf" path="res://Scripts/Enemies/kamikaze_enemy.gd" id="1_rhlwf"]
-[ext_resource type="Texture2D" uid="uid://b0t36x2h6oopr" path="res://Assets/Bomb_Idle (3).png" id="2_yts3l"]
-[ext_resource type="Texture2D" uid="uid://cbmng6dt68wep" path="res://Assets/Bomb_Walk.png" id="3_ot2lf"]
-[ext_resource type="Texture2D" uid="uid://ciokr8ray8gtb" path="res://Assets/Explotions/bigboom/bigboom1.png" id="4_klsij"]
-[ext_resource type="Texture2D" uid="uid://ckvas3desi0x5" path="res://Assets/Explotions/bigboom/bigboom2.png" id="5_6vag4"]
-[ext_resource type="Texture2D" uid="uid://cpm6ej8x56v1v" path="res://Assets/Explotions/bigboom/bigboom3.png" id="6_vh7d2"]
-[ext_resource type="Texture2D" uid="uid://ptlnrqwo21p8" path="res://Assets/Explotions/bigboom/bigboom4.png" id="7_66f7t"]
+[ext_resource type="Texture2D" uid="uid://cif8plltxbhul" path="res://Assets/Enemies/Bomb_Idle (3).png" id="2_yts3l"]
+[ext_resource type="Texture2D" uid="uid://beup3wnul5pyr" path="res://Assets/Enemies/Bomb_Walk.png" id="3_ot2lf"]
+[ext_resource type="Texture2D" uid="uid://ciokr8ray8gtb" path="res://Assets/Effects/Explotions/bigboom/bigboom1.png" id="4_klsij"]
+[ext_resource type="Texture2D" uid="uid://ckvas3desi0x5" path="res://Assets/Effects/Explotions/bigboom/bigboom2.png" id="5_6vag4"]
+[ext_resource type="Texture2D" uid="uid://cpm6ej8x56v1v" path="res://Assets/Effects/Explotions/bigboom/bigboom3.png" id="6_vh7d2"]
+[ext_resource type="Texture2D" uid="uid://ptlnrqwo21p8" path="res://Assets/Effects/Explotions/bigboom/bigboom4.png" id="7_66f7t"]
 
 [sub_resource type="Animation" id="Animation_yhg33"]
 resource_name = "Enemy_Walk"

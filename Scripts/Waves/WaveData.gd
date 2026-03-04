@@ -14,7 +14,8 @@ class_name WaveData
 	"shoot_enemy_4" : 0,
 	"sniper_enemy_1" : 0,
 	"kamikaze_enemy_1" : 0,
-	"summoner" : 0
+	"summoner" : 0,
+	"splitter" : 0
 	
 	
 }

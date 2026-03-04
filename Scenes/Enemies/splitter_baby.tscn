@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://dc88grn0x7bng"]
+
+[ext_resource type="Script" uid="uid://dffb63yn0teah" path="res://Scripts/Enemies/splitter_baby.gd" id="1_0l2r1"]
+[ext_resource type="Texture2D" uid="uid://2eml5aft8r0h" path="res://Assets/Enemies/tronchungo3.png" id="1_xvuqy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_287tu"]
+size = Vector2(77, 88)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcvw6"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1rqp"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_0l2r1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_eugsi"]
+resource_name = "Walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13, 14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1.635397e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Vector2(-10, 4), Vector2(-2, 4), Vector2(-2, 4), Vector2(-4, 4), Vector2(-8, 4), Vector2(-7, 4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ch216"]
+_data = {
+&"RESET": SubResource("Animation_0l2r1"),
+&"Walk": SubResource("Animation_eugsi")
+}
+
+[node name="Enemy" type="CharacterBody2D" unique_id=102051299 groups=["enemies"]]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_0l2r1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=198539108]
+position = Vector2(0, 4)
+scale = Vector2(2, 2)
+texture = ExtResource("1_xvuqy")
+hframes = 9
+vframes = 7
+frame = 9
+
+[node name="EnemyCollisionBody" type="CollisionShape2D" parent="." unique_id=840303087]
+position = Vector2(-4, 3)
+shape = SubResource("RectangleShape2D_287tu")
+
+[node name="HpBar" type="ProgressBar" parent="." unique_id=284546775]
+offset_left = -75.0
+offset_top = 65.0
+offset_right = 76.0
+offset_bottom = 92.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jcvw6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_x1rqp")
+value = 50.0
+fill_mode = 1
+show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=881844584]
+libraries/ = SubResource("AnimationLibrary_ch216")
+speed_scale = 0.75

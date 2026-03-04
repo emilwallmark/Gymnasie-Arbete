@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4mvud8qpk3oo"
-path="res://.godot/imported/Sprout_move.png-94b54c49204c30d546a127db40c693e2.ctex"
+uid="uid://jqfju3w4vbtf"
+path="res://.godot/imported/Sprout_attack.png-94fad3ccfafe4cee9e6a90cfa4202a01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Unused/Sprout/Move/Sprout_move.png"
-dest_files=["res://.godot/imported/Sprout_move.png-94b54c49204c30d546a127db40c693e2.ctex"]
+source_file="res://Assets/Enemies/Sprout/Attack/Sprout_attack.png"
+dest_files=["res://.godot/imported/Sprout_attack.png-94fad3ccfafe4cee9e6a90cfa4202a01.ctex"]
 
 [params]
 

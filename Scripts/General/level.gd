@@ -25,7 +25,7 @@ var paused: bool = false
 var slot_ready = [true, true, true, true, true, true]
 
 func _ready() -> void:
-	player.inventory.items[0] = PreloadItems.Sword
+	player.inventory.items[0] = PreloadItems.Rocket_Launcher
 	inv.update_slots()
 	for i in range(1, 6):
 		player.inventory.items[i] = null
