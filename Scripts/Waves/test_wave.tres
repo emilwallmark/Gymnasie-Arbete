@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_300nu")
 enemies = {
+"Boss": 1,
 "enemy_1": 0,
 "enemy_2": 0,
 "enemy_3": 0,
@@ -17,7 +18,7 @@ enemies = {
 "shoot_enemy_3": 0,
 "shoot_enemy_4": 0,
 "sniper_enemy_1": 0,
-"splitter": 1,
+"splitter": 0,
 "summoner": 0
 }
 metadata/_custom_type_script = "uid://q3jlek8kcuh"

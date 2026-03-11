@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://duhjm7beccri1" path="res://Scripts/Inventory/PlayerInv.tres" id="2_vgqql"]
 [ext_resource type="PackedScene" uid="uid://dcydko4pj7kon" path="res://Scenes/Inventory/inv_ui.tscn" id="4_vgqql"]
 [ext_resource type="FontFile" uid="uid://c1txxgo4sn8qk" path="res://Fonts/Darinia.ttf" id="5_fkybt"]
-[ext_resource type="Texture2D" uid="uid://cc4nifydiaw2q" path="res://Assets/character-pack-full_version/sprite_split/character_1/character_1_frame32x32.png" id="7_gymyn"]
+[ext_resource type="Texture2D" uid="uid://cc4nifydiaw2q" path="res://Assets/Player/character-pack-full_version/sprite_split/character_1/character_1_frame32x32.png" id="7_gymyn"]
 
 [sub_resource type="Animation" id="Animation_3smsa"]
 resource_name = "Idle_Down"
@@ -261,7 +261,9 @@ offset_left = 7.0
 offset_top = -8.0
 offset_right = 154.0
 offset_bottom = 32.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.003921569, 0.003921569, 0.003921569, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("5_fkybt")
 theme_override_font_sizes/font_size = 40
 text = "5/5"

@@ -529,15 +529,15 @@ text = "$$$"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="WaveManager" type="Node2D" parent="." unique_id=1627731909]
+script = ExtResource("5_o8ph4")
+waves = Array[ExtResource("6_76u7y")]([ExtResource("7_6nh6g"), ExtResource("8_6nh6g"), ExtResource("9_if8db"), ExtResource("10_vvdlt"), ExtResource("11_in2hm"), ExtResource("12_6tevt"), ExtResource("13_par4y"), ExtResource("14_g1jes"), ExtResource("15_3ps3h"), ExtResource("16_cyj5c"), ExtResource("17_i3omi"), ExtResource("18_vede8"), ExtResource("19_rhtgv"), ExtResource("20_wdwlp"), ExtResource("21_sfme4"), ExtResource("22_ki5bt"), ExtResource("23_28v83"), ExtResource("24_f4f4i"), ExtResource("25_eeb0e"), ExtResource("26_ejmnn"), ExtResource("7_6nh6g"), ExtResource("32_i3omi")])
+
 [node name="PauseMenuCanvas" type="CanvasLayer" parent="." unique_id=1311136670]
 layer = 100
 
 [node name="PauseMenu" parent="PauseMenuCanvas" unique_id=1037428279 instance=ExtResource("4_76u7y")]
 visible = false
-
-[node name="WaveManager" type="Node2D" parent="." unique_id=1627731909]
-script = ExtResource("5_o8ph4")
-waves = Array[ExtResource("6_76u7y")]([ExtResource("7_6nh6g"), ExtResource("8_6nh6g"), ExtResource("9_if8db"), ExtResource("10_vvdlt"), ExtResource("11_in2hm"), ExtResource("12_6tevt"), ExtResource("13_par4y"), ExtResource("14_g1jes"), ExtResource("15_3ps3h"), ExtResource("16_cyj5c"), ExtResource("17_i3omi"), ExtResource("18_vede8"), ExtResource("19_rhtgv"), ExtResource("20_wdwlp"), ExtResource("21_sfme4"), ExtResource("22_ki5bt"), ExtResource("23_28v83"), ExtResource("24_f4f4i"), ExtResource("25_eeb0e"), ExtResource("26_ejmnn"), ExtResource("7_6nh6g"), ExtResource("32_i3omi")])
 
 [node name="DeathMenuCanvas" type="CanvasLayer" parent="." unique_id=1707917207]
 layer = 100

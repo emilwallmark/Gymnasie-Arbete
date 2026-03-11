@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnl7r3u6tind0"
-path="res://.godot/imported/Old_Guardian_hit.png-4aa5616ca2ffe1e1b17434f418949b7b.ctex"
+uid="uid://broyfv61mjty8"
+path="res://.godot/imported/New Piskel.png-3ea0b15a26cce6ab415b9b18f3a62fe8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Unused/Old_Guardian/Old_Guardian_hit.png"
-dest_files=["res://.godot/imported/Old_Guardian_hit.png-4aa5616ca2ffe1e1b17434f418949b7b.ctex"]
+source_file="res://Assets/Boss/New Piskel.png"
+dest_files=["res://.godot/imported/New Piskel.png-3ea0b15a26cce6ab415b9b18f3a62fe8.ctex"]
 
 [params]
 

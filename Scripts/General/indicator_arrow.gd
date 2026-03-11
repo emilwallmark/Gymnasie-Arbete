@@ -9,6 +9,8 @@ var enemy
 func _process(delta: float) -> void:
 	var viewport = get_viewport().get_visible_rect()
 	viewport.position = get_viewport().get_visible_rect().position + camera.global_position - Vector2(1280, 720)
+	if get_parent().get_parent().enemies_left > 5:
+		queue_free()
 	
 	if enemy != null:
 		if !viewport.has_point(enemy.position) and enemy != null:

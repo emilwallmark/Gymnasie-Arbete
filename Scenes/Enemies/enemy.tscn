@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c8d0e27t3koor"]
 
 [ext_resource type="Script" uid="uid://bexncqt7g0uuc" path="res://Scripts/Enemies/enemy.gd" id="1_1f0kj"]
-[ext_resource type="Texture2D" uid="uid://ck6k52bjmt7iw" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Enemies/Tilemap/tilemap_packed.png" id="2_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://ck6k52bjmt7iw" path="res://Assets/Enemies/Enemies/Tilemap/tilemap_packed.png" id="2_1f0kj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_287tu"]
 size = Vector2(253, 149.5)

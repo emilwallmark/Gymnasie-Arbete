@@ -24,7 +24,8 @@ signal wave_complete
  "summoner" : preload("res://Scenes/Enemies/summoner.tscn"),
 "fire_spirit" : preload("res://Scenes/Enemies/fire_spirit.tscn"),
 "splitter" : preload("res://Scenes/Enemies/splitter.tscn"),
-"splitter_baby" : preload("res://Scenes/Enemies/splitter_baby.tscn")
+"splitter_baby" : preload("res://Scenes/Enemies/splitter_baby.tscn"),
+"Boss" : preload("res://Scenes/Boss/BOSS.tscn")
 }
 
 
@@ -106,9 +107,9 @@ func get_farthest_world_corner(from_pos: Vector2) -> Vector2:
 
 func random_outside_center() -> int:
 	if randi() % 2 == 0:
-		return randi_range(-100, -70)
+		return randi_range(-300, -150)
 	else:
-		return randi_range(70, 100)
+		return randi_range(150, 300)
 
 func spawn_enemy(enemy_type: String) -> void:
 	if enemy_type != "fire_spirit" and enemy_type != "splitter_baby":

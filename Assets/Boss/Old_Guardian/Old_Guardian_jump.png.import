@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dflnvcu2c3gmc"
-path="res://.godot/imported/Old_Guardian_walk.png-53281d45f5291b14bdb73e2676db0ac5.ctex"
+uid="uid://drnpc3hu5no1f"
+path="res://.godot/imported/Old_Guardian_jump.png-4c93c2f9e76cbcdd64695d13ffd9b165.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Unused/Old_Guardian/Old_Guardian_walk.png"
-dest_files=["res://.godot/imported/Old_Guardian_walk.png-53281d45f5291b14bdb73e2676db0ac5.ctex"]
+source_file="res://Assets/Boss/Old_Guardian/Old_Guardian_jump.png"
+dest_files=["res://.godot/imported/Old_Guardian_jump.png-4c93c2f9e76cbcdd64695d13ffd9b165.ctex"]
 
 [params]
 

@@ -15,17 +15,18 @@ const ENEMY_INDICATOR_ARROW_SCENE = preload("res://Scenes/General/indicator_arro
 @onready var wave_manager = $WaveManager
 @onready var inv = player.get_node("InvCanvasLayer").get_child(0)
 @onready var death_menu = $DeathMenuCanvas/DeathMenu
+@onready var enemies_left: int 
 
 var item_card = preload("res://Scenes/Inventory/item_card.tscn")
 
 var wave: int = 1
-var enemies_left: int 
+
 var paused: bool = false
 
 var slot_ready = [true, true, true, true, true, true]
 
 func _ready() -> void:
-	player.inventory.items[0] = PreloadItems.Light_Grenade_Launcher
+	player.inventory.items[0] = PreloadItems.Rocket_Launcher
 	inv.update_slots()
 	for i in range(1, 6):
 		player.inventory.items[i] = null
@@ -43,12 +44,24 @@ func _process(_delta: float) -> void:
 	$HUD/WaveNumber.text = str(wave)
 	$HUD/VBoxContainer/EnemiesLeft.text = str(enemies_left)
 	$HUD/VBoxContainer/Money.text = "$" + str(Globals.money)
-	if enemies_left <= 5 and !wave_manager.spawning:
-		for enemy in get_tree().get_nodes_in_group("enemies"):
-			if get_tree().get_nodes_in_group("arrows").size() < get_tree().get_nodes_in_group("enemies").size():
-				enemy_arrow(enemy)
+	find_enemy_for_arrow()
 	calc_heal_number()
-			
+
+func find_enemy_for_arrow():
+	if enemies_left <= 5 and !wave_manager.spawning:
+		var enemies = get_tree().get_nodes_in_group("enemies")
+		var arrows = get_tree().get_nodes_in_group("arrows")
+		for enemy in enemies:
+			var has_arrow = false
+			for arrow in arrows:
+				if arrow.enemy == enemy:
+					has_arrow = true
+					break
+			if !has_arrow:
+				enemy_arrow(enemy)
+
+
+
 func enemy_arrow(enemy):
 	var arrow = ENEMY_INDICATOR_ARROW_SCENE.instantiate()
 	arrow.enemy = enemy 

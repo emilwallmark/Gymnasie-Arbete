@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo6wkvucxqir2"
-path="res://.godot/imported/Old_Guardian_death.png-a5b6f021d847a698053dc6e6e009f5ef.ctex"
+uid="uid://e0ofedvwj62e"
+path="res://.godot/imported/Old_Guardian_spit_effect.png-2c1dd5b25269d0e454883221c32a8e34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Unused/Old_Guardian/Old_Guardian_death.png"
-dest_files=["res://.godot/imported/Old_Guardian_death.png-a5b6f021d847a698053dc6e6e009f5ef.ctex"]
+source_file="res://Assets/Boss/Old_Guardian/Old_Guardian_spit_effect.png"
+dest_files=["res://.godot/imported/Old_Guardian_spit_effect.png-2c1dd5b25269d0e454883221c32a8e34.ctex"]
 
 [params]
 

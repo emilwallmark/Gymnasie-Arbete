@@ -15,9 +15,8 @@ class_name WaveData
 	"sniper_enemy_1" : 0,
 	"kamikaze_enemy_1" : 0,
 	"summoner" : 0,
-	"splitter" : 0
-	
-	
+	"splitter" : 0,
+	"Boss" : 0
 }
 
 @export var spawn_delay := 0.5

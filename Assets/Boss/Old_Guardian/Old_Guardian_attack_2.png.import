@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwj8kfut23i7j"
-path="res://.godot/imported/Old_Guardian_idle.png-c191fb8a5144cd9398e30ba1da6fb813.ctex"
+uid="uid://crvtju1rru1y4"
+path="res://.godot/imported/Old_Guardian_attack_2.png-d7734532c2b9d524b5240993d37cdb1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Unused/Old_Guardian/Old_Guardian_idle.png"
-dest_files=["res://.godot/imported/Old_Guardian_idle.png-c191fb8a5144cd9398e30ba1da6fb813.ctex"]
+source_file="res://Assets/Boss/Old_Guardian/Old_Guardian_attack_2.png"
+dest_files=["res://.godot/imported/Old_Guardian_attack_2.png-d7734532c2b9d524b5240993d37cdb1e.ctex"]
 
 [params]
 
