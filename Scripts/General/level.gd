@@ -10,6 +10,8 @@ const GRENADE_SCENE = preload("res://Scenes/Player_Attacks/Grenade.tscn")
 
 const ENEMY_INDICATOR_ARROW_SCENE = preload("res://Scenes/General/indicator_arrow.tscn")
 
+var ITEM_CARD_SCENE = preload("res://Scenes/Inventory/item_card.tscn")
+
 @onready var player = $Player
 @onready var pause_menu = $PauseMenuCanvas/PauseMenu
 @onready var wave_manager = $WaveManager
@@ -17,16 +19,14 @@ const ENEMY_INDICATOR_ARROW_SCENE = preload("res://Scenes/General/indicator_arro
 @onready var death_menu = $DeathMenuCanvas/DeathMenu
 @onready var enemies_left: int 
 
-var item_card = preload("res://Scenes/Inventory/item_card.tscn")
 
 var wave: int = 1
-
 var paused: bool = false
 
 var slot_ready = [true, true, true, true, true, true]
 
 func _ready() -> void:
-	player.inventory.items[0] = PreloadItems.Rocket_Launcher
+	player.inventory.items[0] = PreloadItems.Sword
 	inv.update_slots()
 	for i in range(1, 6):
 		player.inventory.items[i] = null
@@ -34,6 +34,12 @@ func _ready() -> void:
 	player.connect("attack", attack)
 	wave_manager.connect("wave_complete", wave_complete)
 	wave_manager.start_game()
+
+"""
+Syfte: Updaterar allt då spelet börjar
+Kommentar: Ger spelaren rätt vapen, startar wavesen i wave_manager och tar
+		   även emot signaler då spelaren attackerar och då en wave är avklarad
+"""
 
 func _process(_delta: float) -> void:
 	if Globals.player_lives <= 0 and !Globals.dead:
@@ -44,10 +50,15 @@ func _process(_delta: float) -> void:
 	$HUD/WaveNumber.text = str(wave)
 	$HUD/VBoxContainer/EnemiesLeft.text = str(enemies_left)
 	$HUD/VBoxContainer/Money.text = "$" + str(Globals.money)
-	find_enemy_for_arrow()
-	calc_heal_number()
+	find_enemy_arrow()
+	
+"""
+Syfte: Uppdatera allt som ska updateeras varje frame
+Kommentar: Kollar om spelaren är död, kollar hur många fiedenr som är kvar, updaterar HUD
+		   uppdaterar find_enemy_arrow() och calc_heal_number()
+"""
 
-func find_enemy_for_arrow():
+func find_enemy_arrow():
 	if enemies_left <= 5 and !wave_manager.spawning:
 		var enemies = get_tree().get_nodes_in_group("enemies")
 		var arrows = get_tree().get_nodes_in_group("arrows")
@@ -59,13 +70,18 @@ func find_enemy_for_arrow():
 					break
 			if !has_arrow:
 				enemy_arrow(enemy)
-
-
+"""
+Syfte: Veta vilka fiender som ska få en pil mot sig
+"""
 
 func enemy_arrow(enemy):
 	var arrow = ENEMY_INDICATOR_ARROW_SCENE.instantiate()
 	arrow.enemy = enemy 
 	$HUD.add_child(arrow)
+"""
+Syfte: Sätta ut pilen på fienden
+Parameter: enemy: fienden som får pilen på sig
+"""
 
 func pauseMenu():
 	if paused:
@@ -76,38 +92,60 @@ func pauseMenu():
 		Engine.time_scale = 0
 	
 	paused = !paused
+"""
+Syfte: Pausa spelet och visa pausemeny
+	   Även stänga gömma pausemany och återupta spelet
+"""
 
 func deathMenu():
 	death_menu.show()
 	Engine.time_scale = 0
+"""
+Syfte: Pausa spelet då man är död och visa dödsmenyn
+"""
 
 func wave_complete()->void:
-	var item_card_1 = item_card.instantiate()
+	var item_card_1 = ITEM_CARD_SCENE.instantiate()
 	item_card_1.card_1()
 	item_card_1.position = Vector2(910, 430)
 	$ShopHUD.add_child(item_card_1)
 	
-	var item_card_2 = item_card.instantiate()
+	var item_card_2 = ITEM_CARD_SCENE.instantiate()
 	item_card_2.position = Vector2(1280, 430)
 	$ShopHUD.add_child(item_card_2)
 	item_card_2.card_2()
 	
-	var item_card_3 = item_card.instantiate()
+	var item_card_3 = ITEM_CARD_SCENE.instantiate()
 	item_card_3.position = Vector2(1650, 430)
 	item_card_3.card_3()
 	$ShopHUD.add_child(item_card_3)
 	$ShopHUD.visible = true
 	await get_tree().create_timer(0.01).timeout
 	if Globals.player_max_lives != Globals.player_lives and Globals.money >= 5:
+		calc_heal_number()
 		$ShopHUD/VBoxContainer/Heal.visible = true
 	else:
 		$ShopHUD/VBoxContainer/Heal.visible = false
+"""
+Syfte: Visa Shopmenyn då en wave är klar
+Kommentar: Visar alla cards, kör olika funktioner i item_card beroende på vilket kort det är
+		   visar healknappen om man tagit skada
+"""
 
 func start_timer(i:int, timer:float):
 	get_tree().create_timer(timer).timeout.connect(_on_timer_done.bind(i))
+"""
+Syfte: Startar en timer som ska göra att man inte kan spam attackera alla vapen
+Parametrar: i: index för vilket vapen som timern sker på
+            timer: hur länge timern ska vara, kommer från delay parametern i varje vapen
+"""
 
 func _on_timer_done(i):
 	slot_ready[i-1] = true
+"""
+Syfte: Då timern är klar så ska den göra det tillåtet för ett vapen att atackera igen
+Parametrar: i: index för vilket vapen som ska få attackera igen
+"""
 
 func attack()->void:
 	var i:int = 0
@@ -154,8 +192,15 @@ func attack()->void:
 				grenade.global_position = player.get_child(i).global_position
 				grenade.dir = player.get_local_mouse_position()
 				add_child(grenade)
-			
+"""
+Syfte: Körs varje gång spelaren attackerar och utför attacken
+Kommentar: Körs här och inte i spelarscritpen för att attackerna inte ska fastna i 
+		   spelaren och följa med den vart den går.
+		   Körs från signalen attack
+"""
+
 func _on_start_next_wave_pressed() -> void:
+	AudioController.play_button_sound()
 	$ShopHUD.visible = false
 	for i in range($ShopHUD.get_child_count()):
 		if $ShopHUD.get_child(i) is Node2D:
@@ -164,6 +209,10 @@ func _on_start_next_wave_pressed() -> void:
 			pass
 	wave += 1
 	wave_manager.start_wave()
+"""
+Syfte: Starta nästa wave då spelaren är redo
+Kommentar: Kör då spelaren trycker på en knapp
+"""
 
 func shoot_enemy_attack(dir, pos:Vector2, damage, speed):
 	var enemy_bullet = ENEMY_BULLET.instantiate()
@@ -172,6 +221,14 @@ func shoot_enemy_attack(dir, pos:Vector2, damage, speed):
 	enemy_bullet.position = Vector2(pos)
 	enemy_bullet.damage = damage
 	add_child(enemy_bullet)
+"""
+Syfte: Spawnar in fiende skott så bestämer deras parametrar
+Parametrar: dir: Riktningen till spelaren
+			pos: positionen där skottet ska börja på
+			damage: hur mycket skada skottet ska göra om den träffar spelaren
+			speed: hastigheten skottet ska röra sig 
+Kommentar: 
+"""
 
 func shoot_enemy_fire_attack(dir, pos:Vector2, damage, speed):
 	var enemy_bullet = ENEMY_FIRE_BULLET.instantiate()
@@ -182,16 +239,28 @@ func shoot_enemy_fire_attack(dir, pos:Vector2, damage, speed):
 	enemy_bullet.rotation = angle
 	enemy_bullet.damage = damage
 	add_child(enemy_bullet)
+"""
+Samma som shoot_enemy_attack() men skapar ett skott med en annan textur
+och den räknar ut vinkeln texturen ska roteras med
+"""
 
 func _on_heal_pressed() -> void:
+	AudioController.play_buy_sound()
 	$ShopHUD/VBoxContainer/Heal.visible = false
 	var missing_lives = Globals.player_max_lives - Globals.player_lives
 	
-	var max_heal = Globals.money / 5
+	var max_heal = Globals.money / ceili(float(wave)/3)
 	var healing = min(missing_lives, max_heal)
 	
 	Globals.player_lives += healing
-	Globals.money -= healing * 5
+	Globals.money -= healing * ceili(float(wave)/3)
+"""
+Syfte: Öka spelarens hp då knapped Heal är tryckt
+"""
 
 func calc_heal_number():
-	$ShopHUD/VBoxContainer/Heal/HBoxContainer/Label2.text = "$" + str(min(Globals.player_max_lives-Globals.player_lives, Globals.money/5) * 5)
+	$ShopHUD/VBoxContainer/Heal/HBoxContainer/Label2.text = "$" + str(min(Globals.player_max_lives-Globals.player_lives, Globals.money) * ceili(float(wave)/3))
+"""
+Syfte: Räkna ut hur mycket pengar som ska visas på labeln på knappen som visar hur mycket 
+	   pengar som man kommer tappa
+"""

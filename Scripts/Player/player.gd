@@ -10,28 +10,34 @@ var direction = "Down"
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var hp_bar: ProgressBar = $HpBar
 @onready var lives_lable:Label = $HpBar/Label
+
+
 @export var inventory: Inv
 
 
 func _ready() -> void:
 	var fill_style := hp_bar.get_theme_stylebox("fill")
 	fill_style.bg_color = Color.GREEN
+
 func movement(_delta: float) -> void:
 	velocity = Input.get_vector("Left", "Right", "Up", "Down") * SPEED
 	move_and_slide()
+
 func _attack()->void:
 	emit_signal("attack")
 
 func _physics_process(delta: float) -> void:
 	movement(delta)
 
-
 func _process(_delta: float) -> void:
 	hp_bar.value = Globals.player_lives/float(Globals.player_max_lives) * 100
 	lives_lable.text = str(Globals.player_lives) + "/" + str(Globals.player_max_lives)
 	if Input.is_action_just_pressed("Action") and Engine.time_scale != 0:
-
 		_attack()
+		
+	if velocity != Vector2(0,0):
+		AudioController.play_walking_sound()
+		
 	animation()
 
 func animation():
@@ -70,7 +76,6 @@ func take_damage(damage: int):
 		if fill_style is StyleBoxFlat:
 			fill_style.bg_color = Color.GREEN
 		hp_bar.add_theme_stylebox_override("fill", fill_style)
-
 		
 func _on_timer_timeout() -> void:
 	check_damage()

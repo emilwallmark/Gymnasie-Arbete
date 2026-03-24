@@ -22,8 +22,10 @@ func _on_button_1_pressed() -> void:
 		player.inventory.items[0] = null
 		update_slots()
 	else:
-		$InvButtonHolder/Button1.get_child(0).anim.play("error")
-		$InvButtonHolder/Button1.get_child(0).start_sway()
+		if player.inventory.items[0] != null:
+			AudioController.play_error_sound()
+			$InvButtonHolder/Button1.get_child(0).anim.play("error")
+			$InvButtonHolder/Button1.get_child(0).start_sway()
 func _on_button_2_pressed() -> void:
 	var n: int = 0
 	for i in player.inventory.items:
@@ -33,8 +35,10 @@ func _on_button_2_pressed() -> void:
 		player.inventory.items[1] = null
 		update_slots()
 	else:
-		$InvButtonHolder/Button2.get_child(0).anim.play("error")
-		$InvButtonHolder/Button2.get_child(0).start_sway()
+		if player.inventory.items[1] != null:
+			AudioController.play_error_sound()
+			$InvButtonHolder/Button2.get_child(0).anim.play("error")
+			$InvButtonHolder/Button2.get_child(0).start_sway()
 
 func _on_button_3_pressed() -> void:
 	var n: int = 0
@@ -45,8 +49,10 @@ func _on_button_3_pressed() -> void:
 		player.inventory.items[2] = null
 		update_slots()
 	else:
-		$InvButtonHolder/Button3.get_child(0).anim.play("error")
-		$InvButtonHolder/Button3.get_child(0).start_sway()
+		if player.inventory.items[2] != null:
+			AudioController.play_error_sound()
+			$InvButtonHolder/Button3.get_child(0).anim.play("error")
+			$InvButtonHolder/Button3.get_child(0).start_sway()
 
 func _on_button_4_pressed() -> void:
 	var n: int = 0
@@ -57,8 +63,10 @@ func _on_button_4_pressed() -> void:
 		player.inventory.items[3] = null
 		update_slots()
 	else:
-		$InvButtonHolder/Button4.get_child(0).anim.play("error")
-		$InvButtonHolder/Button4.get_child(0).start_sway()
+		if player.inventory.items[3] != null:
+			AudioController.play_error_sound()
+			$InvButtonHolder/Button4.get_child(0).anim.play("error")
+			$InvButtonHolder/Button4.get_child(0).start_sway()
 
 func _on_button_5_pressed() -> void:
 	var n: int = 0
@@ -69,8 +77,10 @@ func _on_button_5_pressed() -> void:
 		player.inventory.items[4] = null
 		update_slots()
 	else:
-		$InvButtonHolder/Button5.get_child(0).anim.play("error")
-		$InvButtonHolder/Button5.get_child(0).start_sway()
+		if player.inventory.items[4] != null:
+			AudioController.play_error_sound()
+			$InvButtonHolder/Button5.get_child(0).anim.play("error")
+			$InvButtonHolder/Button5.get_child(0).start_sway()
 
 func _on_button_6_pressed() -> void:
 	var n: int = 0
@@ -81,6 +91,8 @@ func _on_button_6_pressed() -> void:
 		player.inventory.items[5] = null
 		update_slots()
 	else:
-		$InvButtonHolder/Button6.get_child(0).anim.play("error")
-		$InvButtonHolder/Button6.get_child(0).start_sway()
+		if player.inventory.items[5] != null:
+			AudioController.play_error_sound()
+			$InvButtonHolder/Button6.get_child(0).anim.play("error")
+			$InvButtonHolder/Button6.get_child(0).start_sway()
 	

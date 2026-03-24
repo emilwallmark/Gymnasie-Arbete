@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dvfu5wcml1pej"
+path="res://.godot/imported/shoot-a.ogg-66aff3b3865a91501d4c30bfe2950bd2.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/Kenney Sounds/shoot-a.ogg"
+dest_files=["res://.godot/imported/shoot-a.ogg-66aff3b3865a91501d4c30bfe2950bd2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

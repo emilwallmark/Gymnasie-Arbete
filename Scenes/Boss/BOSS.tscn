@@ -326,11 +326,12 @@ value = 50.0
 fill_mode = 1
 show_percentage = false
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=1238052129]
-offset_left = 1114.0
-offset_top = 46.0
-offset_right = 1496.0
-offset_bottom = 190.0
+[node name="Label" type="Label" parent="CanvasLayer/HpBar" unique_id=1238052129]
+layout_mode = 0
+offset_left = 1040.0
+offset_top = 11.0
+offset_right = 1422.0
+offset_bottom = 155.0
 theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)

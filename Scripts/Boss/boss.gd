@@ -120,7 +120,7 @@ func attack_3():
 		
 
 func jump_attack():
-	var n = -2.5
+	var n = -3
 	if velocity.x < 0:
 		jump_attack_texture.flip_h = true
 		smoke_texture.position.x = 6.333
@@ -132,7 +132,7 @@ func jump_attack():
 	anim.play("Jump_attack")
 	await anim.animation_finished
 	var player_pos = player.global_position
-	for i in range(6):
+	for i in range(7):
 		var rock = SMALL_ROCK_SCENE.instantiate()
 		rock.global_position = Vector2(player_pos.x + n*150, player_pos.y -1400)
 		get_parent().add_child(rock)

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dvai1yl6lb83v"
+path="res://.godot/imported/fall-a.ogg-6e1422510a156ac36694b3d3fbf47434.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/Kenney Sounds/fall-a.ogg"
+dest_files=["res://.godot/imported/fall-a.ogg-6e1422510a156ac36694b3d3fbf47434.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

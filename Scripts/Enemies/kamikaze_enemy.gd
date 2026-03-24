@@ -80,6 +80,7 @@ func _on_timer_timeout() -> void:
 	$BOOM.visible = true
 	enemy_texture_1.visible = false
 	$BOOM.play("BOOM")	
+	AudioController.play_explition_sound()
 	lives = 0
 
 func _on_boom_animation_finished() -> void:

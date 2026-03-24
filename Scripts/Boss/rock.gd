@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 		velocity.y = 0
 		$ExplotionAnimation.show()
 		$ExplotionAnimation.play("explotion")
+		AudioController.play_explition_sound()
 		$Area2D.monitoring = true
 		await $ExplotionAnimation.animation_finished
 		queue_free()

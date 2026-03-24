@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://vkcon3s5nfia"]
+
+[ext_resource type="Script" uid="uid://cp6srj111tyc0" path="res://Scripts/Audio/audio_controller.gd" id="1_xdjnf"]
+[ext_resource type="AudioStream" uid="uid://c0l7o7wvp3yje" path="res://Sounds/Ghostpocalypse (Action Music) - Background Music (HD).mp3" id="2_m8uh1"]
+[ext_resource type="AudioStream" uid="uid://dxv2etrn6n31k" path="res://Sounds/Sand footstep 02.mp3" id="2_vdh1o"]
+[ext_resource type="AudioStream" uid="uid://8qkh07nj6iq4" path="res://Sounds/Lynn Music Boulangerie - Gaming Background Music (HD).mp3" id="3_7ykik"]
+[ext_resource type="AudioStream" uid="uid://dxu4byuhna7nf" path="res://Sounds/JDSherbert - Ultimate UI SFX Pack - Popup Open - 1.mp3" id="3_vdh1o"]
+[ext_resource type="AudioStream" uid="uid://bpe0vqk5cqpxq" path="res://Sounds/money-purchase-sound-effect_NSUfiElY.mp3" id="4_pxycn"]
+[ext_resource type="AudioStream" uid="uid://pao38rw4g827" path="res://Sounds/error-sound-effect_ZTJEaha9.mp3" id="5_jqavn"]
+[ext_resource type="AudioStream" uid="uid://bdt0vjf71vj2x" path="res://Sounds/freesound_community-medium-explosion-40472.mp3" id="8_7ykik"]
+
+[node name="AudioController" type="Node" unique_id=1961484998]
+script = ExtResource("1_xdjnf")
+
+[node name="BgSound" type="AudioStreamPlayer" parent="." unique_id=2140006967]
+stream = ExtResource("2_m8uh1")
+volume_db = -20.0
+parameters/looping = true
+
+[node name="MenuSound" type="AudioStreamPlayer" parent="." unique_id=460216860]
+stream = ExtResource("3_7ykik")
+volume_db = -20.0
+parameters/looping = true
+
+[node name="WalkSound" type="AudioStreamPlayer" parent="." unique_id=1639185595]
+stream = ExtResource("2_vdh1o")
+volume_db = -15.0
+
+[node name="WalkTimer" type="Timer" parent="WalkSound" unique_id=1271194865]
+wait_time = 0.057
+one_shot = true
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="." unique_id=1599669984]
+stream = ExtResource("3_vdh1o")
+pitch_scale = 1.39
+
+[node name="BuySound" type="AudioStreamPlayer" parent="." unique_id=1482416899]
+stream = ExtResource("4_pxycn")
+
+[node name="ErrorSound" type="AudioStreamPlayer" parent="." unique_id=988624918]
+stream = ExtResource("5_jqavn")
+volume_db = -27.0
+
+[node name="ExpolitionSound" type="AudioStreamPlayer" parent="." unique_id=381004592]
+stream = ExtResource("8_7ykik")

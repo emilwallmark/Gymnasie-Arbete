@@ -27,6 +27,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		$Sprite2D.visible = false
 		$BOOM.visible = true
 		$BOOM.play("BOOM")
+		AudioController.play_explition_sound()
 		
 func _on_timer_timeout() -> void:
 	queue_free() 

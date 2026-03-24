@@ -23,6 +23,7 @@ config/icon="uid://dh4suiwv8wedi"
 
 Globals="*res://Scripts/General/Globals.gd"
 PreloadItems="*res://Scripts/General/preload_items.gd"
+AudioController="*uid://vkcon3s5nfia"
 
 [display]
 

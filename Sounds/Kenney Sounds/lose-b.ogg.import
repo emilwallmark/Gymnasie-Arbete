@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://csk5uxa83paae"
+path="res://.godot/imported/lose-b.ogg-29283a83ef60f9bd69a9f1ee139a17c4.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/Kenney Sounds/lose-b.ogg"
+dest_files=["res://.godot/imported/lose-b.ogg-29283a83ef60f9bd69a9f1ee139a17c4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

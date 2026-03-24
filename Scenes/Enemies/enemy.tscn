@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ck6k52bjmt7iw" path="res://Assets/Enemies/Enemies/Tilemap/tilemap_packed.png" id="2_1f0kj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_287tu"]
-size = Vector2(253, 149.5)
+size = Vector2(94, 91)
 
 [sub_resource type="Animation" id="Animation_dmkc8"]
 resource_name = "Enemy_Walk_Down"
@@ -64,7 +64,7 @@ vframes = 4
 frame = 8
 
 [node name="EnemyCollisionBody" type="CollisionShape2D" parent="." unique_id=840303087]
-position = Vector2(0, 0.5)
+position = Vector2(-1, 1.5)
 shape = SubResource("RectangleShape2D_287tu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1590294920]

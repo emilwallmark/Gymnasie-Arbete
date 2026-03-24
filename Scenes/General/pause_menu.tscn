@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dy6y2bp1e6pu4" path="res://Scripts/General/pause_menu.gd" id="1_hdmo1"]
 [ext_resource type="Shader" uid="uid://bwjkb3fgjxjvi" path="res://Scripts/Misc/pause_menu.gdshader" id="2_nwcfo"]
 [ext_resource type="FontFile" uid="uid://rm44u7rgm4ri" path="res://Fonts/OldeTome.ttf" id="3_e030r"]
-[ext_resource type="Texture2D" uid="uid://d0pnjbkuuk7rg" path="res://Assets/fantasy_pixelart_ui/panels/wood_panel.png" id="4_6h7mo"]
+[ext_resource type="Texture2D" uid="uid://d0pnjbkuuk7rg" path="res://Assets/HUD:UI/fantasy_pixelart_ui/panels/wood_panel.png" id="4_6h7mo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ohws5"]
 shader = ExtResource("2_nwcfo")
@@ -71,6 +71,7 @@ focus_mode = 0
 theme_override_colors/font_color = Color(0.341176, 0.168627, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.341176, 0.168627, 0, 1)
 theme_override_colors/font_hover_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_e030r")
 theme_override_font_sizes/font_size = 125
 theme_override_styles/normal = SubResource("StyleBoxTexture_nbywd")
@@ -85,6 +86,7 @@ focus_mode = 0
 theme_override_colors/font_color = Color(0.341176, 0.168627, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.341176, 0.168627, 0, 1)
 theme_override_colors/font_hover_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_e030r")
 theme_override_font_sizes/font_size = 125
 theme_override_styles/normal = SubResource("StyleBoxTexture_lyjva")

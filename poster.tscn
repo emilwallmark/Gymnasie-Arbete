@@ -1,0 +1,294 @@
+[gd_scene format=3 uid="uid://h1prf04by76g"]
+
+[ext_resource type="Texture2D" uid="uid://d0pnjbkuuk7rg" path="res://Assets/HUD:UI/fantasy_pixelart_ui/panels/wood_panel.png" id="1_mp3sy"]
+[ext_resource type="Shader" uid="uid://bwjkb3fgjxjvi" path="res://Scripts/Misc/pause_menu.gdshader" id="1_ubgtn"]
+[ext_resource type="FontFile" uid="uid://rm44u7rgm4ri" path="res://Fonts/OldeTome.ttf" id="2_qe3sy"]
+[ext_resource type="FontFile" uid="uid://c1txxgo4sn8qk" path="res://Fonts/Darinia.ttf" id="3_xexrc"]
+[ext_resource type="Texture2D" uid="uid://cc4nifydiaw2q" path="res://Assets/Player/character-pack-full_version/sprite_split/character_1/character_1_frame32x32.png" id="5_n2an3"]
+[ext_resource type="Texture2D" uid="uid://ck6k52bjmt7iw" path="res://Assets/Enemies/Enemies/Tilemap/tilemap_packed.png" id="6_eilog"]
+[ext_resource type="Texture2D" uid="uid://b8jq4pqvahsbc" path="res://Assets/Enemies/Flying enemies/mini bat.png" id="7_lbr7h"]
+[ext_resource type="Texture2D" uid="uid://d4mvud8qpk3oo" path="res://Assets/Enemies/Sprout/Move/Sprout_move.png" id="8_rf4pb"]
+[ext_resource type="Texture2D" uid="uid://d3hdt6f4va8vo" path="res://Assets/Enemies/Flying enemies/mosquito.png" id="9_lfgdo"]
+[ext_resource type="Texture2D" uid="uid://dxcr3pc8vv25a" path="res://Assets/Weapons/Weapons/Tiles/tile_0009.png" id="10_spikj"]
+[ext_resource type="Texture2D" uid="uid://cgp00b2yjhj84" path="res://Assets/Weapons/Weapons/Tiles/tile_0011.png" id="11_fgvg0"]
+[ext_resource type="Texture2D" uid="uid://cmv1k00w4sg27" path="res://Assets/Weapons/1.png" id="12_2cprx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nidj"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+texture = ExtResource("1_mp3sy")
+
+[sub_resource type="Animation" id="Animation_vs42x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_pxsgy"]
+resource_name = "error"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1e-05, 1e-05),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yp4a7"]
+_data = {
+&"RESET": SubResource("Animation_vs42x"),
+&"error": SubResource("Animation_pxsgy")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g538a"]
+shader = ExtResource("1_ubgtn")
+shader_parameter/amount = 3.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n2an3"]
+load_path = "res://.godot/imported/Skärmavbild 2026-03-21 kl. 19.14.16.png-5cd7c2b6e75d044a14680bedcada3f85.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_st06w"]
+atlas = ExtResource("12_2cprx")
+region = Rect2(48, 65, 34, 15)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_eilog"]
+load_path = "res://.godot/imported/Skärmavbild 2026-03-21 kl. 19.43.47.png-5610dd9035834228388bb29509f6a4dc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lbr7h"]
+load_path = "res://.godot/imported/Skärmavbild 2026-03-22 kl. 10.29.34.png-6fccb5abe9b43d90d795cb5301985474.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf4pb"]
+atlas = SubResource("CompressedTexture2D_lbr7h")
+region = Rect2(0, 99, 3360, 1894)
+
+[node name="Node2D" type="Node2D" unique_id=1726437661]
+
+[node name="Tooltip" type="PanelContainer" parent="." unique_id=658008637]
+top_level = true
+custom_minimum_size = Vector2(300, 200)
+offset_left = 96.0
+offset_top = 339.0
+offset_right = 613.0
+offset_bottom = 919.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3nidj")
+
+[node name="Label" type="Label" parent="Tooltip" unique_id=647707380]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("2_qe3sy")
+theme_override_font_sizes/font_size = 60
+text = "Ta dig an den 
+aktionsfylda öknen
+med över 15   unika 
+fiender och vapen
+Skapa en ny och 
+unik uppsättning
+vapen varje runda 
+och se hur du klarar
+dig i Desert Survival"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tooltip" unique_id=1584420554]
+libraries/ = SubResource("AnimationLibrary_yp4a7")
+speed_scale = 3.0
+
+[node name="Tooltip2" type="PanelContainer" parent="." unique_id=1449664101]
+top_level = true
+custom_minimum_size = Vector2(300, 200)
+offset_left = 1503.0
+offset_top = 259.0
+offset_right = 2548.0
+offset_bottom = 839.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3nidj")
+
+[node name="Label" type="Label" parent="Tooltip2" unique_id=1596307168]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_qe3sy")
+theme_override_font_sizes/font_size = 60
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tooltip2" unique_id=1190036148]
+libraries/ = SubResource("AnimationLibrary_yp4a7")
+speed_scale = 3.0
+
+[node name="Tooltip3" type="PanelContainer" parent="." unique_id=361842380]
+top_level = true
+custom_minimum_size = Vector2(300, 200)
+offset_left = 1503.0
+offset_top = 836.0
+offset_right = 2548.0
+offset_bottom = 1416.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3nidj")
+
+[node name="Label" type="Label" parent="Tooltip3" unique_id=1812898830]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_qe3sy")
+theme_override_font_sizes/font_size = 60
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tooltip3" unique_id=925887040]
+libraries/ = SubResource("AnimationLibrary_yp4a7")
+speed_scale = 3.0
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1324479864]
+z_index = -1
+material = SubResource("ShaderMaterial_g538a")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -370.0
+offset_top = -222.0
+offset_right = 3032.0
+offset_bottom = 1631.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Skärmavbild20260321Kl_19_14_16" type="Sprite2D" parent="." unique_id=1426999324]
+z_index = -2
+position = Vector2(1281.5, 724.5)
+scale = Vector2(0.76058435, 0.754767)
+texture = SubResource("CompressedTexture2D_n2an3")
+
+[node name="MainMenuText" type="Label" parent="." unique_id=283963500]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 495.0
+offset_top = 75.0
+offset_right = 1804.0
+offset_bottom = 267.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+theme_override_colors/font_color = Color(0.55, 0.275, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 7
+theme_override_constants/shadow_offset_y = 7
+theme_override_fonts/font = ExtResource("2_qe3sy")
+theme_override_font_sizes/font_size = 200
+text = "Desert Survival"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuText2" type="Label" parent="." unique_id=888657166]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -695.0
+offset_top = 1294.0
+offset_right = 614.0
+offset_bottom = 1486.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+theme_override_colors/font_color = Color(0.55, 0.275, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("2_qe3sy")
+theme_override_font_sizes/font_size = 20
+text = "Emil Wallmark"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1177603418]
+position = Vector2(801.0001, 464)
+scale = Vector2(7, 7)
+texture = ExtResource("5_n2an3")
+hframes = 3
+vframes = 4
+frame = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=34456788]
+position = Vector2(1069, 412.00003)
+scale = Vector2(5, 5)
+texture = ExtResource("6_eilog")
+hframes = 4
+vframes = 4
+frame = 8
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1051669305]
+position = Vector2(1350, 437)
+scale = Vector2(5, 5)
+texture = ExtResource("7_lbr7h")
+hframes = 7
+vframes = 4
+
+[node name="Walk" type="Sprite2D" parent="." unique_id=667575608]
+position = Vector2(893, 675)
+scale = Vector2(5, 5)
+texture = ExtResource("8_rf4pb")
+vframes = 5
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=2136815494]
+position = Vector2(1236, 648)
+scale = Vector2(5, 5)
+texture = ExtResource("9_lfgdo")
+hframes = 5
+vframes = 2
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=108228826]
+position = Vector2(1335.0001, 1050.9999)
+scale = Vector2(7, 7)
+texture = ExtResource("10_spikj")
+
+[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=1433825929]
+position = Vector2(1091, 1039)
+scale = Vector2(8, 8)
+texture = ExtResource("11_fgvg0")
+
+[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=392105409]
+position = Vector2(785.00006, 1051)
+scale = Vector2(7, 7)
+texture = SubResource("AtlasTexture_st06w")
+
+[node name="Sprite2D8" type="Sprite2D" parent="." unique_id=579746541]
+z_index = 1
+position = Vector2(2022.1875, 548)
+scale = Vector2(0.28432468, 0.27542374)
+texture = SubResource("CompressedTexture2D_eilog")
+
+[node name="Sprite2D9" type="Sprite2D" parent="." unique_id=883247857]
+z_index = 1
+position = Vector2(2026, 1122.5)
+scale = Vector2(0.2815476, 0.2631857)
+texture = SubResource("AtlasTexture_rf4pb")
+
+[node name="Label" type="Label" parent="." unique_id=1857781765]
+z_index = 5
+offset_left = 327.0
+offset_top = 474.0
+offset_right = 375.0
+offset_bottom = 525.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("3_xexrc")
+theme_override_font_sizes/font_size = 50
+text = "15"

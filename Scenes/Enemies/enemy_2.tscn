@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://y2yf0ql0rjda"]
+[gd_scene format=3 uid="uid://y2yf0ql0rjda"]
 
 [ext_resource type="Script" uid="uid://bpdppgwh5mjce" path="res://Scripts/Enemies/enemy_2.gd" id="1_g6ed3"]
-[ext_resource type="Texture2D" uid="uid://ck6k52bjmt7iw" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Enemies/Tilemap/tilemap_packed.png" id="2_k6nad"]
+[ext_resource type="Texture2D" uid="uid://ck6k52bjmt7iw" path="res://Assets/Enemies/Enemies/Tilemap/tilemap_packed.png" id="2_k6nad"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_287tu"]
-size = Vector2(80, 75)
+size = Vector2(108, 104.5)
 
 [sub_resource type="Animation" id="Animation_afpow"]
 resource_name = "Enemy_Walk"
@@ -50,12 +50,12 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu7du"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=98129851 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_g6ed3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1979613676]
 position = Vector2(0, -22)
 scale = Vector2(5, 5)
 texture = ExtResource("2_k6nad")
@@ -63,16 +63,14 @@ hframes = 4
 vframes = 4
 frame = 8
 
-[node name="EnemyCollisionBody" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+[node name="EnemyCollisionBody" type="CollisionShape2D" parent="." unique_id=1374087589]
+position = Vector2(0, -16.25)
 shape = SubResource("RectangleShape2D_287tu")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_0830c")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=112521970]
+libraries/ = SubResource("AnimationLibrary_0830c")
 
-[node name="HpBar" type="ProgressBar" parent="."]
+[node name="HpBar" type="ProgressBar" parent="." unique_id=2015476023]
 offset_left = -75.0
 offset_top = 65.0
 offset_right = 76.0

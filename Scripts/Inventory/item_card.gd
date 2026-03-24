@@ -105,6 +105,7 @@ func _on_button_pressed() -> void:
 	var  x= 0
 	
 	if Globals.money >= roundi(item.cost * cost_multi):
+		AudioController.play_buy_sound()
 		if item.type != "health":
 			while not done:
 				if x == 6:
@@ -123,3 +124,5 @@ func _on_button_pressed() -> void:
 			Globals.player_lives = Globals.player_max_lives
 			Globals.money -= roundi(item.cost * cost_multi)
 			queue_free()
+	else:
+		AudioController.play_error_sound()

@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bljbj2mf0omn6"]
+[gd_scene format=3 uid="uid://bljbj2mf0omn6"]
 
 [ext_resource type="Script" uid="uid://b3cjlsmxn622v" path="res://Scripts/Enemies/shoot_enemy_2.gd" id="1_5qj60"]
-[ext_resource type="Texture2D" uid="uid://ef2pbsaer2ic" path="res://Assets/Flying enemies/Bat.png" id="1_u5ylx"]
+[ext_resource type="Texture2D" uid="uid://ef2pbsaer2ic" path="res://Assets/Enemies/Flying enemies/Bat.png" id="1_u5ylx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gy7qa"]
 size = Vector2(199, 153)
@@ -74,26 +74,26 @@ _data = {
 &"RESET": SubResource("Animation_8pqvh")
 }
 
-[node name="Shoot_Enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="Shoot_Enemy" type="CharacterBody2D" unique_id=1544008360 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_5qj60")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=505820532]
 scale = Vector2(5, 5)
 texture = ExtResource("1_u5ylx")
 hframes = 5
 vframes = 4
 frame = 12
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2125434927]
 position = Vector2(1.5, -13.5)
 shape = SubResource("RectangleShape2D_gy7qa")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1673381452]
 autostart = true
 
-[node name="HpBar" type="ProgressBar" parent="."]
+[node name="HpBar" type="ProgressBar" parent="." unique_id=1669491203]
 offset_left = -75.0
 offset_top = 65.0
 offset_right = 76.0
@@ -104,9 +104,7 @@ value = 50.0
 fill_mode = 1
 show_percentage = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_4d1ef")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=813083303]
+libraries/ = SubResource("AnimationLibrary_4d1ef")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -3,10 +3,8 @@ extends Node
 signal wave_complete
 
 @onready var player = get_tree().get_first_node_in_group("Player")
-@onready var temp_vic_screen = $"../DeathMenuCanvas/TempVictoryMenu"
-
 @export var waves: Array[WaveData]
-@export var endless_start_wave := 200
+@export var endless_start_wave := 26
 
 @export var enemy_scenes := {
  "enemy_1" : preload("res://Scenes/Enemies/enemy.tscn"),
@@ -22,12 +20,23 @@ signal wave_complete
  "sniper_enemy_1" : preload("res://Scenes/Enemies/sniper_enemy.tscn"),
  "kamikaze_enemy_1" : preload("res://Scenes/Enemies/kamikaze_enemy.tscn"),
  "summoner" : preload("res://Scenes/Enemies/summoner.tscn"),
-"fire_spirit" : preload("res://Scenes/Enemies/fire_spirit.tscn"),
-"splitter" : preload("res://Scenes/Enemies/splitter.tscn"),
-"splitter_baby" : preload("res://Scenes/Enemies/splitter_baby.tscn"),
-"Boss" : preload("res://Scenes/Boss/BOSS.tscn")
+ "fire_spirit" : preload("res://Scenes/Enemies/fire_spirit.tscn"),
+ "splitter" : preload("res://Scenes/Enemies/splitter.tscn"),
+ "splitter_baby" : preload("res://Scenes/Enemies/splitter_baby.tscn"),
+ "Boss" : preload("res://Scenes/Boss/BOSS.tscn")
 }
 
+var enemy_cost := {
+ "enemy_4" : 1,
+ "enemy_5" : 3,
+ "enemy_6" : 10,
+ "shoot_enemy_3" : 5,
+ "shoot_enemy_4" : 15, 
+ "sniper_enemy_1" : 20,
+ "kamikaze_enemy_1" : 8,
+ "summoner" : 25,
+ "splitter" : 13,
+}
 
 var current_wave := 0
 var alive_enemies := 0
@@ -37,12 +46,10 @@ var splitter_pos : Vector2 #för att ha positionen där splitter_baby ska spawna
 
 
 func start_game():
-	current_wave = 21
+	current_wave = 0
 	start_wave()
 	
 func start_wave():
-	if current_wave ==endless_start_wave:
-		generate_endless_wave()
 	spawning = true
 	var wave_data = get_wave_data(current_wave)
 	await spawn_wave(wave_data)
@@ -52,8 +59,7 @@ func get_wave_data(wave_index: int) -> WaveData:
 	if wave_index < waves.size():
 		return waves[wave_index]
 	else:
-		return
-		#return generate_endless_wave(wave_index)
+		return generate_endless_wave(wave_index)
 		
 func spawn_wave(wave: WaveData) -> void:
 	for enemy_type in wave.enemies.keys():
@@ -162,6 +168,30 @@ func end_wave():
 	current_wave += 1
 	emit_signal("wave_complete")
 	
-func generate_endless_wave():
-	temp_vic_screen.show()
-	Engine.time_scale = 0
+func generate_endless_wave(wave: int):
+	var budget := get_wave_budget(wave)
+	var enemy_dict := {}
+
+	while budget > 0:
+		var possible_enemies := []
+		for enemy in enemy_cost.keys():
+			if enemy_cost[enemy] <= budget:
+				possible_enemies.append(enemy)
+		if possible_enemies.is_empty():
+			break
+		var chosen = possible_enemies.pick_random()
+		enemy_dict[chosen] = enemy_dict.get(chosen, 0) + 1
+		budget -= enemy_cost[chosen]
+
+	var wave_data := WaveData.new()
+	wave_data.enemies = enemy_dict
+	wave_data.spawn_delay = get_spawn_delay(wave)
+	return wave_data
+
+func get_spawn_delay(wave: int) -> float:
+	var difficulty := wave - 25
+	return max(0.05, 0.25 - difficulty * 0.002)
+
+func get_wave_budget(wave_index: int) -> int:
+	var difficulty = wave_index - 25
+	return 80 + difficulty * 12

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxv2etrn6n31k"
+path="res://.godot/imported/Sand footstep 02.mp3-f488441a424c83bcece90279bd84a724.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Sand footstep 02.mp3"
+dest_files=["res://.godot/imported/Sand footstep 02.mp3-f488441a424c83bcece90279bd84a724.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

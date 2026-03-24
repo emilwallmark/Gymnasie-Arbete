@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="WaveData" format=3 uid="uid://c5fiffykugypu"]
+
+[ext_resource type="Script" uid="uid://q3jlek8kcuh" path="res://Scripts/Waves/WaveData.gd" id="1_xrewn"]
+
+[resource]
+script = ExtResource("1_xrewn")
+enemies = {
+"Boss": 0,
+"enemy_1": 1,
+"enemy_2": 1,
+"enemy_3": 1,
+"enemy_4": 1,
+"enemy_5": 1,
+"enemy_6": 1,
+"kamikaze_enemy_1": 1,
+"shoot_enemy_1": 1,
+"shoot_enemy_2": 1,
+"shoot_enemy_3": 1,
+"shoot_enemy_4": 1,
+"sniper_enemy_1": 1,
+"splitter": 1,
+"summoner": 1
+}
+metadata/_custom_type_script = "uid://q3jlek8kcuh"

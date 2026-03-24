@@ -1,13 +1,9 @@
 
 VAD SKA GÖRAS?
 
-lägg till mer waves
-
-gör spelet endless
-
 lägg till ljud
 
-komentera all kod
+komentera all kod + sortera all kod
 
 fixa economin/balansera
 

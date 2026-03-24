@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8qkh07nj6iq4"
+path="res://.godot/imported/Lynn Music Boulangerie - Gaming Background Music (HD).mp3-f892f9a43f5ba42fc45c0d69a74ff8a4.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Lynn Music Boulangerie - Gaming Background Music (HD).mp3"
+dest_files=["res://.godot/imported/Lynn Music Boulangerie - Gaming Background Music (HD).mp3-f892f9a43f5ba42fc45c0d69a74ff8a4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
