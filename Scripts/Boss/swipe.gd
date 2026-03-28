@@ -7,10 +7,19 @@ var damage: int = 2
 func _ready() -> void:
 	await get_tree().create_timer(10).timeout
 	queue_free()
+"""
+Syfte: Ta bort den efter en period
+"""
 
 func _process(delta: float) -> void:
 	move_and_slide()
+"""
+Syfte: Då den att faktist kunna röra sig
+"""
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player.take_damage(damage)
+"""
+Syfte: Skada spelaren om den blir träffad av den
+"""

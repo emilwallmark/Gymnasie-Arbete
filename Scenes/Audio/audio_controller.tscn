@@ -8,6 +8,21 @@
 [ext_resource type="AudioStream" uid="uid://bpe0vqk5cqpxq" path="res://Sounds/money-purchase-sound-effect_NSUfiElY.mp3" id="4_pxycn"]
 [ext_resource type="AudioStream" uid="uid://pao38rw4g827" path="res://Sounds/error-sound-effect_ZTJEaha9.mp3" id="5_jqavn"]
 [ext_resource type="AudioStream" uid="uid://bdt0vjf71vj2x" path="res://Sounds/freesound_community-medium-explosion-40472.mp3" id="8_7ykik"]
+[ext_resource type="AudioStream" uid="uid://dogjvyqsdnd4" path="res://Sounds/dragon-studio-sword-slice-393847.mp3" id="9_wntvj"]
+[ext_resource type="AudioStream" uid="uid://h003ypo7lpn5" path="res://Sounds/universfield-gunshot-352466.mp3" id="10_b2fyg"]
+[ext_resource type="AudioStream" uid="uid://c48tmfo6j3tta" path="res://Sounds/freesound_community-single-gunshot-62-hp-37188.mp3" id="11_8ju30"]
+[ext_resource type="AudioStream" uid="uid://rltve20iqvfq" path="res://Sounds/freesound_community-blaster-2-81267.mp3" id="12_u37v7"]
+[ext_resource type="AudioStream" uid="uid://cvfaqc6ml24oy" path="res://Sounds/freesound_community-sniper-rifle-5989.mp3" id="13_sdkl6"]
+[ext_resource type="AudioStream" uid="uid://3ujnhvub0gvb" path="res://Sounds/49053354-rocket-launcher-307512.mp3" id="14_b831w"]
+[ext_resource type="AudioStream" uid="uid://cevus21dixixt" path="res://Sounds/audiopapkin-monster-footsteps-on-gravel-295850_n97XtA9w.mp3" id="15_rq57a"]
+[ext_resource type="AudioStream" uid="uid://bnt75dqcogfvc" path="res://Sounds/universfield-ground-impact-352053.mp3" id="16_ehxv0"]
+[ext_resource type="AudioStream" uid="uid://hn31iut242ad" path="res://Sounds/universfield-swoosh-015-383769.mp3" id="17_ul1c7"]
+[ext_resource type="AudioStream" uid="uid://dexa3rbi50yw6" path="res://Sounds/dragon-studio-monster-screech-368677.mp3" id="18_vfdt8"]
+[ext_resource type="AudioStream" uid="uid://dhbgfopkoc4u2" path="res://Sounds/freesound_community-dying-monster-101276.mp3" id="19_oov3t"]
+[ext_resource type="AudioStream" uid="uid://c1ijavmj87iow" path="res://Sounds/homemade_sfx-slap-hurt-pain-sound-effect-262618.mp3" id="20_dfnq2"]
+[ext_resource type="AudioStream" uid="uid://vxqmw7ujy76k" path="res://Sounds/freesound_community-080047_lose_funny_retro_video-game-80925.mp3" id="21_vjlrs"]
+[ext_resource type="AudioStream" uid="uid://dwvk4m1qtkaes" path="res://Sounds/freesound_community-big-plants-crops-growing-quickly-43721.mp3" id="22_fmow3"]
+[ext_resource type="AudioStream" uid="uid://bsfy42n5wlj8o" path="res://Sounds/freesound_community-stand-summon-effect-40997.mp3" id="23_pqdjo"]
 
 [node name="AudioController" type="Node" unique_id=1961484998]
 script = ExtResource("1_xdjnf")
@@ -24,7 +39,7 @@ parameters/looping = true
 
 [node name="WalkSound" type="AudioStreamPlayer" parent="." unique_id=1639185595]
 stream = ExtResource("2_vdh1o")
-volume_db = -15.0
+volume_db = -5.0
 
 [node name="WalkTimer" type="Timer" parent="WalkSound" unique_id=1271194865]
 wait_time = 0.057
@@ -32,7 +47,7 @@ one_shot = true
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="." unique_id=1599669984]
 stream = ExtResource("3_vdh1o")
-pitch_scale = 1.39
+pitch_scale = 1.4
 
 [node name="BuySound" type="AudioStreamPlayer" parent="." unique_id=1482416899]
 stream = ExtResource("4_pxycn")
@@ -43,3 +58,75 @@ volume_db = -27.0
 
 [node name="ExpolitionSound" type="AudioStreamPlayer" parent="." unique_id=381004592]
 stream = ExtResource("8_7ykik")
+
+[node name="SwordSound" type="AudioStreamPlayer" parent="." unique_id=721442797]
+stream = ExtResource("9_wntvj")
+volume_db = -15.0
+
+[node name="GunSound" type="AudioStreamPlayer" parent="." unique_id=38722169]
+stream = ExtResource("10_b2fyg")
+volume_db = -15.0
+
+[node name="HeavyGunSound" type="AudioStreamPlayer" parent="." unique_id=732040411]
+stream = ExtResource("11_8ju30")
+volume_db = -15.0
+
+[node name="BlasterSound" type="AudioStreamPlayer" parent="." unique_id=322940335]
+stream = ExtResource("12_u37v7")
+volume_db = -20.0
+
+[node name="SniperSound" type="AudioStreamPlayer" parent="." unique_id=1707945354]
+stream = ExtResource("13_sdkl6")
+volume_db = -15.0
+
+[node name="RocketLauncherSound" type="AudioStreamPlayer" parent="." unique_id=1349331268]
+stream = ExtResource("14_b831w")
+
+[node name="BossWalkSound" type="AudioStreamPlayer" parent="." unique_id=163930824]
+stream = ExtResource("15_rq57a")
+
+[node name="WalkTimer" type="Timer" parent="BossWalkSound" unique_id=499944225]
+wait_time = 0.057
+one_shot = true
+
+[node name="BossAttack1nJumpSound" type="AudioStreamPlayer" parent="." unique_id=749580927]
+stream = ExtResource("16_ehxv0")
+
+[node name="SwoshSound" type="AudioStreamPlayer" parent="." unique_id=1113236502]
+stream = ExtResource("17_ul1c7")
+
+[node name="ScreechSound" type="AudioStreamPlayer" parent="." unique_id=1172540709]
+stream = ExtResource("18_vfdt8")
+
+[node name="BossDieSound" type="AudioStreamPlayer" parent="." unique_id=236193342]
+stream = ExtResource("19_oov3t")
+
+[node name="PlayerHurtSound" type="AudioStreamPlayer" parent="." unique_id=412661860]
+stream = ExtResource("20_dfnq2")
+
+[node name="LoseSound" type="AudioStreamPlayer" parent="." unique_id=521394945]
+process_mode = 3
+process_priority = 15
+process_physics_priority = 15
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
+stream = ExtResource("21_vjlrs")
+
+[node name="SplitterDieSound" type="AudioStreamPlayer" parent="." unique_id=1145175136]
+process_mode = 3
+process_priority = 15
+process_physics_priority = 15
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
+stream = ExtResource("22_fmow3")
+
+[node name="SummonSound" type="AudioStreamPlayer" parent="." unique_id=408681429]
+process_mode = 3
+process_priority = 15
+process_physics_priority = 15
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
+stream = ExtResource("23_pqdjo")

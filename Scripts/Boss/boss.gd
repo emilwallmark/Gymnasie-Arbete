@@ -28,6 +28,9 @@ var dead = false
 func _ready() -> void:
 	anim.play("Walk")
 	lives = max_lives
+"""
+Syfte: Ge bossen rätt liv och starta animationen
+"""
 
 func _process(_delta: float) -> void:
 	health_bar.value = lives/max_lives * 100
@@ -41,7 +44,11 @@ func _process(_delta: float) -> void:
 	elif velocity.x > 0:
 		walk_texture.flip_h = false
 		smoke_texture.position.x = -6.333
-
+	if velocity != Vector2(0,0):
+		AudioController.play_boss_walking_sound()
+"""
+Syfte: Kolla om den är död och få texturen att vara åt rätt håll
+"""
 
 func _physics_process(delta: float) -> void:
 	if player:
@@ -50,7 +57,9 @@ func _physics_process(delta: float) -> void:
 		if velocity > direction_to_player*MAX_SPEED:
 			velocity = direction_to_player*MAX_SPEED
 		move_and_slide()
-		
+"""
+Syfte: Få den att gå mot spelaren konstant
+"""
 
 func attack_1():
 	if velocity.x < 0:
@@ -59,11 +68,13 @@ func attack_1():
 	elif velocity.x > 0:
 		attack_1_texture.flip_h = false
 		smoke_texture.position.x = -6.333
+	velocity = Vector2(0,0)
 	var rock = ROCK_SCENE.instantiate()
 	walk_texture.hide()
 	attack_1_texture.show()
 	anim.play("Attack_1")
 	await  anim.animation_finished
+	AudioController.play_boss_attack_1_sound()
 	rock.global_position = player.global_position - Vector2(0, 1400)
 	rock.detenation_pos = player.global_position
 	get_parent().add_child(rock)
@@ -71,7 +82,9 @@ func attack_1():
 	walk_texture.show()
 	anim.play("Walk")
 	set_physics_process(true)
-	
+"""
+Syfte: Utföra attack 1
+"""
 
 func attack_2():
 	var swipe = SWIPE_SCENE.instantiate()
@@ -80,7 +93,7 @@ func attack_2():
 		smoke_texture.position.x = 6.333
 		swipe.velocity.x = -1000
 		swipe.scale.x = -5
-	elif velocity.x > 0:
+	elif velocity.x >= 0:
 		attack_2_texture.flip_h = false
 		smoke_texture.position.x = -6.333
 		swipe.velocity.x = 1000
@@ -88,15 +101,19 @@ func attack_2():
 	walk_texture.hide()
 	attack_2_texture.show()
 	anim.play("Attack_2")
+	AudioController.play_swosh_sound()
+	velocity = Vector2(0,0)
 	await get_tree().create_timer(0.5).timeout
-	swipe.global_position = global_position
+	swipe.global_position = global_position 
 	get_parent().add_child(swipe)
 	await  anim.animation_finished
 	attack_2_texture.hide()
 	walk_texture.show()
 	anim.play("Walk")
 	set_physics_process(true)
-
+"""
+Syfte: Utföra attack 2
+"""
 func attack_3():
 	if velocity.x < 0:
 		attack_3_texture.flip_h = true
@@ -104,9 +121,11 @@ func attack_3():
 	elif velocity.x > 0:
 		attack_3_texture.flip_h = false
 		smoke_texture.position.x = -6.333
+	velocity = Vector2(0,0)
 	walk_texture.hide()
 	attack_3_texture.show()
 	anim.play("Attack_3")
+	AudioController.play_screech_sound()
 	await anim.animation_finished
 	for n in range(2):	
 		get_parent().spawn_enemy("splitter")
@@ -115,7 +134,9 @@ func attack_3():
 	walk_texture.show()
 	anim.play("Walk")
 	set_physics_process(true)
-	
+"""
+Syfte: Utföra attack 3
+"""
 		
 		
 
@@ -127,10 +148,12 @@ func jump_attack():
 	elif velocity.x > 0:
 		jump_attack_texture.flip_h = false
 		smoke_texture.position.x = -6.333
+	velocity = Vector2(0,0)
 	walk_texture.hide()
 	jump_attack_texture.show()
 	anim.play("Jump_attack")
 	await anim.animation_finished
+	AudioController.play_boss_attack_1_sound()
 	var player_pos = player.global_position
 	for i in range(7):
 		var rock = SMALL_ROCK_SCENE.instantiate()
@@ -141,7 +164,9 @@ func jump_attack():
 	jump_attack_texture.hide()
 	anim.play("Walk")
 	set_physics_process(true)
-
+"""
+Syfte: Utföra jump attack
+"""
 
 func on_take_dmg():
 	var original_color = self_modulate
@@ -149,12 +174,18 @@ func on_take_dmg():
 	await get_tree().create_timer(0.2).timeout
 	if lives > 0:
 		modulate = original_color
+"""
+Syfte: Få den att blinka rött då den tar skada
+"""
 
 func die():
 	died.emit()
 	Globals.money += 1
+	AudioController.play_boss_die_sound()
 	queue_free()
-
+"""
+Syfte: Döda den då denns liv är slut
+"""
 
 func _on_timer_timeout() -> void:
 	set_physics_process(false)
@@ -167,3 +198,6 @@ func _on_timer_timeout() -> void:
 		attack_3()
 	elif x == 3:
 		jump_attack()
+"""
+Syfte: Köra en random attack varje gång timer blir noll
+"""

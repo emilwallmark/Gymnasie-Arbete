@@ -11,34 +11,45 @@ var direction = "Down"
 @onready var hp_bar: ProgressBar = $HpBar
 @onready var lives_lable:Label = $HpBar/Label
 
-
 @export var inventory: Inv
-
 
 func _ready() -> void:
 	var fill_style := hp_bar.get_theme_stylebox("fill")
 	fill_style.bg_color = Color.GREEN
+"""
+Syfte: Återställer färgen på hp_bar så att den är grön i början
+	   Utan är den röd om man skulle dö och sedan börja om
+"""
 
 func movement(_delta: float) -> void:
 	velocity = Input.get_vector("Left", "Right", "Up", "Down") * SPEED
 	move_and_slide()
-
-func _attack()->void:
-	emit_signal("attack")
+"""
+Syfte: Läser av då det är en input och sätter velocity
+"""
 
 func _physics_process(delta: float) -> void:
 	movement(delta)
+"""
+Syfte: Kör movement varje frame
+"""
 
 func _process(_delta: float) -> void:
 	hp_bar.value = Globals.player_lives/float(Globals.player_max_lives) * 100
 	lives_lable.text = str(Globals.player_lives) + "/" + str(Globals.player_max_lives)
 	if Input.is_action_just_pressed("Action") and Engine.time_scale != 0:
-		_attack()
+		emit_signal("attack")
 		
 	if velocity != Vector2(0,0):
 		AudioController.play_walking_sound()
-		
+			
 	animation()
+"""
+Syfte: Updaterar allt som behöver updateras varje frame
+Komentar: Updaterar hp_bar så den har rätt värde på allt,
+		  skickar även en signal till level då man attackerar, kör animation()
+		  och spelar upp gåjlud om man rör sig
+"""	
 
 func animation():
 	if velocity[0] == 0 and velocity[1] == 0 and direction == "Down":
@@ -61,8 +72,12 @@ func animation():
 	else:
 		anim.play("Walk_Down")
 		direction = "Down"
-		
+"""
+Syfte: Spelar upp rätt animation beronde på vad spelaren gör
+"""
+
 func take_damage(damage: int):
+	AudioController.play_player_hurt_sound()
 	Globals.player_lives -= damage
 	var original_color = self_modulate
 	$Sprite2D.modulate = Color.RED
@@ -76,16 +91,31 @@ func take_damage(damage: int):
 		if fill_style is StyleBoxFlat:
 			fill_style.bg_color = Color.GREEN
 		hp_bar.add_theme_stylebox_override("fill", fill_style)
-		
+"""
+Syfte: Gör allt som ska göras om spelaren tar skada
+Parameter: damage: hur mycket skada som spelaren ska ta
+"""
+
 func _on_timer_timeout() -> void:
 	check_damage()
+"""
+Syfte: Körs då timer har tagit slut
+"""
 
 func check_damage():
 	for body in $DamegeArea.get_overlapping_bodies():
 		if body.is_in_group("enemies"):
 			take_damage(body.damage)
+"""
+Syfte: Kollar om spelaren ska ta skada
+"""
 
 func _on_damege_area_body_entered(Node2D) -> void:
 	check_damage()
 	$Timer.stop()
 	$Timer.start()
+"""
+Syfte: Kollar om något har gått in i spelaren och kör check_damage()
+	   Startar även en timer så att spelaren ska forstätta ta skada om den 
+	   står kvar i fienden över tid
+"""

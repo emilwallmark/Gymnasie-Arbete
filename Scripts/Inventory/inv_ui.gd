@@ -8,11 +8,15 @@ extends Control
 func update_slots():
 	for i in  range(min(inv.items.size(), slots.size())):
 		slots[i].update(inv.items[i])
-		
+"""
+Syfte: Updatera inventory så att den visar korrekt
+"""
 		
 func _ready() -> void:
 	update_slots()
-
+"""
+Syfte: Updatera slotsen då den laddar in för första gången
+"""
 func _on_button_1_pressed() -> void:
 	var n: int = 0
 	for i in player.inventory.items:
@@ -26,6 +30,10 @@ func _on_button_1_pressed() -> void:
 			AudioController.play_error_sound()
 			$InvButtonHolder/Button1.get_child(0).anim.play("error")
 			$InvButtonHolder/Button1.get_child(0).start_sway()
+"""
+Syfte: Ta bort vapnet om man trycker på den och om man bara har ett vapen kvar så ska den köra en liten animation
+"""
+
 func _on_button_2_pressed() -> void:
 	var n: int = 0
 	for i in player.inventory.items:
@@ -39,6 +47,9 @@ func _on_button_2_pressed() -> void:
 			AudioController.play_error_sound()
 			$InvButtonHolder/Button2.get_child(0).anim.play("error")
 			$InvButtonHolder/Button2.get_child(0).start_sway()
+"""
+Syfte: Ta bort vapnet om man trycker på den och om man bara har ett vapen kvar så ska den köra en liten animation
+"""
 
 func _on_button_3_pressed() -> void:
 	var n: int = 0
@@ -53,6 +64,9 @@ func _on_button_3_pressed() -> void:
 			AudioController.play_error_sound()
 			$InvButtonHolder/Button3.get_child(0).anim.play("error")
 			$InvButtonHolder/Button3.get_child(0).start_sway()
+"""
+Syfte: Ta bort vapnet om man trycker på den och om man bara har ett vapen kvar så ska den köra en liten animation
+"""
 
 func _on_button_4_pressed() -> void:
 	var n: int = 0
@@ -67,6 +81,9 @@ func _on_button_4_pressed() -> void:
 			AudioController.play_error_sound()
 			$InvButtonHolder/Button4.get_child(0).anim.play("error")
 			$InvButtonHolder/Button4.get_child(0).start_sway()
+"""
+Syfte: Ta bort vapnet om man trycker på den och om man bara har ett vapen kvar så ska den köra en liten animation
+"""
 
 func _on_button_5_pressed() -> void:
 	var n: int = 0
@@ -81,6 +98,9 @@ func _on_button_5_pressed() -> void:
 			AudioController.play_error_sound()
 			$InvButtonHolder/Button5.get_child(0).anim.play("error")
 			$InvButtonHolder/Button5.get_child(0).start_sway()
+"""
+Syfte: Ta bort vapnet om man trycker på den och om man bara har ett vapen kvar så ska den köra en liten animation
+"""
 
 func _on_button_6_pressed() -> void:
 	var n: int = 0
@@ -95,4 +115,7 @@ func _on_button_6_pressed() -> void:
 			AudioController.play_error_sound()
 			$InvButtonHolder/Button6.get_child(0).anim.play("error")
 			$InvButtonHolder/Button6.get_child(0).start_sway()
+"""
+Syfte: Ta bort vapnet om man trycker på den och om man bara har ett vapen kvar så ska den köra en liten animation
+"""
 	

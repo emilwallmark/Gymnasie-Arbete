@@ -41,32 +41,63 @@ var enemy_cost := {
 var current_wave := 0
 var alive_enemies := 0
 var spawning := false
+var cheating = false
+var temp_wave: int
 
 var splitter_pos : Vector2 #för att ha positionen där splitter_baby ska spawna
 
+func _ready() -> void:
+	Cheats.cheatmode.connect(on_cheats)
+"""
+Syfte: Ta emot cheatmode signalen
+"""
+
+func on_cheats(wave):
+	cheating = true
+	temp_wave = wave
+"""
+Syfte: Sätta på cheatmode 
+"""
 
 func start_game():
-	current_wave = 0
+	await get_tree().create_timer(0.4).timeout
+	if cheating:
+		current_wave = temp_wave
+	else:
+		current_wave = 0
 	start_wave()
-	
+"""
+Syfte: Sätta på spelet på rätt wave
+"""
+
 func start_wave():
 	spawning = true
 	var wave_data = get_wave_data(current_wave)
 	await spawn_wave(wave_data)
 	spawning = false
+"""
+Syfte: Köra waven som ska köras, först hämtar vilka fiender som ska spawna och sedan spawna in de fiender
+"""
 	
 func get_wave_data(wave_index: int) -> WaveData:
 	if wave_index < waves.size():
 		return waves[wave_index]
 	else:
 		return generate_endless_wave(wave_index)
-		
+"""
+Syfte: ger antingen wave data för den wave man valt eller kör en funktion som skapar wave data 
+       så att fiender ska skapas
+"""
+	
 func spawn_wave(wave: WaveData) -> void:
 	for enemy_type in wave.enemies.keys():
 		for i in wave.enemies[enemy_type]:
 			spawn_enemy(enemy_type)
 			await get_tree().create_timer(wave.spawn_delay).timeout
-			
+"""
+Syfte: ta alla värden i wave datan och köra spawn_ennemy() på varje data punkt
+"""
+
 func get_spawn_position() -> Vector2:
 	var world_bounds := Rect2(Vector2(-2000, -2300), Vector2(4100, 4800))
 	var camera := player.get_child(0)
@@ -76,23 +107,24 @@ func get_spawn_position() -> Vector2:
 	var min_radius = max(viewport_rect.size.x, viewport_rect.size.y) * 0.6
 	var max_radius = min_radius + 400
 
-	for i in range(20): # capped retries
+	for i in range(20): 
 		var angle := randf() * TAU
 		var radius := randf_range(min_radius, max_radius)
 		var dir := Vector2(cos(angle), sin(angle))
 
 		var pos = cam_center + dir * radius
 
-		# Rule 1: inside world bounds
 		if not world_bounds.has_point(pos):
 			continue
-
-		# Rule 2: off-screen
 		if !viewport_rect.has_point(pos):
 			continue
 
 		return pos
 	return get_farthest_world_corner(cam_center)
+"""
+Syfte: Få spawn positioner som är på kartan men inte i kameran så man inte kan se då fienderna spawar in
+	   och om den inte hittar något letar den efter hörnet längst bort från spelaren
+"""
 func get_farthest_world_corner(from_pos: Vector2) -> Vector2:
 	var world_bounds := Rect2(Vector2(-2000, -2300), Vector2(4100, 4800))
 	var corners := [
@@ -110,12 +142,18 @@ func get_farthest_world_corner(from_pos: Vector2) -> Vector2:
 			best_dist = d
 			best = c
 	return best
-
+"""
+Syfte: Om fieden inte hittar någonstans att spawna på så hittar den det bästa hörnet att spawna på
+"""
 func random_outside_center() -> int:
 	if randi() % 2 == 0:
 		return randi_range(-300, -150)
 	else:
 		return randi_range(150, 300)
+"""
+Syfte: Då summoner spawnar in sina "barn" så är dethär poitionen från spelaren de ska spawna in på
+       och då splitter dör spawnar de på den positionen från där den dog
+"""
 
 func spawn_enemy(enemy_type: String) -> void:
 	if enemy_type != "fire_spirit" and enemy_type != "splitter_baby":
@@ -157,16 +195,25 @@ func spawn_enemy(enemy_type: String) -> void:
 			add_child(enemy)
 			alive_enemies += 1
 			enemy.died.connect(_on_enemy_died)
+"""
+Syfte: Spawna in alla fiender på kartan
+"""
 	
 func _on_enemy_died():
 	alive_enemies -= 1
 
 	if alive_enemies <= 0 and !spawning:
 		await end_wave()
+"""
+Syfte: Sänka mängden levande fiender och kolla om alla är döda
+"""
 
 func end_wave():
 	current_wave += 1
 	emit_signal("wave_complete")
+"""
+Syfte: Avsluta waves, skickar signal till level som säger att waven är avklarad
+"""
 	
 func generate_endless_wave(wave: int):
 	var budget := get_wave_budget(wave)
@@ -187,11 +234,20 @@ func generate_endless_wave(wave: int):
 	wave_data.enemies = enemy_dict
 	wave_data.spawn_delay = get_spawn_delay(wave)
 	return wave_data
+"""
+Syfte: Generera oändligt med waves efter att man klarat alla vanliga waves
+"""
 
 func get_spawn_delay(wave: int) -> float:
 	var difficulty := wave - 25
 	return max(0.05, 0.25 - difficulty * 0.002)
+"""
+Syfte: Gör att fiederna spawnar in snabbare och snabbare efter wave 25
+"""
 
 func get_wave_budget(wave_index: int) -> int:
 	var difficulty = wave_index - 25
-	return 80 + difficulty * 12
+	return 200 + difficulty * 20
+"""
+Syfte: Gör att waves blir svårare och svårare ju mer man klarar efter wave 25
+"""

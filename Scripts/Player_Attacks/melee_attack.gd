@@ -11,16 +11,26 @@ func _ready() -> void:
 		$Sprite2D.scale = Vector2(range*2, range*2)
 	else:
 		$Sprite2D.scale = Vector2(7, 7)
+"""
+Göra animationen och göra spriten nog stor
+"""
 
 func _process(float) -> void:
 	var angle = rotation
 	position = player.position + Vector2.RIGHT.rotated(angle)*50
-
+"""
+Syfte: röra vapnet då spelaren rör sig
+"""
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		body.lives -= damage
 		body.on_take_dmg()
-
+"""
+Syfte: Skada fiender om de är i hitboxen
+"""
 
 func _on_timer_timeout() -> void:
 	queue_free()
+"""
+Syfte: Ta bort vapnet
+"""

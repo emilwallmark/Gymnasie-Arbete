@@ -37,7 +37,10 @@ func card_1():
 		$Label4.text = str(item.range)
 	$Label2.text = str(item.rarity)
 	$Label3.text = str(roundi(item.cost * cost_multi))
-	
+"""
+Syfte: Välja ett vapen för kortet och visa rätt informationen för det vapen på kortet
+"""	
+
 func card_2():
 	cost_multi = 1.25
 	
@@ -70,7 +73,10 @@ func card_2():
 		$Label4.text = str(item.range)
 	$Label2.text = str(item.rarity)
 	$Label3.text = str(roundi(item.cost * cost_multi))
-	
+"""
+Syfte: Välja ett vapen för kortet och visa rätt informationen för det vapen på kortet
+"""	
+
 func card_3():
 	cost_multi = 2
 	
@@ -99,18 +105,22 @@ func card_3():
 		$Label4.text = str(item.range)
 	$Label2.text = str(item.rarity)
 	$Label3.text = str(roundi(item.cost * cost_multi))
+"""
+Syfte: Välja ett vapen för kortet och visa rätt informationen för det vapen på kortet
+"""	
 
 func _on_button_pressed() -> void:
 	var done = false
 	var  x= 0
 	
 	if Globals.money >= roundi(item.cost * cost_multi):
-		AudioController.play_buy_sound()
 		if item.type != "health":
 			while not done:
 				if x == 6:
+					AudioController.play_error_sound()
 					done = true
 				elif player.inventory.items[x] == null:
+					AudioController.play_buy_sound()
 					Globals.money -= roundi(item.cost * cost_multi)
 					player.inventory.items.pop_at(x)
 					player.inventory.items.insert(x, item) 
@@ -120,9 +130,13 @@ func _on_button_pressed() -> void:
 				else:
 					x += 1
 		else:
+			AudioController.play_buy_sound()
 			Globals.player_max_lives += item.damage
 			Globals.player_lives = Globals.player_max_lives
 			Globals.money -= roundi(item.cost * cost_multi)
 			queue_free()
 	else:
 		AudioController.play_error_sound()
+"""
+Syfte: Köpa kortet man vill ha om man har råd och se till att det kommer till rätt ställe
+"""

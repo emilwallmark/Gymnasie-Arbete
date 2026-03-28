@@ -1,20 +1,25 @@
 
 VAD SKA GÖRAS?
 
-lägg till ljud
-
-komentera all kod + sortera all kod
+komentera all kod + sortera all kod (bara fiender kvar)
 
 fixa economin/balansera
 
+Olika texturer på de olika vapnena då de skuter (kanske)
+
 COOLA IDEÉR
 
-Online leaderboard
+Online leaderboard 
 
 Uppgradera movementspeed/andra abilities
 
-Kunna byta skin på spelaren
+Kunna byta skin på spelaren (Gambling? mer pengar ju längre man kommer?)
 
 En tutorial/how to play i start menyn (antingen något man
 kan scrolla igeon och läsa eller något som man spelar och
 spelet säger åt en vad man borde göra)
+
+En meny till fusk
+
+Hardmode som gör att fieder gör mer skada och har mer Hp?
+Easymode där de gör minde skada och mindre Hp?

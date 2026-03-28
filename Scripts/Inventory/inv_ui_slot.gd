@@ -9,3 +9,6 @@ func update(item: InvItem):
 	else:
 		item_visual.visible = true
 		item_visual.texture = item.texture
+"""
+Syfte: Updatera den spesifika item_sloten så att den visar rätt
+"""

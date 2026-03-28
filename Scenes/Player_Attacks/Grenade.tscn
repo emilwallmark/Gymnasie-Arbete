@@ -45,6 +45,7 @@ position = Vector2(-1, 0)
 texture = SubResource("AtlasTexture_kyo3j")
 
 [node name="Timer" type="Timer" parent="." unique_id=1163826756]
+one_shot = true
 autostart = true
 
 [node name="BOOM" type="AnimatedSprite2D" parent="." unique_id=318891801]

@@ -21,7 +21,9 @@ var dead = false
 func _ready() -> void:
 	anim.play("Enemy_Walk")
 	lives = max_lives
-
+"""
+Syfte:Starta fiende animation och ge den rätt hp
+"""
 
 func _process(_delta: float) -> void:
 	health_bar.value = lives/max_lives * 100
@@ -33,8 +35,12 @@ func _process(_delta: float) -> void:
 		enemy_texture.flip_h = false
 	elif velocity.x > 0:
 		enemy_texture.flip_h = true
-
-
+	if global_position.x > 4900 or global_position.x < -2400 or global_position.y > 4200 or global_position.y < -2400: 
+		velocity = Vector2(0,0)
+		global_position  = Vector2(0,0)
+"""
+Syfte: Updartera allt som behöver updateras varje frame utom rörelse och om den ska skuta
+"""
 func _physics_process(delta: float) -> void:
 	if player:
 		var direction_to_player = global_position.direction_to(player.global_position)
@@ -49,19 +55,27 @@ func _physics_process(delta: float) -> void:
 		if velocity > direction_to_player*MAX_SPEED:
 			velocity = direction_to_player*MAX_SPEED
 		move_and_slide()
-
+""" 
+Syfte: Få fienden att gå mot spelaren varje frameoch bestämma om den ska skuta
+"""
 func on_take_dmg():
 	var original_color = self_modulate
 	modulate = Color.RED
 	await get_tree().create_timer(0.2).timeout
 	if lives > 0:
 		modulate = original_color
-
+"""
+Syfte: Få fienden att blinka rött då den tar skada
+"""
 func die():
 	died.emit()
 	Globals.money += 2
 	queue_free()
-
+"""
+Syfte: Ta bort fienden då den dör och ge pengar + skicka dödssignal till wave_manager()
+"""
 func _on_timer_timeout() -> void:
 	get_parent().get_parent().shoot_enemy_attack(global_position.direction_to(player.global_position), position, damage, attack_speed)
-	
+"""
+Syfte: Fienden ska skuta sitt skott mot spelaren då timern tar slut
+"""

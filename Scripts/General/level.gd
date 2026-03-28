@@ -26,6 +26,7 @@ var paused: bool = false
 var slot_ready = [true, true, true, true, true, true]
 
 func _ready() -> void:
+	Cheats.cheatmode.connect(_on_cheats)
 	player.inventory.items[0] = PreloadItems.Sword
 	inv.update_slots()
 	for i in range(1, 6):
@@ -36,9 +37,22 @@ func _ready() -> void:
 	wave_manager.start_game()
 
 """
-Syfte: Updaterar allt då spelet börjar
+Syfte: Updaterar alltd då spelet börjar
 Kommentar: Ger spelaren rätt vapen, startar wavesen i wave_manager och tar
 		   även emot signaler då spelaren attackerar och då en wave är avklarad
+"""
+
+func _on_cheats(wave1):
+	wave += wave1
+	player.inventory.items[0] = PreloadItems.Blaster
+	player.inventory.items[1] = PreloadItems.Rocket_Launcher
+	player.inventory.items[2] = PreloadItems.Rocket_Launcher
+	player.inventory.items[3] = PreloadItems.Mega_Axe
+	player.inventory.items[4] = PreloadItems.Blaster
+	player.inventory.items[5] = PreloadItems.Blaster
+	inv.update_slots()
+"""
+Syfte: ge spelaren vapen då fusk är på och att wave numret ska visa rätt då man fuskar
 """
 
 func _process(_delta: float) -> void:
@@ -100,6 +114,7 @@ Syfte: Pausa spelet och visa pausemeny
 func deathMenu():
 	death_menu.show()
 	Engine.time_scale = 0
+
 """
 Syfte: Pausa spelet då man är död och visa dödsmenyn
 """
@@ -155,6 +170,14 @@ func attack()->void:
 			slot_ready[i-1] = false
 			start_timer(i, item.delay)
 			if item.type == "gun":
+				if item.name == "Basic Gun" or item.name == "Revolver" or item.name == "SMG":
+					AudioController.play_gun_sound()
+				elif item.name == "AK" or item.name == "Shotgun":
+					AudioController.play_heavy_gun_sound()
+				elif item.name == "Blaster":
+					AudioController.play_blaster_sound()
+				elif item.name == "Sniper" or item.name == "Heavy Sniper":
+					AudioController.play_sniper_sound()
 				var bullet = BULLET_SCENE.instantiate()
 				bullet.damage = item.damage
 				bullet.speed = item.speed
@@ -163,6 +186,7 @@ func attack()->void:
 				bullet.dir = player.get_local_mouse_position()
 				add_child(bullet)
 			if item.type == "melee":
+				AudioController.play_sword_sound()
 				var sword = MElEE_ATTACK_SCENE.instantiate()
 				var shape: RectangleShape2D = RectangleShape2D.new()
 				var angle = get_angle_to(player.get_local_mouse_position())
@@ -175,6 +199,7 @@ func attack()->void:
 				sword.get_child(2).texture = item.texture
 				add_child(sword)
 			if item.type == "rocket launcher":
+				AudioController.play_rocket_launcher_sound()
 				var rocket = ROCKET_SCENE.instantiate()
 				var angle = get_angle_to(player.get_local_mouse_position())
 				rocket.rotation = angle+PI/2
@@ -184,6 +209,7 @@ func attack()->void:
 				rocket.dir = player.get_local_mouse_position()
 				add_child(rocket)
 			if item.type == "grenade launcher":
+				AudioController.play_gun_sound()
 				var grenade = GRENADE_SCENE.instantiate()
 				var angle = get_angle_to(player.get_local_mouse_position())
 				grenade.rotation = angle+PI/2
@@ -227,7 +253,6 @@ Parametrar: dir: Riktningen till spelaren
 			pos: positionen där skottet ska börja på
 			damage: hur mycket skada skottet ska göra om den träffar spelaren
 			speed: hastigheten skottet ska röra sig 
-Kommentar: 
 """
 
 func shoot_enemy_fire_attack(dir, pos:Vector2, damage, speed):
@@ -243,6 +268,7 @@ func shoot_enemy_fire_attack(dir, pos:Vector2, damage, speed):
 Samma som shoot_enemy_attack() men skapar ett skott med en annan textur
 och den räknar ut vinkeln texturen ska roteras med
 """
+
 
 func _on_heal_pressed() -> void:
 	AudioController.play_buy_sound()

@@ -21,5 +21,6 @@ func _process(delta: float) -> void:
 		position = Vector2(500*cos(rotation-PI/2) + 1280, 500 *sin(rotation-PI/2) + 720)
 	else:
 		queue_free()
-	
-	
+"""
+Syfte: Räknar var pilen ska peka varje frame och om den alls ska vara synlig eller finnas
+"""
