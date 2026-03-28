@@ -1,31 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwhvn8eahbm0k"]
+[gd_scene format=3 uid="uid://cwhvn8eahbm0k"]
 
 [ext_resource type="Script" uid="uid://dxl8ir7vdjdem" path="res://Scripts/Player_Attacks/bullet.gd" id="1_7qjww"]
-[ext_resource type="Texture2D" uid="uid://c36ua7bdee5ct" path="res://Assets/Effect and Bullet 16x16/Fire Effect and Bullet 16x16.png" id="2_vyl0g"]
+[ext_resource type="Texture2D" uid="uid://c36ua7bdee5ct" path="res://Assets/Effects/Effect and Bullet 16x16/Fire Effect and Bullet 16x16.png" id="2_vyl0g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjght"]
 radius = 27.0
 
-[node name="Bullet" type="CharacterBody2D"]
+[node name="Bullet" type="CharacterBody2D" unique_id=117010614]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_7qjww")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1230500773]
 scale = Vector2(4, 4)
 texture = ExtResource("2_vyl0g")
 hframes = 36
 vframes = 13
 frame = 263
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=476818245]
 collision_layer = 8
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=345966328]
 shape = SubResource("CircleShape2D_xjght")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=58228109]
 wait_time = 5.0
 one_shot = true
 autostart = true

@@ -22,6 +22,7 @@ config/icon="uid://dh4suiwv8wedi"
 [autoload]
 
 Globals="*res://Scripts/General/Globals.gd"
+SilentWolf="*uid://bidcytd4w8vt8"
 PreloadItems="*res://Scripts/General/preload_items.gd"
 AudioController="*uid://vkcon3s5nfia"
 Cheats="*uid://mri4alkwd72x"
@@ -34,6 +35,10 @@ window/size/mode=3
 window/stretch/mode="viewport"
 mouse_cursor/custom_image="uid://b2xgn7plq6bdo"
 mouse_cursor/custom_image_hotspot=Vector2(12, 12)
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/silent_wolf/plugin.cfg")
 
 [global_group]
 

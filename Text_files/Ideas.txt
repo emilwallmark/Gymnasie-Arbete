@@ -1,8 +1,6 @@
 
 VAD SKA GÖRAS?
 
-komentera all kod + sortera all kod (bara fiender kvar)
-
 fixa economin/balansera
 
 Olika texturer på de olika vapnena då de skuter (kanske)

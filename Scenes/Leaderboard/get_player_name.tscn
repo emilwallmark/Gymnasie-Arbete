@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://cpbyu6ph6pojm"]
+
+[ext_resource type="Script" uid="uid://c1gq2rhgn6hgs" path="res://Scripts/Leaderboard/get_player_name.gd" id="1_ccb5a"]
+[ext_resource type="Texture2D" uid="uid://5xigk3dqlsi" path="res://Assets/HUD:UI/fantasy_pixelart_ui/map/map.png" id="2_k6xc3"]
+[ext_resource type="FontFile" uid="uid://c1txxgo4sn8qk" path="res://Fonts/Darinia.ttf" id="3_efhgl"]
+[ext_resource type="FontFile" uid="uid://rm44u7rgm4ri" path="res://Fonts/OldeTome.ttf" id="4_b6b8m"]
+[ext_resource type="StyleBox" uid="uid://byr8wv45y5rl2" path="res://Scripts/Misc/Normal_button_Stylebox.tres" id="5_o5gwo"]
+[ext_resource type="StyleBox" uid="uid://bsdjldjidv6e0" path="res://Scripts/Misc/Pressed_button_Stylebox.tres" id="6_dq2ek"]
+[ext_resource type="StyleBox" uid="uid://dh5lduv44ddte" path="res://Scripts/Misc/Hover_button_Stylebox.tres" id="7_yoqr8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q70u1"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+texture = ExtResource("2_k6xc3")
+
+[node name="GetPlayerName" type="Control" unique_id=1679437193]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 38.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ccb5a")
+
+[node name="Panel" type="Panel" parent="." unique_id=2006804873]
+layout_mode = 1
+offset_right = 872.0
+offset_bottom = 579.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_q70u1")
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=1682974710]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 95.0
+offset_right = 736.0
+offset_bottom = 212.0
+theme_override_fonts/font = ExtResource("3_efhgl")
+theme_override_font_sizes/font_size = 80
+
+[node name="Label" type="Label" parent="." unique_id=1516525286]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 108.0
+offset_right = 334.0
+offset_bottom = 195.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_fonts/font = ExtResource("4_b6b8m")
+theme_override_font_sizes/font_size = 90
+text = "Name:"
+
+[node name="Submit" type="Button" parent="." unique_id=1998794641]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 281.0
+offset_right = 676.0
+offset_bottom = 448.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.34117648, 0.16862746, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.34117648, 0.16862746, 0, 1)
+theme_override_colors/font_hover_color = Color(0.34117648, 0.16862746, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.34117648, 0.16862746, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_b6b8m")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = ExtResource("5_o5gwo")
+theme_override_styles/pressed = ExtResource("6_dq2ek")
+theme_override_styles/hover = ExtResource("7_yoqr8")
+theme_override_styles/disabled = ExtResource("6_dq2ek")
+text = "Submit"
+
+[connection signal="pressed" from="Submit" to="." method="_on_submit_pressed"]
