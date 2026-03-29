@@ -108,32 +108,30 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rhlwf"]
 radius = 164.11
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["enemies"]]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=2047749863 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_rhlwf")
 
-[node name="Idle" type="Sprite2D" parent="."]
+[node name="Idle" type="Sprite2D" parent="." unique_id=1984608196]
 scale = Vector2(4, 4)
 texture = ExtResource("2_yts3l")
 hframes = 8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ap4od")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1860476860]
+libraries/ = SubResource("AnimationLibrary_ap4od")
 speed_scale = 2.0
 
-[node name="Walking" type="Sprite2D" parent="."]
+[node name="Walking" type="Sprite2D" parent="." unique_id=484343186]
 scale = Vector2(4, 4)
 texture = ExtResource("3_ot2lf")
 hframes = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1773385572]
 position = Vector2(0.5, 26.5)
 shape = SubResource("RectangleShape2D_qggdx")
 
-[node name="HpBar" type="ProgressBar" parent="."]
+[node name="HpBar" type="ProgressBar" parent="." unique_id=1682142658]
 offset_left = -75.0
 offset_top = 92.0
 offset_right = 76.0
@@ -144,23 +142,19 @@ value = 50.0
 fill_mode = 1
 show_percentage = false
 
-[node name="BOOM" type="AnimatedSprite2D" parent="."]
+[node name="BOOM" type="AnimatedSprite2D" parent="." unique_id=1656983695]
 visible = false
 scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_ckit4")
 animation = &"BOOM"
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-
-[node name="ExplotionArea" type="Area2D" parent="."]
+[node name="ExplotionArea" type="Area2D" parent="." unique_id=115731602]
 collision_layer = 4
 collision_mask = 15
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplotionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplotionArea" unique_id=1469086497]
 shape = SubResource("CircleShape2D_rhlwf")
 
 [connection signal="animation_finished" from="BOOM" to="." method="_on_boom_animation_finished"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="ExplotionArea" to="." method="_on_explotion_area_body_entered"]

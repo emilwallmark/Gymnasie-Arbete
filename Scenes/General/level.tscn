@@ -14,12 +14,19 @@
 [ext_resource type="Resource" uid="uid://ckpw032a7sgjn" path="res://Scripts/Waves/wave_01.tres" id="7_6nh6g"]
 [ext_resource type="Resource" uid="uid://bl5hcqukqci6q" path="res://Scripts/Waves/wave_02.tres" id="8_6nh6g"]
 [ext_resource type="Resource" uid="uid://d1tyd8cgyejxy" path="res://Scripts/Waves/wave_03.tres" id="9_if8db"]
+[ext_resource type="Texture2D" uid="uid://5xigk3dqlsi" path="res://Assets/HUD:UI/fantasy_pixelart_ui/map/map.png" id="9_sfme4"]
+[ext_resource type="Texture2D" uid="uid://b04dunm3gn53w" path="res://Assets/HUD:UI/Shield_4_640x640.png" id="10_ki5bt"]
 [ext_resource type="Resource" uid="uid://siia1o1u582e" path="res://Scripts/Waves/wave_04.tres" id="10_vvdlt"]
+[ext_resource type="Texture2D" uid="uid://beaw6lbn4r35l" path="res://Assets/HUD:UI/New Piskel-1.png.png" id="11_28v83"]
 [ext_resource type="Resource" uid="uid://rehtj4qkv8v1" path="res://Scripts/Waves/wave_05.tres" id="11_in2hm"]
 [ext_resource type="Resource" uid="uid://cb1s6b6hrdbbj" path="res://Scripts/Waves/wave_06.tres" id="12_6tevt"]
+[ext_resource type="Texture2D" uid="uid://6p3k71haa0dw" path="res://Assets/HUD:UI/Exotic Swords.png" id="12_f4f4i"]
+[ext_resource type="Texture2D" uid="uid://51mdbmy32n1q" path="res://Assets/HUD:UI/Collectible_Glowing_Hourglass_icon.png" id="13_eeb0e"]
 [ext_resource type="Resource" uid="uid://dhuoebm0bkw63" path="res://Scripts/Waves/wave_07.tres" id="13_par4y"]
 [ext_resource type="Resource" uid="uid://c8htljvhj2qhh" path="res://Scripts/Waves/wave_08.tres" id="14_g1jes"]
+[ext_resource type="Texture2D" uid="uid://mxhevicydlc4" path="res://Assets/HUD:UI/005.png" id="14_l31hd"]
 [ext_resource type="Resource" uid="uid://cka0r4v6xpywp" path="res://Scripts/Waves/wave_09.tres" id="15_3ps3h"]
+[ext_resource type="Texture2D" uid="uid://ceb3hiem4vn33" path="res://Assets/HUD:UI/New Piskel-1.png (1).png" id="15_fmskq"]
 [ext_resource type="Resource" uid="uid://pyrtu2telu81" path="res://Scripts/Waves/wave_10.tres" id="16_cyj5c"]
 [ext_resource type="Resource" uid="uid://w5pcvf8ku4sn" path="res://Scripts/Waves/wave_11.tres" id="17_i3omi"]
 [ext_resource type="Resource" uid="uid://b5n6oyc84j4of" path="res://Scripts/Waves/wave_12.tres" id="18_vede8"]
@@ -380,6 +387,10 @@ size = Vector2(700, 5073)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_81xng"]
 size = Vector2(4358, 221)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeb0e"]
+atlas = ExtResource("12_f4f4i")
+region = Rect2(0, 32, 16, 16)
+
 [node name="Level" type="Node2D" unique_id=1202738860]
 script = ExtResource("1_grhc7")
 
@@ -465,6 +476,294 @@ shape = SubResource("RectangleShape2D_81xng")
 position = Vector2(1188, 3451)
 shape = SubResource("RectangleShape2D_81xng")
 
+[node name="AbilityShop" type="CanvasLayer" parent="." unique_id=261593787]
+visible = false
+
+[node name="Back" type="Button" parent="AbilityShop" unique_id=1139822678]
+custom_minimum_size = Vector2(450, 89)
+offset_left = 242.0
+offset_top = 650.0
+offset_right = 692.0
+offset_bottom = 739.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_colors/font_hover_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_cyj5c")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("6_cyj5c")
+theme_override_styles/pressed = ExtResource("5_3ps3h")
+theme_override_styles/hover = ExtResource("4_g1jes")
+text = "Back
+"
+
+[node name="InvincibilityCard" type="Sprite2D" parent="AbilityShop" unique_id=854449311]
+position = Vector2(910, 430)
+scale = Vector2(15, 20.325)
+texture = ExtResource("9_sfme4")
+
+[node name="InvinsLabel" type="Label" parent="AbilityShop" unique_id=166171045]
+offset_left = 779.0
+offset_top = 458.0
+offset_right = 1045.0
+offset_bottom = 611.0
+theme_override_fonts/font = ExtResource("5_cyj5c")
+theme_override_font_sizes/font_size = 50
+text = "Invincibility
+E to use
+Cost         "
+horizontal_alignment = 1
+
+[node name="InvinsCostLabel" type="Label" parent="AbilityShop" unique_id=1787938858]
+offset_left = 910.0
+offset_top = 553.0
+offset_right = 1176.0
+offset_bottom = 666.0
+theme_override_fonts/font = ExtResource("4_3ps3h")
+theme_override_font_sizes/font_size = 50
+text = "300    "
+
+[node name="InvinsPic" type="TextureRect" parent="AbilityShop" unique_id=1184560259]
+offset_left = 801.0
+offset_top = 225.0
+offset_right = 1441.0
+offset_bottom = 865.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("10_ki5bt")
+
+[node name="Invinvibility" type="Button" parent="AbilityShop" unique_id=1052695125]
+modulate = Color(1, 1, 1, 0)
+offset_left = 735.0
+offset_top = 181.0
+offset_right = 1089.0
+offset_bottom = 673.0
+
+[node name="MovementSpeedCard" type="Sprite2D" parent="AbilityShop" unique_id=1324280719]
+position = Vector2(1280, 430)
+scale = Vector2(15, 20.325)
+texture = ExtResource("9_sfme4")
+
+[node name="MovementSpeedPic" type="TextureRect" parent="AbilityShop" unique_id=1149720764]
+offset_left = 1118.0
+offset_top = 203.0
+offset_right = 1158.0
+offset_bottom = 243.0
+scale = Vector2(9, 9)
+texture = ExtResource("11_28v83")
+
+[node name="MovementSpeedLabel" type="Label" parent="AbilityShop" unique_id=1072014247]
+offset_left = 1123.0
+offset_top = 454.0
+offset_right = 1441.0
+offset_bottom = 607.0
+theme_override_fonts/font = ExtResource("5_cyj5c")
+theme_override_font_sizes/font_size = 50
+text = "Movement Speed
+Passive
+Cost         "
+horizontal_alignment = 1
+
+[node name="MovementSpeedCostLabel" type="Label" parent="AbilityShop" unique_id=349897686]
+offset_left = 1280.0
+offset_top = 551.0
+offset_right = 1546.0
+offset_bottom = 664.0
+theme_override_fonts/font = ExtResource("4_3ps3h")
+theme_override_font_sizes/font_size = 50
+text = "500
+"
+
+[node name="MovementSpeed" type="Button" parent="AbilityShop" unique_id=2146930458]
+modulate = Color(1, 1, 1, 0)
+offset_left = 1098.0
+offset_top = 180.0
+offset_right = 1465.0
+offset_bottom = 673.0
+
+[node name="DamageBoostCard" type="Sprite2D" parent="AbilityShop" unique_id=1356278252]
+position = Vector2(1650, 430)
+scale = Vector2(15, 20.325)
+texture = ExtResource("9_sfme4")
+
+[node name="DamageBoostPic" type="TextureRect" parent="AbilityShop" unique_id=688636173]
+offset_left = 1545.0
+offset_top = 230.0
+offset_right = 1770.0
+offset_bottom = 451.0
+texture = SubResource("AtlasTexture_eeb0e")
+
+[node name="DamageBoostLabel" type="Label" parent="AbilityShop" unique_id=1243229433]
+offset_left = 1497.0
+offset_top = 453.0
+offset_right = 1804.0
+offset_bottom = 606.0
+theme_override_fonts/font = ExtResource("5_cyj5c")
+theme_override_font_sizes/font_size = 50
+text = "Damage Boost
+Passive
+Cost         "
+horizontal_alignment = 1
+
+[node name="DamageBoostCostLabel" type="Label" parent="AbilityShop" unique_id=1137610346]
+offset_left = 1645.0
+offset_top = 549.0
+offset_right = 1911.0
+offset_bottom = 662.0
+theme_override_fonts/font = ExtResource("4_3ps3h")
+theme_override_font_sizes/font_size = 50
+text = "700
+"
+
+[node name="DamageBoost" type="Button" parent="AbilityShop" unique_id=583812705]
+modulate = Color(1, 1, 1, 0)
+offset_left = 1473.0
+offset_top = 184.0
+offset_right = 1833.0
+offset_bottom = 677.0
+
+[node name="SlowDownTimeCard" type="Sprite2D" parent="AbilityShop" unique_id=1615403771]
+position = Vector2(910, 950)
+scale = Vector2(15, 20.325)
+texture = ExtResource("9_sfme4")
+
+[node name="SlowDownPic" type="TextureRect" parent="AbilityShop" unique_id=1351990726]
+offset_left = 799.0
+offset_top = 740.0
+offset_right = 1030.0
+offset_bottom = 964.0
+texture = ExtResource("13_eeb0e")
+
+[node name="SlowDownLabel" type="Label" parent="AbilityShop" unique_id=1437697061]
+offset_left = 757.0
+offset_top = 947.0
+offset_right = 1064.0
+offset_bottom = 1100.0
+theme_override_fonts/font = ExtResource("5_cyj5c")
+theme_override_font_sizes/font_size = 50
+text = "Slow Down
+F to use
+Cost         "
+horizontal_alignment = 1
+
+[node name="SlowDownCostLabel" type="Label" parent="AbilityShop" unique_id=607820039]
+offset_left = 909.0
+offset_top = 1044.0
+offset_right = 1175.0
+offset_bottom = 1157.0
+theme_override_fonts/font = ExtResource("4_3ps3h")
+theme_override_font_sizes/font_size = 50
+text = "350
+"
+
+[node name="SlowDown" type="Button" parent="AbilityShop" unique_id=1966428686]
+modulate = Color(1, 1, 1, 0)
+offset_left = 728.0
+offset_top = 704.0
+offset_right = 1091.0
+offset_bottom = 1194.0
+
+[node name="DashCard" type="Sprite2D" parent="AbilityShop" unique_id=1756827908]
+position = Vector2(1280, 950)
+scale = Vector2(15, 20.325)
+texture = ExtResource("9_sfme4")
+
+[node name="DashPic" type="TextureRect" parent="AbilityShop" unique_id=87087565]
+anchors_preset = -1
+anchor_right = 0.059000004
+anchor_bottom = 0.095000006
+offset_left = 1070.0
+offset_top = 667.0
+offset_right = 1263.96
+offset_bottom = 854.2
+texture = ExtResource("14_l31hd")
+
+[node name="DashLabel" type="Label" parent="AbilityShop" unique_id=1955448872]
+offset_left = 1121.0
+offset_top = 935.0
+offset_right = 1428.0
+offset_bottom = 1088.0
+theme_override_fonts/font = ExtResource("5_cyj5c")
+theme_override_font_sizes/font_size = 50
+text = "Dash
+Q to use
+Cost         "
+horizontal_alignment = 1
+
+[node name="DashCostLabel" type="Label" parent="AbilityShop" unique_id=1305564304]
+offset_left = 1283.0
+offset_top = 1033.0
+offset_right = 1549.0
+offset_bottom = 1146.0
+theme_override_fonts/font = ExtResource("4_3ps3h")
+theme_override_font_sizes/font_size = 50
+text = "250
+"
+
+[node name="Dash" type="Button" parent="AbilityShop" unique_id=1905377286]
+modulate = Color(1, 1, 1, 0)
+offset_left = 1100.0
+offset_top = 705.0
+offset_right = 1463.0
+offset_bottom = 1196.0
+
+[node name="MultishotCard" type="Sprite2D" parent="AbilityShop" unique_id=1606988005]
+position = Vector2(1650, 950)
+scale = Vector2(15, 20.325)
+texture = ExtResource("9_sfme4")
+
+[node name="MultishotLabel" type="Label" parent="AbilityShop" unique_id=1907777761]
+offset_left = 1481.0
+offset_top = 954.0
+offset_right = 1788.0
+offset_bottom = 1107.0
+theme_override_fonts/font = ExtResource("5_cyj5c")
+theme_override_font_sizes/font_size = 50
+text = "Multishot
+Passive
+Cost         "
+horizontal_alignment = 1
+
+[node name="MultishotCostLabel" type="Label" parent="AbilityShop" unique_id=1288648359]
+offset_left = 1635.0
+offset_top = 1050.0
+offset_right = 1901.0
+offset_bottom = 1163.0
+theme_override_fonts/font = ExtResource("4_3ps3h")
+theme_override_font_sizes/font_size = 50
+text = "900
+"
+
+[node name="MultishotPic1" type="TextureRect" parent="AbilityShop" unique_id=1954041435]
+offset_left = 1515.0
+offset_top = 769.0
+offset_right = 1777.0
+offset_bottom = 948.0
+texture = ExtResource("15_fmskq")
+
+[node name="MultishotPic2" type="TextureRect" parent="AbilityShop" unique_id=1325728907]
+offset_left = 1478.0
+offset_top = 753.00006
+offset_right = 1740.0
+offset_bottom = 932.00006
+rotation = -0.2617994
+texture = ExtResource("15_fmskq")
+
+[node name="MultishotPic3" type="TextureRect" parent="AbilityShop" unique_id=1738379565]
+offset_left = 1530.0001
+offset_top = 797.0
+offset_right = 1792.0001
+offset_bottom = 976.0
+rotation = 0.2617994
+texture = ExtResource("15_fmskq")
+
+[node name="Multishot" type="Button" parent="AbilityShop" unique_id=632650492]
+modulate = Color(1, 1, 1, 0)
+offset_left = 1467.0
+offset_top = 704.0
+offset_right = 1833.0
+offset_bottom = 1197.0
+
 [node name="ShopHUD" type="CanvasLayer" parent="." unique_id=1709564616]
 layer = 10
 visible = false
@@ -499,6 +798,22 @@ theme_override_styles/normal = ExtResource("6_cyj5c")
 theme_override_styles/pressed = ExtResource("5_3ps3h")
 theme_override_styles/hover = ExtResource("4_g1jes")
 text = "Begin Next Wave
+"
+
+[node name="Ability Shop" type="Button" parent="ShopHUD/VBoxContainer" unique_id=926756723]
+custom_minimum_size = Vector2(450, 89)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_colors/font_hover_color = Color(0.341176, 0.168627, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_cyj5c")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("6_cyj5c")
+theme_override_styles/pressed = ExtResource("5_3ps3h")
+theme_override_styles/hover = ExtResource("4_g1jes")
+text = "Ability Shop
 "
 
 [node name="Heal" type="Button" parent="ShopHUD/VBoxContainer" unique_id=2088761370]
@@ -558,7 +873,14 @@ visible = false
 layer = 100
 
 [node name="DeathMenu" parent="DeathMenuCanvas" unique_id=1735217036 instance=ExtResource("27_vvdlt")]
-visible = false
 
+[connection signal="pressed" from="AbilityShop/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="AbilityShop/Invinvibility" to="." method="_on_invinvibility_pressed"]
+[connection signal="pressed" from="AbilityShop/MovementSpeed" to="." method="_on_movement_speed_pressed"]
+[connection signal="pressed" from="AbilityShop/DamageBoost" to="." method="_on_damage_boost_pressed"]
+[connection signal="pressed" from="AbilityShop/SlowDown" to="." method="_on_slow_down_pressed"]
+[connection signal="pressed" from="AbilityShop/Dash" to="." method="_on_dash_pressed"]
+[connection signal="pressed" from="AbilityShop/Multishot" to="." method="_on_multishot_pressed"]
 [connection signal="pressed" from="ShopHUD/VBoxContainer/StartNextWave" to="." method="_on_start_next_wave_pressed"]
+[connection signal="pressed" from="ShopHUD/VBoxContainer/Ability Shop" to="." method="_on_ability_shop_pressed"]
 [connection signal="pressed" from="ShopHUD/VBoxContainer/Heal" to="." method="_on_heal_pressed"]

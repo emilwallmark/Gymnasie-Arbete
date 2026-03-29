@@ -6,9 +6,26 @@ var dir: Vector2
 
 @onready var damage: int
 @onready var range: int
+@onready var multishot: bool
+
+
 func _ready() -> void:
 	$Timer.wait_time = range*0.3
 	$Timer.start()
+	if multishot:
+		var grenade_up = self.duplicate(15)
+		grenade_up.multishot = false
+		grenade_up.range = range
+		grenade_up.damage = damage
+		grenade_up.dir = dir.rotated(deg_to_rad(15))
+		get_parent().add_child(grenade_up)
+		var grenade_down = self.duplicate(15)
+		grenade_down.multishot = false
+		grenade_down.range = range
+		grenade_down.damage = damage
+		grenade_down.dir = dir.rotated(deg_to_rad(-15))
+		get_parent().add_child(grenade_down)
+	
 """
 Syfte: Starta en timer som dödar skottet efter en tid
 """	

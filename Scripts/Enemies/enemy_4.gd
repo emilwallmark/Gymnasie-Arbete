@@ -16,6 +16,8 @@ var lives: int
 var max_lives: float = 30
 var damage: int = 5
 var dead = false
+var time_scale = 1
+
 
 func _ready() -> void:
 	lives = max_lives
@@ -41,10 +43,12 @@ Syfte: Updartera allt som behöver updateras varje frame utom rörelse
 """
 func _physics_process(delta: float) -> void:
 	if player:
+		var scaled_delta = delta * time_scale
 		var direction_to_player = global_position.direction_to(player.global_position)
-		velocity = velocity.move_toward(direction_to_player*MAX_SPEED, ACC*delta)
+		velocity = velocity.move_toward(direction_to_player*MAX_SPEED, ACC*scaled_delta)
 		if velocity > direction_to_player*MAX_SPEED:
 			velocity = direction_to_player*MAX_SPEED
+		velocity *= time_scale
 		move_and_slide()
 """
 Syfte: Få fienden att gå mot spelaren varje frame

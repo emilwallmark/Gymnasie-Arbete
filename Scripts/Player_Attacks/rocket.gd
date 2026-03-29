@@ -6,11 +6,25 @@ var dir: Vector2
 
 @onready var damage: int
 @onready var range: int
+@onready var multishot: bool
 
 func _ready() -> void:
 	$AnimationPlayer.play("Fly_Anim")
 	$Timer.wait_time = range*0.3
 	$Timer.start()
+	if multishot:
+		var rocket_up = self.duplicate(15)
+		rocket_up.multishot = false
+		rocket_up.range = range
+		rocket_up.damage = damage
+		rocket_up.dir = dir.rotated(deg_to_rad(15))
+		get_parent().add_child(rocket_up)
+		var rocket_down = self.duplicate(15)
+		rocket_down.multishot = false
+		rocket_down.range = range
+		rocket_down.damage = damage
+		rocket_down.dir = dir.rotated(deg_to_rad(-15))
+		get_parent().add_child(rocket_down)
 """
 Syfte: Starta timer för att ta bort den och den vanliga animationen
 """

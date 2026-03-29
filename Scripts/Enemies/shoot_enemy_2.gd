@@ -18,6 +18,11 @@ var damage: int = 3
 var distance_to_player 
 var dead = false
 
+var time_scale = 1
+
+var shoot_timer = 0.0
+var shoot_interval = 1.0
+
 func _ready() -> void:
 	anim.play("Enemy_Walk")
 	lives = max_lives
@@ -38,25 +43,30 @@ func _process(_delta: float) -> void:
 	if global_position.x > 4900 or global_position.x < -2400 or global_position.y > 4200 or global_position.y < -2400: 
 		velocity = Vector2(0,0)
 		global_position  = Vector2(0,0)
+	anim.speed_scale = time_scale
+
 """
 Syfte: Updartera allt som behöver updateras varje frame utom rörelse och om den ska skuta
 """
 func _physics_process(delta: float) -> void:
 	if player:
+		var scaled_delta = delta * time_scale
 		var direction_to_player = global_position.direction_to(player.global_position)
 		distance_to_player = sqrt((global_position.x-player.global_position.x)**2 + (global_position.y - player.global_position.y)**2)
 		if distance_to_player > 600:
-			velocity = velocity.move_toward(direction_to_player*MAX_SPEED, ACC*delta)
-			$Timer.stop()
+			velocity = velocity.move_toward(direction_to_player*MAX_SPEED, ACC*scaled_delta)
+			shoot_timer = 0.0
 		else: 
 			velocity = Vector2(0,0)
-			if $Timer.is_stopped():
-				$Timer.start()
 		if velocity > direction_to_player*MAX_SPEED:
 			velocity = direction_to_player*MAX_SPEED
+			if shoot_timer >= shoot_interval:
+				shoot_timer = 0.0
+				get_parent().get_parent().shoot_enemy_attack(global_position.direction_to(player.global_position), position, damage, attack_speed)
+		velocity *= time_scale
 		move_and_slide()
 """ 
-Syfte: Få fienden att gå mot spelaren varje frameoch bestämma om den ska skuta
+Syfte: Få fienden att gå mot spelaren varje frame och skuta
 """
 func on_take_dmg():
 	var original_color = self_modulate
@@ -73,9 +83,4 @@ func die():
 	queue_free()
 """
 Syfte: Ta bort fienden då den dör och ge pengar + skicka dödssignal till wave_manager()
-"""
-func _on_timer_timeout() -> void:
-	get_parent().get_parent().shoot_enemy_attack(global_position.direction_to(player.global_position), position, damage, attack_speed)
-"""
-Syfte: Fienden ska skuta sitt skott mot spelaren då timern tar slut
 """

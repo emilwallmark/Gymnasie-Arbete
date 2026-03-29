@@ -309,10 +309,6 @@ vframes = 7
 position = Vector2(4.000002, 0.33333334)
 shape = SubResource("RectangleShape2D_tbyyc")
 
-[node name="Timer" type="Timer" parent="." unique_id=1538003491]
-wait_time = 5.0
-autostart = true
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=952742852]
 
 [node name="HpBar" type="ProgressBar" parent="CanvasLayer" unique_id=1162375566]
@@ -339,5 +335,3 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("8_6q3kd")
 theme_override_font_sizes/font_size = 150
 text = "BOSS"
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

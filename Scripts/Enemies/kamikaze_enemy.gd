@@ -20,6 +20,11 @@ var distance_to_player
 var exploding:bool = false
 var dead = false
 
+var time_scale = 1.0
+
+var explotion_timer = 0.0
+var explotion_interval = 0.5
+
 func _ready() -> void:
 	lives = max_lives
 """
@@ -42,32 +47,42 @@ func _process(_delta: float) -> void:
 		enemy_texture_1.visible = false
 		anim.play("Enemy_Walk")
 	else:
-		if !exploding:
-			enemy_texture_2.visible = false
-			enemy_texture_1.visible = true
-			anim.play("Fuse")
+		enemy_texture_2.visible = false
+		enemy_texture_1.visible = true
+		anim.play("Fuse")
 	if global_position.x > 4900 or global_position.x < -2400 or global_position.y > 4200 or global_position.y < -2400: 
 		velocity = Vector2(0,0)
 		global_position  = Vector2(0,0)
+	anim.speed_scale = time_scale * 2
 """
 Syfte: Updartera allt som behöver updateras varje frame utom rörelse och om den ska explodera
 """
 func _physics_process(delta: float) -> void:
 	if player:
+		var scaled_delta = delta*time_scale
 		var direction_to_player = global_position.direction_to(player.global_position)
 		distance_to_player = sqrt((global_position.x-player.global_position.x)**2 + (global_position.y - player.global_position.y)**2)
 		if distance_to_player > 150:
-			velocity = velocity.move_toward(direction_to_player*MAX_SPEED, ACC*delta)
-			$Timer.stop()
-		else: 
+			velocity = velocity.move_toward(direction_to_player*MAX_SPEED, ACC*scaled_delta)
+			explotion_timer = 0.0
+		elif distance_to_player < 150: 
 			velocity = Vector2(0,0)
-			if $Timer.is_stopped():
-				$Timer.start()
-		if velocity > direction_to_player*MAX_SPEED:
-			velocity = direction_to_player*MAX_SPEED
+			explotion_timer += scaled_delta
+		if explotion_timer >= explotion_interval:
+			exploding = true
+			explotion_timer = 0.0
+			$BOOM.play("BOOM")	
+			$ExplotionArea.monitoring = true
+			$BOOM.visible = true
+			enemy_texture_1.visible = false
+
+			AudioController.play_explotion_sound()
+			lives = 0
+		velocity *= time_scale
 		move_and_slide()
 """
-Syfte: Få fienden att gå mot spelaren varje frame och bestämma om den ska explodera
+Syfte: Få fienden att gå mot spelaren varje frame och
+	   bestämma om den ska explodera och spränga fienden om timern tar slut
 """
 func on_take_dmg():
 	var original_color = self_modulate
@@ -87,17 +102,7 @@ func die():
 """
 Syfte: Ta bort fienden då den dör och ge pengar + skicka dödssignal till wave_manager()
 """
-func _on_timer_timeout() -> void:
-	exploding = true
-	$ExplotionArea.monitoring = true
-	$BOOM.visible = true
-	enemy_texture_1.visible = false
-	$BOOM.play("BOOM")	
-	AudioController.play_explotion_sound()
-	lives = 0
-"""
-Syfte: Spränga fienden om timern tar slut
-"""
+
 func _on_boom_animation_finished() -> void:
 	die()
 """

@@ -20,6 +20,10 @@ var max_lives: float = 30
 var damage: int = 12
 var distance_to_player 
 var dead = false
+var time_scale = 1
+
+var summon_timer = 0.0
+var summon_interval = 2.0
 
 func _ready() -> void:
 	anim.play("Walk")
@@ -43,17 +47,34 @@ func _process(_delta: float) -> void:
 	if global_position.x > 4900 or global_position.x < -2400 or global_position.y > 4200 or global_position.y < -2400: 
 		velocity = Vector2(0,0)
 		global_position  = Vector2(0,0)
+	anim.speed_scale = time_scale
 """
 Syfte: Updartera allt som behöver updateras varje frame utom rörelse
 """
 func _physics_process(delta: float) -> void:
 	if player:
+		var scaled_delta = delta*time_scale
 		var direction_to_player = global_position.direction_to(player.global_position)
-		velocity = velocity.move_toward(direction_to_player*MAX_SPEED, ACC*delta)
+		velocity = velocity.move_toward(direction_to_player*MAX_SPEED, ACC*scaled_delta)
 		if velocity > direction_to_player*MAX_SPEED:
 			velocity = direction_to_player*MAX_SPEED
+		summon_timer += scaled_delta
+		if summon_timer >= summon_interval:
+				summon_timer = 0.0
+				get_parent().spawn_enemy("fire_spirit")
+				enemy_texture2.show()
+				enemy_texture.hide()
+				anim.play("Summon")
+				AudioController.play_summon_sound()
+				await anim.animation_finished
+				anim.play("Walk")
+				enemy_texture.show()
+				enemy_texture2.hide()
+		velocity *= time_scale
 		move_and_slide()
-
+"""
+Syfte: Få fienden att gå mot spelaren varje frame och spawnar in fiender
+"""
 func on_take_dmg():
 	var original_color = self_modulate
 	modulate = Color.RED
@@ -70,18 +91,4 @@ func die():
 	queue_free()
 """
 Syfte: Ta bort fienden då den dör och ge pengar + skicka dödssignal till wave_manager()
-"""
-
-func _on_timer_timeout() -> void:
-	get_parent().spawn_enemy("fire_spirit")
-	enemy_texture2.show()
-	enemy_texture.hide()
-	anim.play("Summon")
-	AudioController.play_summon_sound()
-	await anim.animation_finished
-	anim.play("Walk")
-	enemy_texture.show()
-	enemy_texture2.hide()
-"""
-Syfte: Spawna in en fire spirit i wave_manager varje gång timern tar slut och spela en liten animation
 """

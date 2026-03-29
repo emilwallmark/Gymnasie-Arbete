@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://ci2jpuih0pjo4"]
+[gd_scene format=3 uid="uid://ci2jpuih0pjo4"]
 
 [ext_resource type="Script" uid="uid://djur5cdwjiem5" path="res://Scripts/Enemies/shoot_enemy.gd" id="1_2j8kj"]
-[ext_resource type="Texture2D" uid="uid://ck6k52bjmt7iw" path="res://Assets/kenney_desert-shooter-pack_1.0/PNG/Enemies/Tilemap/tilemap_packed.png" id="2_32fph"]
+[ext_resource type="Texture2D" uid="uid://ck6k52bjmt7iw" path="res://Assets/Enemies/Enemies/Tilemap/tilemap_packed.png" id="2_32fph"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gy7qa"]
 size = Vector2(199, 153)
@@ -66,31 +66,26 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2270l"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="Shoot_Enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="Shoot_Enemy" type="CharacterBody2D" unique_id=1232416078 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_2j8kj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2063209075]
 scale = Vector2(5, 5)
 texture = ExtResource("2_32fph")
 hframes = 4
 vframes = 4
 frame = 12
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=291440562]
 position = Vector2(-0.5, 7.5)
 shape = SubResource("RectangleShape2D_gy7qa")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_wbk1t")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=911882361]
+libraries/ = SubResource("AnimationLibrary_wbk1t")
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
-[node name="HpBar" type="ProgressBar" parent="."]
+[node name="HpBar" type="ProgressBar" parent="." unique_id=1128385391]
 offset_left = -75.0
 offset_top = 65.0
 offset_right = 76.0
@@ -100,5 +95,3 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_2270l")
 value = 50.0
 fill_mode = 1
 show_percentage = false
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

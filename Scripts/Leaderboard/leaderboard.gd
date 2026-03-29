@@ -77,6 +77,7 @@ Syfte: Sorterar alla scores så de dycker upp i rätt ordning
 
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/General/start_menu.tscn")
+	AudioController.play_button_sound()
 """
 Syfte: Tar dig tillbaka till main menyn
 """

@@ -6,9 +6,11 @@ extends CharacterBody2D
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 var damage: int = 2
+var time_scale = 1.0
 
 
 func _ready() -> void:
+	add_to_group("enemy_bullets")
 	rock_texture.frame = random_rock
 	velocity = Vector2(0, 700)
 	await get_tree().create_timer(10).timeout
@@ -20,6 +22,7 @@ Syfte: Ge varje sten en random textur och en start hastighet och starta en timer
 
 func _process(delta: float) -> void:
 	velocity.y += 50
+	velocity *= time_scale
 	move_and_slide()
 """
 Syfte: Accelerara stenarna

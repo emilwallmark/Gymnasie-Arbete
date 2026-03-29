@@ -25,6 +25,10 @@ var max_lives: float = 300
 var damage: int = 1
 var dead = false
 
+var time_scale = 1.0
+var attack_timer = 0.0
+var attack_interval  = 5.0
+
 func _ready() -> void:
 	anim.play("Walk")
 	lives = max_lives
@@ -46,19 +50,35 @@ func _process(_delta: float) -> void:
 		smoke_texture.position.x = -6.333
 	if velocity != Vector2(0,0):
 		AudioController.play_boss_walking_sound()
+	anim.speed_scale = time_scale
 """
 Syfte: Kolla om den är död och få texturen att vara åt rätt håll
 """
 
 func _physics_process(delta: float) -> void:
 	if player:
+		var scaled_delta = delta*time_scale
 		var direction_to_player = global_position.direction_to(player.global_position)
-		velocity = velocity.move_toward(direction_to_player*MAX_SPEED, ACC*delta)
+		velocity = velocity.move_toward(direction_to_player*MAX_SPEED, ACC*scaled_delta)
 		if velocity > direction_to_player*MAX_SPEED:
 			velocity = direction_to_player*MAX_SPEED
+		attack_timer += scaled_delta
+		if attack_timer >= attack_interval:
+			attack_timer = 0.0
+			set_physics_process(false)
+			var x = randi() % 4
+			if x == 0:
+				attack_1()
+			elif x == 1:
+				attack_2()
+			elif x == 2:
+				attack_3()
+			elif x == 3:
+				jump_attack()
+		velocity *= time_scale
 		move_and_slide()
 """
-Syfte: Få den att gå mot spelaren konstant
+Syfte: Få den att gå mot spelaren konstant och utföra attackerna
 """
 
 func attack_1():
@@ -185,19 +205,4 @@ func die():
 	queue_free()
 """
 Syfte: Döda den då denns liv är slut
-"""
-
-func _on_timer_timeout() -> void:
-	set_physics_process(false)
-	var x = randi() % 4
-	if x == 0:
-		attack_1()
-	elif x == 1:
-		attack_2()
-	elif x == 2:
-		attack_3()
-	elif x == 3:
-		jump_attack()
-"""
-Syfte: Köra en random attack varje gång timer blir noll
 """

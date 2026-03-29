@@ -7,7 +7,7 @@
 radius = 19.0
 height = 62.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=76496354]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=76496354 groups=["enemy_bullets"]]
 scale = Vector2(10, 10)
 script = ExtResource("1_gqg5x")
 

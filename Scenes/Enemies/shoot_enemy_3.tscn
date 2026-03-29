@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdkdustbu8ymx"]
+[gd_scene format=3 uid="uid://cdkdustbu8ymx"]
 
 [ext_resource type="Script" uid="uid://dxg5jun18t5n8" path="res://Scripts/Enemies/shoot_enemy_3.gd" id="1_6caik"]
-[ext_resource type="Texture2D" uid="uid://d3hdt6f4va8vo" path="res://Assets/Flying enemies/mosquito.png" id="1_uv4qs"]
+[ext_resource type="Texture2D" uid="uid://d3hdt6f4va8vo" path="res://Assets/Enemies/Flying enemies/mosquito.png" id="1_uv4qs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gy7qa"]
 size = Vector2(105, 111)
@@ -50,27 +50,23 @@ _data = {
 &"RESET": SubResource("Animation_o2jo0")
 }
 
-[node name="Sniper_Enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="Sniper_Enemy" type="CharacterBody2D" unique_id=1072868997 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_6caik")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1213472197]
 position = Vector2(1, -5)
 scale = Vector2(5, 5)
 texture = ExtResource("1_uv4qs")
 hframes = 5
 vframes = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1460050397]
 position = Vector2(-1, -10)
 shape = SubResource("RectangleShape2D_gy7qa")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
-autostart = true
-
-[node name="HpBar" type="ProgressBar" parent="."]
+[node name="HpBar" type="ProgressBar" parent="." unique_id=1052894370]
 offset_left = -75.0
 offset_top = 65.0
 offset_right = 76.0
@@ -81,9 +77,5 @@ value = 50.0
 fill_mode = 1
 show_percentage = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_nq7qy")
-}
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=904734336]
+libraries/ = SubResource("AnimationLibrary_nq7qy")

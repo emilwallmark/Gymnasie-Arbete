@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bp6lqw47qifyd"]
 
 [ext_resource type="Script" uid="uid://gux7rkbdvywn" path="res://Scripts/Enemies/shoot_enemy_4.gd" id="1_o3j7k"]
-[ext_resource type="Texture2D" uid="uid://dqp6al4nvr1t5" path="res://Assets/Fire Worm/Sprites/Worm/Walk.png" id="1_wx8o8"]
-[ext_resource type="Texture2D" uid="uid://ca4wly7q74yb" path="res://Assets/Fire Worm/Sprites/Worm/Attack.png" id="3_l8fxu"]
+[ext_resource type="Texture2D" uid="uid://dqp6al4nvr1t5" path="res://Assets/Enemies/Fire Worm/Sprites/Worm/Walk.png" id="1_wx8o8"]
+[ext_resource type="Texture2D" uid="uid://ca4wly7q74yb" path="res://Assets/Enemies/Fire Worm/Sprites/Worm/Attack.png" id="3_l8fxu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_287tu"]
 size = Vector2(253, 149.5)
@@ -114,9 +114,3 @@ show_percentage = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1552885716]
 libraries/ = SubResource("AnimationLibrary_l8fxu")
-
-[node name="Timer" type="Timer" parent="." unique_id=800853717]
-wait_time = 3.0
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

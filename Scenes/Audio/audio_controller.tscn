@@ -23,6 +23,8 @@
 [ext_resource type="AudioStream" uid="uid://vxqmw7ujy76k" path="res://Sounds/freesound_community-080047_lose_funny_retro_video-game-80925.mp3" id="21_vjlrs"]
 [ext_resource type="AudioStream" uid="uid://dwvk4m1qtkaes" path="res://Sounds/freesound_community-big-plants-crops-growing-quickly-43721.mp3" id="22_fmow3"]
 [ext_resource type="AudioStream" uid="uid://bsfy42n5wlj8o" path="res://Sounds/freesound_community-stand-summon-effect-40997.mp3" id="23_pqdjo"]
+[ext_resource type="AudioStream" uid="uid://ba7v0wflhvm60" path="res://Sounds/freesound_community-shield-guard-6963.mp3" id="24_o60s4"]
+[ext_resource type="AudioStream" uid="uid://g6piyyi5883q" path="res://Sounds/youssefmizani-bass-drop-407122_1xpKZZbA.mp3" id="25_4m4jw"]
 
 [node name="AudioController" type="Node" unique_id=1961484998]
 script = ExtResource("1_xdjnf")
@@ -130,3 +132,21 @@ process_thread_group = 1
 process_thread_group_order = 0
 process_thread_messages = 0
 stream = ExtResource("23_pqdjo")
+
+[node name="InvinsibilitySound" type="AudioStreamPlayer" parent="." unique_id=1303771503]
+process_mode = 3
+process_priority = 15
+process_physics_priority = 15
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
+stream = ExtResource("24_o60s4")
+
+[node name="SlowDownTimeSound" type="AudioStreamPlayer" parent="." unique_id=512123114]
+process_mode = 3
+process_priority = 15
+process_physics_priority = 15
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
+stream = ExtResource("25_4m4jw")

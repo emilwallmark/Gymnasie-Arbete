@@ -19,6 +19,8 @@ var ITEM_CARD_SCENE = preload("res://Scenes/Inventory/item_card.tscn")
 @onready var death_menu = $DeathMenuCanvas/DeathMenu
 @onready var enemies_left: int 
 
+var damage_boost = false
+var multishot = false
 
 var wave: int = 1
 var paused: bool = false
@@ -179,7 +181,11 @@ func attack()->void:
 				elif item.name == "Sniper" or item.name == "Heavy Sniper":
 					AudioController.play_sniper_sound()
 				var bullet = BULLET_SCENE.instantiate()
-				bullet.damage = item.damage
+				if !damage_boost:
+					bullet.damage = item.damage
+				else:
+					bullet.damage = int(item.damage * 1.5)
+				bullet.multishot = multishot
 				bullet.speed = item.speed
 				bullet.range = item.range
 				bullet.global_position = player.get_child(i).global_position
@@ -195,7 +201,11 @@ func attack()->void:
 				sword.range = item.range
 				sword.position = player.position + Vector2.RIGHT.rotated(angle)*50
 				sword.rotation = angle
-				sword.damage = item.damage
+				if !damage_boost:
+					sword.damage = item.damage
+				else:
+					sword.damage = int(item.damage * 1.5)
+				sword.multishot = multishot
 				sword.get_child(2).texture = item.texture
 				add_child(sword)
 			if item.type == "rocket launcher":
@@ -204,9 +214,13 @@ func attack()->void:
 				var angle = get_angle_to(player.get_local_mouse_position())
 				rocket.rotation = angle+PI/2
 				rocket.range = item.range
-				rocket.damage = item.damage
+				if !damage_boost:
+					rocket.damage = item.damage
+				else:
+					rocket.damage = int(item.damage * 1.5)
 				rocket.global_position = player.get_child(i).global_position
 				rocket.dir = player.get_local_mouse_position()
+				rocket.multishot = multishot
 				add_child(rocket)
 			if item.type == "grenade launcher":
 				AudioController.play_gun_sound()
@@ -214,7 +228,11 @@ func attack()->void:
 				var angle = get_angle_to(player.get_local_mouse_position())
 				grenade.rotation = angle+PI/2
 				grenade.range = item.range
-				grenade.damage = item.damage
+				if !damage_boost:
+					grenade.damage = item.damage
+				else:
+					grenade.damage = int(item.damage * 1.5)
+				grenade.multishot = multishot
 				grenade.global_position = player.get_child(i).global_position
 				grenade.dir = player.get_local_mouse_position()
 				add_child(grenade)
@@ -269,6 +287,21 @@ Samma som shoot_enemy_attack() men skapar ett skott med en annan textur
 och den räknar ut vinkeln texturen ska roteras med
 """
 
+func _on_ability_shop_pressed() -> void:
+	$AbilityShop.show()
+	$ShopHUD.hide()
+	AudioController.play_button_sound()
+"""
+Syfte: Visa ability shop
+"""
+
+func _on_back_pressed() -> void:
+	$AbilityShop.hide()
+	$ShopHUD.show()
+	AudioController.play_button_sound()
+"""
+Syfte: Gå tillbaka till vanliga shoppen
+"""
 
 func _on_heal_pressed() -> void:
 	AudioController.play_buy_sound()
@@ -289,4 +322,112 @@ func calc_heal_number():
 """
 Syfte: Räkna ut hur mycket pengar som ska visas på labeln på knappen som visar hur mycket 
 	   pengar som man kommer tappa
+"""
+
+
+func _on_invinvibility_pressed() -> void:
+	if Globals.money >= 300:
+		Globals.money -= 300
+		AudioController.play_buy_sound()
+		player.invinibility = true
+		player.invincibility_bar.show()
+		$AbilityShop/InvincibilityCard.hide()
+		$AbilityShop/Invinvibility.hide()
+		$AbilityShop/InvinsLabel.hide()
+		$AbilityShop/InvinsPic.hide()
+		$AbilityShop/InvinsCostLabel.hide()
+	else:
+		AudioController.play_error_sound()
+"""
+Syfte: Ge spelaren en invinsibility då den köper den
+"""
+
+
+func _on_movement_speed_pressed() -> void:
+	if Globals.money >= 500:
+		Globals.money -= 500
+		AudioController.play_buy_sound()
+		player.speed = 400
+		$AbilityShop/MovementSpeedCard.hide()
+		$AbilityShop/MovementSpeedPic.hide()
+		$AbilityShop/MovementSpeedLabel.hide()
+		$AbilityShop/MovementSpeedCostLabel.hide()
+		$AbilityShop/MovementSpeed.hide()
+	else:
+		AudioController.play_error_sound()
+"""
+Syfte: Ge spelaren en speed upgrade då den köper den
+"""
+
+
+func _on_damage_boost_pressed() -> void:
+	if Globals.money >= 700:
+		Globals.money -= 700
+		AudioController.play_buy_sound()
+		damage_boost = true
+		player.damage_boost = true
+		$AbilityShop/DamageBoostCard.hide()
+		$AbilityShop/DamageBoostPic.hide()
+		$AbilityShop/DamageBoostLabel.hide()
+		$AbilityShop/DamageBoostCostLabel.hide()
+		$AbilityShop/DamageBoost.hide()
+	else:
+		AudioController.play_error_sound()
+"""
+Syfte: Ge spelaren en damage boost då den köper den
+"""
+
+
+func _on_slow_down_pressed() -> void:
+	if Globals.money >= 350:
+		Globals.money -= 350
+		AudioController.play_buy_sound()
+		$AbilityShop/SlowDownTimeCard.hide()
+		$AbilityShop/SlowDownPic.hide()
+		$AbilityShop/SlowDownLabel.hide()
+		$AbilityShop/SlowDownCostLabel.hide()
+		$AbilityShop/SlowDown.hide()
+		player.can_slow_down_time = true
+		player.slow_down_time_bar.show()
+	else:
+		AudioController.play_error_sound()
+"""
+Syfte: Ge spelaren slowdown time abilityn
+"""
+
+
+func _on_dash_pressed() -> void:
+	if Globals.money >= 250:
+		Globals.money -= 250
+		AudioController.play_buy_sound()
+		player.can_dash = true
+		player.dash_bar.show()
+		$AbilityShop/DashCard.hide()
+		$AbilityShop/DashPic.hide()
+		$AbilityShop/DashLabel.hide()
+		$AbilityShop/DashCostLabel.hide()
+		$AbilityShop/Dash.hide()
+	else:
+		AudioController.play_error_sound()
+"""
+Syfte: Ge spelaren dash abilityn
+"""
+
+
+func _on_multishot_pressed() -> void:
+	if Globals.money >= 900:
+		Globals.money -= 900
+		AudioController.play_buy_sound()
+		multishot = true
+		$AbilityShop/MultishotCard.hide()
+		$AbilityShop/MultishotLabel.hide()
+		$AbilityShop/MultishotCostLabel.hide()
+		$AbilityShop/MultishotPic1.hide()
+		$AbilityShop/MultishotPic2.hide()
+		$AbilityShop/MultishotPic3.hide()
+		$AbilityShop/Multishot.hide()
+	else:
+		AudioController.play_error_sound()
+"""
+Syfte: Ge spelaren multishot abilityn
 """

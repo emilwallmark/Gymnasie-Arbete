@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxvitsr82dalt"]
+[gd_scene format=3 uid="uid://bxvitsr82dalt"]
 
 [ext_resource type="Script" uid="uid://jwgj4ty1plr7" path="res://Scripts/Enemies/sniper_enemy.gd" id="1_6o68g"]
-[ext_resource type="Texture2D" uid="uid://upu6h6x0jqk1" path="res://Assets/Flying enemies/Eyeball.png" id="2_6o68g"]
+[ext_resource type="Texture2D" uid="uid://upu6h6x0jqk1" path="res://Assets/Enemies/Flying enemies/Eyeball.png" id="2_6o68g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gy7qa"]
 size = Vector2(105, 111)
@@ -50,27 +50,23 @@ _data = {
 &"RESET": SubResource("Animation_i20am")
 }
 
-[node name="Sniper_Enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="Sniper_Enemy" type="CharacterBody2D" unique_id=1456217249 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_6o68g")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2039573265]
 position = Vector2(1, -5)
 scale = Vector2(5, 5)
 texture = ExtResource("2_6o68g")
 hframes = 6
 vframes = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=927337648]
 position = Vector2(-1, -10)
 shape = SubResource("RectangleShape2D_gy7qa")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
-autostart = true
-
-[node name="HpBar" type="ProgressBar" parent="."]
+[node name="HpBar" type="ProgressBar" parent="." unique_id=1447505285]
 offset_left = -75.0
 offset_top = 65.0
 offset_right = 76.0
@@ -81,9 +77,5 @@ value = 50.0
 fill_mode = 1
 show_percentage = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_daurw")
-}
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=703797786]
+libraries/ = SubResource("AnimationLibrary_daurw")

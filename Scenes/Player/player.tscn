@@ -84,6 +84,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [3]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InvincibilityBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [50.0]
+}
 
 [sub_resource type="Animation" id="Animation_pu2lt"]
 resource_name = "Walk_Down"
@@ -180,6 +192,18 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkybt"]
 bg_color = Color(0, 1, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd0ac"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0u5uq"]
+bg_color = Color(0, 0.673509, 0.9987375, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htcer"]
+bg_color = Color(0.7499194, 0.0005456102, 0.7730244, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlvik"]
+bg_color = Color(0.4934913, 0.98744756, 0.8146731, 1)
+
 [node name="Player" type="CharacterBody2D" unique_id=1317156015 groups=["Player"]]
 z_index = 5
 collision_layer = 2
@@ -272,5 +296,46 @@ horizontal_alignment = 2
 [node name="Timer" type="Timer" parent="." unique_id=373546928]
 autostart = true
 
+[node name="InvincibilityBar" type="ProgressBar" parent="." unique_id=1861405383]
+visible = false
+offset_left = -75.0
+offset_top = 30.0
+offset_right = 76.0
+offset_bottom = 45.0
+theme_override_styles/background = SubResource("StyleBoxFlat_dd0ac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0u5uq")
+value = 50.0
+fill_mode = 1
+show_percentage = false
+
+[node name="SlowDownTimeBar" type="ProgressBar" parent="." unique_id=25499778]
+visible = false
+offset_left = -75.0
+offset_top = 50.0
+offset_right = 76.0
+offset_bottom = 65.0
+theme_override_styles/background = SubResource("StyleBoxFlat_dd0ac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_htcer")
+value = 100.0
+fill_mode = 1
+show_percentage = false
+
+[node name="DashBar" type="ProgressBar" parent="." unique_id=1514459044]
+visible = false
+offset_left = -75.0
+offset_top = 70.0
+offset_right = 76.0
+offset_bottom = 85.0
+theme_override_styles/background = SubResource("StyleBoxFlat_dd0ac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jlvik")
+value = 100.0
+fill_mode = 1
+show_percentage = false
+
+[node name="SlowmoTimer" type="Timer" parent="." unique_id=1881465415]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="body_entered" from="DamegeArea" to="." method="_on_damege_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="SlowmoTimer" to="." method="_on_slowmo_timer_timeout"]

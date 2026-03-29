@@ -111,11 +111,5 @@ value = 50.0
 fill_mode = 1
 show_percentage = false
 
-[node name="Timer" type="Timer" parent="." unique_id=800853717]
-wait_time = 2.0
-autostart = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=861902502]
 libraries/ = SubResource("AnimationLibrary_1mmwf")
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -8,7 +8,10 @@ var detenation_pos: Vector2
 
 var damage: int = 3
 
+var time_scale = 1.0
+
 func _ready() -> void:
+	add_to_group("enemy_bullets")
 	$AnimationPlayer.play("shadow")
 	velocity = Vector2(0, 700)
 """
@@ -28,12 +31,14 @@ func _process(delta: float) -> void:
 		$Area2D.monitoring = true
 		await $ExplotionAnimation.animation_finished
 		queue_free()
+	$AnimationPlayer.speed_scale = time_scale
 """
 Syfte: Kolla att den inte har passerat sin destination och om den har expoldera den och ta bort den
 """
 
 func _physics_process(delta: float) -> void:
 	velocity.y += 50
+	velocity *= time_scale
 	move_and_slide()
 """
 Syfte: Accelerara stenen

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bfys7iv3e2qsi"]
 
 [ext_resource type="Script" uid="uid://bbcauq01e1giu" path="res://Scripts/Enemies/enemy_fire_bullet.gd" id="1_mo8v6"]
-[ext_resource type="Texture2D" uid="uid://dsocbrflbor5d" path="res://Assets/Fire Worm/Sprites/Fire Ball/Move.png" id="2_y7664"]
-[ext_resource type="Texture2D" uid="uid://brsgx2507m5m4" path="res://Assets/Fire Worm/Sprites/Fire Ball/Explosion.png" id="3_3kl5v"]
+[ext_resource type="Texture2D" uid="uid://dsocbrflbor5d" path="res://Assets/Enemies/Fire Worm/Sprites/Fire Ball/Move.png" id="2_y7664"]
+[ext_resource type="Texture2D" uid="uid://brsgx2507m5m4" path="res://Assets/Enemies/Fire Worm/Sprites/Fire Ball/Explosion.png" id="3_3kl5v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjght"]
 radius = 38.0
@@ -90,11 +90,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2051948791]
 shape = SubResource("CircleShape2D_xjght")
 
-[node name="Timer" type="Timer" parent="." unique_id=469947415]
-wait_time = 5.0
-one_shot = true
-autostart = true
-
 [node name="Explotion" type="Sprite2D" parent="." unique_id=812167018]
 scale = Vector2(5, 5)
 texture = ExtResource("3_3kl5v")
@@ -104,4 +99,3 @@ hframes = 7
 libraries/ = SubResource("AnimationLibrary_0rbt2")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

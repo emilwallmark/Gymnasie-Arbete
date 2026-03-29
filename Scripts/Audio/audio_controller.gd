@@ -77,3 +77,9 @@ func play_splitter_die_sound():
 
 func play_summon_sound():
 	$SummonSound.play()
+
+func play_invinsibility_sound():
+	$InvinsibilitySound.play()
+
+func play_slow_down_time_sound():
+	$SlowDownTimeSound.play()

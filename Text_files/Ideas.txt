@@ -7,10 +7,6 @@ Olika texturer på de olika vapnena då de skuter (kanske)
 
 COOLA IDEÉR
 
-Online leaderboard 
-
-Uppgradera movementspeed/andra abilities
-
 Kunna byta skin på spelaren (Gambling? mer pengar ju längre man kommer?)
 
 En tutorial/how to play i start menyn (antingen något man
