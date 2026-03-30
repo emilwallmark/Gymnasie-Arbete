@@ -12,6 +12,7 @@ var direction = "Down"
 @onready var invincibility_bar: ProgressBar = $InvincibilityBar
 @onready var slow_down_time_bar: ProgressBar = $SlowDownTimeBar
 @onready var dash_bar: ProgressBar = $DashBar
+@onready var shield: TextureRect = $Shield
 
 @export var inventory: Inv
 
@@ -88,11 +89,9 @@ func _process(_delta: float) -> void:
 	if velocity != Vector2(0,0):
 		AudioController.play_walking_sound()
 	if invincibility_bar.visible == false:
-		print("S1")
 		slow_down_time_bar.position.y = 30
 	else: 
 		slow_down_time_bar.position.y = 50
-		print("S2")
 	if slow_down_time_bar.visible == true and invincibility_bar.visible == true:
 		dash_bar.position.y = 70
 	elif slow_down_time_bar.visible == true or invincibility_bar.visible == true:
@@ -188,9 +187,11 @@ Syfte: Kollar om något har gått in i spelaren och kör check_damage()
 func invinibility_ability():
 	$DamegeArea.monitoring = false
 	AudioController.play_invinsibility_sound()
+	shield.show()
 	var tween = create_tween()
 	tween.tween_property(invincibility_bar, "value", 0, 5.0)
 	await get_tree().create_timer(5).timeout
+	shield.hide()
 	$DamegeArea.monitoring = true
 	tween = create_tween()
 	tween.tween_property(invincibility_bar, "value", 100, 20.0)

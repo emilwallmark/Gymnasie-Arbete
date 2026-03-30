@@ -21,8 +21,8 @@ const SWIPE_SCENE = preload("res://Scenes/Boss/Swipe.tscn")
 #Kommer defineras av föreldern som har åtkomst till sina barn
 var player = null
 var lives: int
-var max_lives: float = 300
-var damage: int = 1
+var max_lives: float = 3000
+var damage: int = 10
 var dead = false
 
 var time_scale = 1.0

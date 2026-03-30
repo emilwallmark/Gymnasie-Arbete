@@ -7,7 +7,7 @@ var dead: bool = false
 
 var money: int = 0
 
-
+var cheating: bool =  false
 
 #Leaderboard Saker
 

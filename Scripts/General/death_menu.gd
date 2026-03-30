@@ -2,6 +2,9 @@ extends Control
 
 @onready var main = $"../../"
 
+func _ready() -> void:
+	if Globals.cheating:
+		$ColorRect/CenterContainer/VBoxContainer/Submit.disabled = true
 
 func _on_visibility_changed() -> void:
 	$ColorRect/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Score.text = str(get_parent().get_parent().wave-1)

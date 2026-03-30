@@ -52,6 +52,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(direction_to_player*MAX_SPEED, ACC*scaled_delta)
 		if velocity > direction_to_player*MAX_SPEED:
 			velocity = direction_to_player*MAX_SPEED
+		shoot_timer += scaled_delta
 		if shoot_timer >= shoot_interval:
 				shoot_timer = 0.0
 				get_parent().get_parent().shoot_enemy_attack(global_position.direction_to(player.global_position), position, damage, attack_speed)

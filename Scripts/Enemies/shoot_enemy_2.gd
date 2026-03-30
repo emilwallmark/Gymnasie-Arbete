@@ -58,6 +58,7 @@ func _physics_process(delta: float) -> void:
 			shoot_timer = 0.0
 		else: 
 			velocity = Vector2(0,0)
+			shoot_timer += scaled_delta
 		if velocity > direction_to_player*MAX_SPEED:
 			velocity = direction_to_player*MAX_SPEED
 			if shoot_timer >= shoot_interval:

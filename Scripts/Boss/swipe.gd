@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
-var damage: int = 2
+var damage: int = 40
 var time_scale = 1.0
 
 func _ready() -> void:

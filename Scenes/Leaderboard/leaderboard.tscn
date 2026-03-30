@@ -423,20 +423,6 @@ theme_override_fonts/font = ExtResource("2_52rut")
 theme_override_font_sizes/font_size = 150
 text = "Score"
 
-[node name="GridContainer" type="GridContainer" parent="." unique_id=1767268035]
-z_index = 100
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.016
-offset_left = 582.0
-offset_top = 344.0
-offset_right = 2035.04
-offset_bottom = 1096.0
-theme_override_constants/h_separation = 450
-theme_override_constants/v_separation = 100
-columns = 3
-script = ExtResource("1_l68so")
-
 [node name="Button" type="Button" parent="." unique_id=859856250]
 layout_mode = 0
 offset_left = 1924.0
@@ -455,4 +441,19 @@ theme_override_styles/pressed = ExtResource("4_7crjw")
 theme_override_styles/hover = ExtResource("5_r0tq5")
 text = "Back"
 
-[connection signal="pressed" from="Button" to="GridContainer" method="_on_button_pressed"]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1503630092]
+layout_mode = 0
+offset_left = 556.0
+offset_top = 395.0
+offset_right = 2037.0
+offset_bottom = 935.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=1767268035]
+z_index = 100
+layout_mode = 2
+theme_override_constants/h_separation = 450
+theme_override_constants/v_separation = 100
+columns = 3
+script = ExtResource("1_l68so")
+
+[connection signal="pressed" from="Button" to="ScrollContainer/GridContainer" method="_on_button_pressed"]

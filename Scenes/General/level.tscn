@@ -505,7 +505,7 @@ texture = ExtResource("9_sfme4")
 
 [node name="InvinsLabel" type="Label" parent="AbilityShop" unique_id=166171045]
 offset_left = 779.0
-offset_top = 458.0
+offset_top = 458.00003
 offset_right = 1045.0
 offset_bottom = 611.0
 theme_override_fonts/font = ExtResource("5_cyj5c")

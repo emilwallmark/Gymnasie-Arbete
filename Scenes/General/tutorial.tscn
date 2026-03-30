@@ -1,0 +1,267 @@
+[gd_scene format=3 uid="uid://cecoa5ua8hpen"]
+
+[ext_resource type="Script" uid="uid://qm3qskniqaur" path="res://Scripts/General/tutorial.gd" id="1_rwowx"]
+[ext_resource type="FontFile" uid="uid://rm44u7rgm4ri" path="res://Fonts/OldeTome.ttf" id="2_hu44a"]
+[ext_resource type="StyleBox" uid="uid://byr8wv45y5rl2" path="res://Scripts/Misc/Normal_button_Stylebox.tres" id="3_0cr88"]
+[ext_resource type="StyleBox" uid="uid://bsdjldjidv6e0" path="res://Scripts/Misc/Pressed_button_Stylebox.tres" id="4_4t6hg"]
+[ext_resource type="StyleBox" uid="uid://dh5lduv44ddte" path="res://Scripts/Misc/Hover_button_Stylebox.tres" id="5_7vrqn"]
+[ext_resource type="Texture2D" uid="uid://boy1guwory0ht" path="res://Assets/Tutorial SS/Skärmavbild 2026-03-30 kl. 18.26.27.png" id="6_hu44a"]
+[ext_resource type="Texture2D" uid="uid://ca0u58dua1uhk" path="res://Assets/Tutorial SS/Skärmavbild 2026-03-30 kl. 18.26.40.png" id="7_4t6hg"]
+[ext_resource type="Texture2D" uid="uid://ck21waa76wma5" path="res://Assets/Tutorial SS/Skärmavbild 2026-03-30 kl. 18.41.23.png" id="8_7vrqn"]
+[ext_resource type="Texture2D" uid="uid://camlgng6l6khx" path="res://Assets/Tutorial SS/Skärmavbild 2026-03-30 kl. 18.54.45.png" id="9_4hjyh"]
+[ext_resource type="Texture2D" uid="uid://bmqf5ddtxu0u7" path="res://Assets/Tutorial SS/Skärmavbild 2026-03-30 kl. 18.54.53.png" id="10_bsk3x"]
+[ext_resource type="Texture2D" uid="uid://r42j77vxtrhl" path="res://Assets/Tutorial SS/Skärmavbild 2026-03-30 kl. 18.58.55.png" id="11_dl7dh"]
+[ext_resource type="Texture2D" uid="uid://0q2bmkf0cn42" path="res://Assets/Tutorial SS/Skärmavbild 2026-03-30 kl. 18.59.16.png" id="12_r4o0u"]
+[ext_resource type="Texture2D" uid="uid://coctka4etapy6" path="res://Assets/Tutorial SS/Skärmavbild 2026-03-30 kl. 18.59.33.png" id="13_k08xv"]
+
+[node name="Tutorial" type="Control" unique_id=2074645257]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rwowx")
+
+[node name="Button" type="Button" parent="." unique_id=152436431]
+layout_mode = 0
+offset_left = 1924.0
+offset_top = 1028.0
+offset_right = 2480.0
+offset_bottom = 1343.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.34117648, 0.16862746, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.34117648, 0.16862746, 0, 1)
+theme_override_colors/font_hover_color = Color(0.34117648, 0.16862746, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_hu44a")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = ExtResource("3_0cr88")
+theme_override_styles/pressed = ExtResource("4_4t6hg")
+theme_override_styles/hover = ExtResource("5_7vrqn")
+text = "Back"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=587324841]
+clip_children = 1
+layout_mode = 0
+offset_left = 541.0
+offset_top = 64.0
+offset_right = 1896.0
+offset_bottom = 10123.0
+
+[node name="Control" type="Control" parent="ScrollContainer" unique_id=1375960874]
+custom_minimum_size = Vector2(1000, 19000)
+layout_mode = 2
+
+[node name="TextureRect" type="Sprite2D" parent="ScrollContainer/Control" unique_id=681451869]
+position = Vector2(631, 344)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_hu44a")
+
+[node name="Label" type="Label" parent="ScrollContainer/Control" unique_id=1712578389]
+clip_children = 2
+clip_contents = true
+layout_mode = 0
+offset_left = 167.0
+offset_top = 696.0
+offset_right = 1054.0
+offset_bottom = 969.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_hu44a")
+theme_override_font_sizes/font_size = 125
+text = "W A S D för att gå"
+
+[node name="TextureRect2" type="Sprite2D" parent="ScrollContainer/Control" unique_id=22252137]
+position = Vector2(635, 1110)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_4t6hg")
+
+[node name="Label2" type="Label" parent="ScrollContainer/Control" unique_id=1938738316]
+clip_children = 2
+clip_contents = true
+layout_mode = 0
+offset_left = 137.0
+offset_top = 1399.0
+offset_right = 1244.0
+offset_bottom = 1672.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_hu44a")
+theme_override_font_sizes/font_size = 125
+text = "Space för att attackera"
+
+[node name="TextureRect4" type="Sprite2D" parent="ScrollContainer/Control" unique_id=1556250649]
+position = Vector2(747, 1781)
+texture = ExtResource("7_4t6hg")
+region_enabled = true
+region_rect = Rect2(2940, 1595, 420, 407)
+
+[node name="Label3" type="Label" parent="ScrollContainer/Control" unique_id=231285205]
+clip_children = 2
+clip_contents = true
+layout_mode = 0
+offset_left = 366.0
+offset_top = 2102.0
+offset_right = 1889.0
+offset_bottom = 2375.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_hu44a")
+theme_override_font_sizes/font_size = 125
+text = "Hur många fiender 
+som är kvar"
+
+[node name="TextureRect3" type="Sprite2D" parent="ScrollContainer/Control" unique_id=912195350]
+position = Vector2(709, 2643)
+texture = ExtResource("8_7vrqn")
+region_enabled = true
+region_rect = Rect2(2982, 1450, 378, 345)
+
+[node name="Label4" type="Label" parent="ScrollContainer/Control" unique_id=2088914653]
+clip_children = 2
+clip_contents = true
+layout_mode = 0
+offset_left = 61.0
+offset_top = 2922.0
+offset_right = 1584.0
+offset_bottom = 3195.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_hu44a")
+theme_override_font_sizes/font_size = 125
+text = "Hur mycket pengar du har"
+
+[node name="TextureRect5" type="Sprite2D" parent="ScrollContainer/Control" unique_id=1131252683]
+position = Vector2(622, 3355)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_7vrqn")
+region_rect = Rect2(2982, 1450, 378, 345)
+
+[node name="Label5" type="Label" parent="ScrollContainer/Control" unique_id=122915923]
+clip_children = 2
+clip_contents = true
+layout_mode = 0
+offset_left = 23.0
+offset_top = 3647.0
+offset_right = 1546.0
+offset_bottom = 4140.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_hu44a")
+theme_override_font_sizes/font_size = 125
+text = "Köp vapen eller Hp genom
+att trycka på korten som
+dyker upp efter att du dödat 
+alla fiender i en wave"
+
+[node name="TextureRect6" type="Sprite2D" parent="ScrollContainer/Control" unique_id=924790536]
+position = Vector2(582, 4525)
+texture = ExtResource("9_4hjyh")
+region_enabled = true
+region_rect = Rect2(84, 1267, 1134, 680)
+
+[node name="Label6" type="Label" parent="ScrollContainer/Control" unique_id=1715941652]
+clip_children = 2
+clip_contents = true
+layout_mode = 0
+offset_left = 23.0
+offset_top = 4959.0
+offset_right = 1546.0
+offset_bottom = 5452.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_hu44a")
+theme_override_font_sizes/font_size = 125
+text = "Håll över vapnet för att
+se dess statistik och tryck
+på det för att ta bort det"
+
+[node name="TextureRect7" type="Sprite2D" parent="ScrollContainer/Control" unique_id=762788919]
+position = Vector2(573, 5700)
+texture = ExtResource("10_bsk3x")
+region_enabled = true
+region_rect = Rect2(84, 1267, 1134, 680)
+
+[node name="TextureRect8" type="Sprite2D" parent="ScrollContainer/Control" unique_id=965396518]
+position = Vector2(493, 6336)
+scale = Vector2(2, 2)
+texture = ExtResource("6_hu44a")
+region_enabled = true
+region_rect = Rect2(1526, 886, 308, 140)
+
+[node name="Label7" type="Label" parent="ScrollContainer/Control" unique_id=1194271282]
+clip_children = 2
+clip_contents = true
+layout_mode = 0
+offset_left = 21.0
+offset_top = 6557.0
+offset_right = 1544.0
+offset_bottom = 7050.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_hu44a")
+theme_override_font_sizes/font_size = 125
+text = "Selarens Hp
+Då den når noll är spelaren
+död och du har förlorat"
+
+[node name="TextureRect9" type="Sprite2D" parent="ScrollContainer/Control" unique_id=1045532187]
+position = Vector2(501, 7252)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("11_dl7dh")
+region_rect = Rect2(2982, 1450, 378, 345)
+
+[node name="Label8" type="Label" parent="ScrollContainer/Control" unique_id=467030776]
+clip_children = 2
+clip_contents = true
+layout_mode = 0
+offset_left = 23.0
+offset_top = 7541.0
+offset_right = 1546.0
+offset_bottom = 8034.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_hu44a")
+theme_override_font_sizes/font_size = 125
+text = "När du är död kan du lägga
+ditt score till leaderboarden
+genom att trycka på 
+submit score"
+
+[node name="TextureRect10" type="Sprite2D" parent="ScrollContainer/Control" unique_id=1828481580]
+position = Vector2(526, 8340)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_r4o0u")
+region_rect = Rect2(2982, 1450, 378, 345)
+
+[node name="Label9" type="Label" parent="ScrollContainer/Control" unique_id=614497530]
+clip_children = 2
+clip_contents = true
+layout_mode = 0
+offset_left = -7.0
+offset_top = 8641.0
+offset_right = 1516.0
+offset_bottom = 9134.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_hu44a")
+theme_override_font_sizes/font_size = 125
+text = "Skriva in vilket namn 
+du vill ha"
+
+[node name="TextureRect11" type="Sprite2D" parent="ScrollContainer/Control" unique_id=221223299]
+position = Vector2(465, 9171)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("13_k08xv")
+region_rect = Rect2(2982, 1450, 378, 345)
+
+[node name="Label10" type="Label" parent="ScrollContainer/Control" unique_id=719883571]
+clip_children = 2
+clip_contents = true
+layout_mode = 0
+offset_left = 14.0
+offset_top = 9450.0
+offset_right = 1537.0
+offset_bottom = 9943.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_hu44a")
+theme_override_font_sizes/font_size = 125
+text = "Och jämföra dig med
+alla andra på leaderboarden
+och se om du kan få högst 
+poäng
+Lycka till"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

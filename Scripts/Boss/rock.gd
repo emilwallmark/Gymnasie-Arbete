@@ -6,7 +6,7 @@ var detenation_pos: Vector2
 
 
 
-var damage: int = 3
+var damage: int = 25
 
 var time_scale = 1.0
 

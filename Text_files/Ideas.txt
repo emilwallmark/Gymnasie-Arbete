@@ -9,10 +9,6 @@ COOLA IDEÉR
 
 Kunna byta skin på spelaren (Gambling? mer pengar ju längre man kommer?)
 
-En tutorial/how to play i start menyn (antingen något man
-kan scrolla igeon och läsa eller något som man spelar och
-spelet säger åt en vad man borde göra)
-
 En meny till fusk
 
 Hardmode som gör att fieder gör mer skada och har mer Hp?

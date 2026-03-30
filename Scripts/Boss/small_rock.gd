@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var rock_texture: Sprite2D = $RockTexture
 @onready var player = get_tree().get_first_node_in_group("Player")
 
-var damage: int = 2
+var damage: int = 20
 var time_scale = 1.0
 
 

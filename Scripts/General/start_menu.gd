@@ -30,6 +30,7 @@ Syfte: Stänga av spelet då quitknappen har tryckts
 """
 
 func _on_cheat_pressed() -> void:
+	Globals.cheating = true
 	if int($TextEdit.text) > 10000:
 		Cheats.emit_when_ready(10000)
 	else:
@@ -55,3 +56,9 @@ func _on_leaderboard_pressed() -> void:
 """
 Syfte: Ändrar scene till leaderboard
 """
+
+
+func _on_button_pressed() -> void:
+	$Tutorial.show()
+	$UI.hide()
+	AudioController.play_button_sound()

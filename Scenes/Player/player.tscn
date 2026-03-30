@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://duhjm7beccri1" path="res://Scripts/Inventory/PlayerInv.tres" id="2_vgqql"]
 [ext_resource type="PackedScene" uid="uid://dcydko4pj7kon" path="res://Scenes/Inventory/inv_ui.tscn" id="4_vgqql"]
 [ext_resource type="FontFile" uid="uid://c1txxgo4sn8qk" path="res://Fonts/Darinia.ttf" id="5_fkybt"]
+[ext_resource type="Texture2D" uid="uid://d31fhouokvnul" path="res://Assets/HUD:UI/New Piskel-1.png (1) (2).png" id="6_dd0ac"]
 [ext_resource type="Texture2D" uid="uid://cc4nifydiaw2q" path="res://Assets/Player/character-pack-full_version/sprite_split/character_1/character_1_frame32x32.png" id="7_gymyn"]
 
 [sub_resource type="Animation" id="Animation_3smsa"]
@@ -307,6 +308,16 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_0u5uq")
 value = 50.0
 fill_mode = 1
 show_percentage = false
+
+[node name="Shield" type="TextureRect" parent="." unique_id=713733980]
+visible = false
+modulate = Color(0.09320182, 0.5811619, 1, 0.351)
+offset_left = -61.0
+offset_top = -72.0
+offset_right = 195.0
+offset_bottom = 184.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_dd0ac")
 
 [node name="SlowDownTimeBar" type="ProgressBar" parent="." unique_id=25499778]
 visible = false
