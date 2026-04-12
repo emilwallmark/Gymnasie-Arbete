@@ -12,6 +12,9 @@ var delete_time = 5.0
 
 func _ready() -> void:
 	add_to_group("enemy_bullets")
+"""
+Syfte: lägga till skottet till gruppen
+"""
 
 func movement() -> void:
 	var length = (dir[0]**2 + dir[1]**2)**0.5
@@ -33,7 +36,8 @@ Syfte: Röra skottet varje frame
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		queue_free()
-		body.take_damage(damage)
+		if !body.invincibility_active:
+			body.take_damage(damage)
 """
 Syfte: Om skottet träffar spelaren ska den skada spelaren och försvinna
 """	

@@ -13,3 +13,5 @@ En meny till fusk
 
 Hardmode som gör att fieder gör mer skada och har mer Hp?
 Easymode där de gör minde skada och mindre Hp?
+
+Inställningar?

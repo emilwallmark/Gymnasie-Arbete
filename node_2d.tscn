@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://s3a5u460mnc"]
+
+[ext_resource type="PackedScene" uid="uid://baa1aso0fnt1m" path="res://Scenes/Player/player.tscn" id="1_0e48y"]
+[ext_resource type="PackedScene" uid="uid://bxvitsr82dalt" path="res://Scenes/Enemies/sniper_enemy.tscn" id="2_epypp"]
+
+[node name="Node2D" type="Node2D" unique_id=1464165220]
+
+[node name="Player" parent="." unique_id=1317156015 instance=ExtResource("1_0e48y")]
+
+[node name="Sniper_Enemy" parent="." unique_id=1456217249 instance=ExtResource("2_epypp")]
+position = Vector2(704, 298)

@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://coctka4etapy6" path="res://Assets/Tutorial SS/Skärmavbild 2026-03-30 kl. 18.59.33.png" id="13_k08xv"]
 
 [node name="Tutorial" type="Control" unique_id=2074645257]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

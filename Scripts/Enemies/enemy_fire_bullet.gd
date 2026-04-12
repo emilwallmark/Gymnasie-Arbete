@@ -51,11 +51,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		moving.hide()
 		explotion.show()
 		anim.play("Exploding")
-		body.take_damage(damage)
 		AudioController.play_explotion_sound()
 		await anim.animation_finished
 		queue_free()
-		
+		if !body.invincibility_active:
+			body.take_damage(damage)
 """
 Syfte: Skada spelaren om den blir träffad och köra explotion animationen
 """

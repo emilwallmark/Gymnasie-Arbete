@@ -17,6 +17,7 @@ var direction = "Down"
 @export var inventory: Inv
 
 var invinibility: bool = false
+var invincibility_active: bool = false
 var slowmotion: bool = false
 var can_slow_down_time : bool = false
 var can_dash: bool = false
@@ -186,6 +187,7 @@ Syfte: Kollar om något har gått in i spelaren och kör check_damage()
 
 func invinibility_ability():
 	$DamegeArea.monitoring = false
+	invincibility_active = true
 	AudioController.play_invinsibility_sound()
 	shield.show()
 	var tween = create_tween()
@@ -193,6 +195,7 @@ func invinibility_ability():
 	await get_tree().create_timer(5).timeout
 	shield.hide()
 	$DamegeArea.monitoring = true
+	invincibility_active = false
 	tween = create_tween()
 	tween.tween_property(invincibility_bar, "value", 100, 20.0)
 """

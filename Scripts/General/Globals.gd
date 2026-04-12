@@ -1,7 +1,7 @@
 extends Node
 
-var player_max_lives: int = 5
-var player_lives:int = 5
+var player_max_lives: int = 500
+var player_lives:int = 500
 
 var dead: bool = false
 

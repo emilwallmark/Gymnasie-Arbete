@@ -132,7 +132,7 @@ func _on_button_pressed() -> void:
 		else:
 			AudioController.play_buy_sound()
 			Globals.player_max_lives += item.damage
-			Globals.player_lives = Globals.player_max_lives
+			Globals.player_lives += item.damage
 			Globals.money -= roundi(item.cost * cost_multi)
 			queue_free()
 	else:
